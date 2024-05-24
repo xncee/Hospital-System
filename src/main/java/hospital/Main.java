@@ -19,14 +19,17 @@ public class Main implements HospitalData, Color {
     }
 
     public static void wait(int seconds) {
+        wait(seconds);
+    }
+    public static void wait(double seconds) {
         try {
-            Thread.sleep(seconds*1000);
+            Thread.sleep((long) seconds* 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
     public static void homePage() {
-        wait(1);
+        wait(1.0);
         System.out.println("\n"+YELLOW_BACKGROUND+"# Home Page"+RESET);
 
         System.out.println("1. Patient");
@@ -502,7 +505,7 @@ public class Main implements HospitalData, Color {
             System.out.println("Enter patientId (enter # to search): ");
             String patientId = input.nextLine().toLowerCase();;
             if (patientId.equals("#")) {
-                doctorSearchPage(true);
+                patientSearchPage(true);
                 continue;
             }
 
@@ -512,8 +515,6 @@ public class Main implements HospitalData, Color {
             else
                 return patient;
         }
-
-        //return null;
     }
     public static void patientManagementPage() {
         wait(1);
@@ -557,7 +558,7 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 3: {
-                //changePatientInfoPage();
+                changePatientInfoPage();
                 break;
             }
             case 99: {
@@ -580,6 +581,62 @@ public class Main implements HospitalData, Color {
             return validateDate();
         }
     }
+    public static void changePatientInfoPage() {
+        wait(0.5);
+        System.out.println("\n# Change Patient Info Page");
+        System.out.println("1. Change phoneNumber");
+        System.out.println("2. Change address");
+        System.out.println("3. Change department");
+        System.out.println("4. Change doctor");
+        System.out.println("5. Change nurse");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 4, 5, 99});
+
+        switch (c) {
+            case 1: {
+                Patient patient = validatePatient();
+                System.out.println("Enter phoneNumber: ");
+                String phoneNumber = input.nextLine();
+                patient.setPhoneNumber(phoneNumber);
+                System.out.println("phoneNumber updated.");
+                break;
+            }
+            case 2: {
+                Patient patient = validatePatient();
+                System.out.println("Enter address: ");
+                String address = input.nextLine();
+                patient.setAddress(address);
+                System.out.println("address updated.");
+                break;
+            }
+            case 3: {
+                Patient patient = validatePatient();
+                System.out.println("Enter department: ");
+                String department = input.nextLine();
+                patient.setDepartment(department);
+                System.out.println("department updated.");
+                break;
+            }
+            case 4: {
+                Patient patient = validatePatient();
+                Doctor doctor = validateDoctor();
+                patient.setDoctor(doctor);
+                System.out.println("Doctor was updated.");
+                break;
+            }
+            case 5: {
+                Patient patient = validatePatient();
+                Nurse nurse = validateNurse();
+                patient.setNurse(nurse);
+                System.out.println("Nurse was updated.");
+                break;
+            }
+            case 99: {
+                patientManagementPage();
+                break;
+            }
+        }
+    }
     public static void medicalRecordManagementPage() {
         wait(1);
         System.out.println("\n# Medical Record Management Page");
@@ -590,7 +647,6 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                // String id, String patientId, String diagnose, String treatment, LocalDate date
                 String patientId = validatePatient().getId();
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
                 if (medicalRecords==null)
@@ -605,6 +661,7 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();//LocalDate.parse(input.nextLine()); //
 
                 medicalRecords.add(new MedicalRecord(id, patientId, diagnose, treatment, date));
+                hospital.add(medicalRecords);
                 System.out.println("MedicalRecord Added.");
                 break;
             }

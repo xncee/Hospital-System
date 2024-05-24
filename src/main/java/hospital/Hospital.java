@@ -49,7 +49,7 @@ public class Hospital implements HospitalData, Manageable, Color {
         else if (o instanceof Nurse)
             return nursesList;
 
-        else if (o instanceof MedicalRecord)
+        else if (o instanceof List)
             return medicalRecordsList;
 
         throw new InvalidAttributeValueException("Invalid Argument.");
