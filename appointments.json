@@ -1,0 +1,14 @@
+{
+  "AP01" : {
+    "patient" : "P011",
+    "doctor" : "D19",
+    "date" : "2024-06-17",
+    "description" : "covid-19 treatment"
+  },
+  "AP02" : {
+    "patient" : "P011",
+    "doctor" : "D19",
+    "date" : "2024-06-27",
+    "description" : "covid-20 treatment"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "P011" : {
+    "name" : "Saif Alkhalili",
+    "phoneNumber" : "0796027099",
+    "age" : 19,
+    "gender" : "M",
+    "address" : "Amman/Jordan",
+    "department" : "ICU",
+    "medicalRecord" : "MR01",
+    "doctor" : "D19",
+    "nurse" : "N01"
+  },
+  "P012" : {
+    "name" : "Ahmad Jabali",
+    "phoneNumber" : "07xxxxxxxx",
+    "age" : 29,
+    "gender" : "M",
+    "address" : "Amman/Jordan",
+    "department" : "ICU",
+    "medicalRecord" : "MR02",
+    "doctor" : "D20",
+    "nurse" : "N02"
+  },
+  "P3" : {
+    "name" : "Ahmad hamed",
+    "phoneNumber" : "0776767899",
+    "age" : 23,
+    "gender" : "M",
+    "address" : "Amman/Jordan",
+    "department" : "IC",
+    "medicalRecord" : null,
+    "doctor" : "D19",
+    "nurse" : "N01"
+  }
+}

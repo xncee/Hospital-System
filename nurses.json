@@ -1,0 +1,17 @@
+{
+  "N01" : {
+    "name" : "Noor K",
+    "phoneNumber" : "07xxxxxxxx",
+    "department" : "ICU"
+  },
+  "N02" : {
+    "name" : "Moha K",
+    "phoneNumber" : "07xxxxxxxx",
+    "department" : "ICU"
+  },
+  "N03" : {
+    "name" : "Saad Kh",
+    "phoneNumber" : "07xxxxxxxx",
+    "department" : "ICU"
+  }
+}

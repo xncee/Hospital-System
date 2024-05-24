@@ -1,0 +1,12 @@
+Nurse nurse = null;
+                while (nurse==null) {
+                    System.out.println("Enter nurseId (enter # to search): ");
+                    String nurseId = input.nextLine();
+                    if (nurseId.equals("#"))
+                        nurseSearchPage(true);
+
+                    nurseId = input.nextLine();
+                    nurse = Nurse.findNurse("nurseId", nurseId);
+                    if (nurse==null)
+                        System.out.println("Invalid Nurse!");
+                }
