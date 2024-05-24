@@ -19,17 +19,14 @@ public class Main implements HospitalData, Color {
     }
 
     public static void wait(int seconds) {
-        wait(seconds);
-    }
-    public static void wait(double seconds) {
         try {
-            Thread.sleep((long) seconds* 1000);
+            Thread.sleep(seconds* 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
     public static void homePage() {
-        wait(1.0);
+        wait(1);
         System.out.println("\n"+YELLOW_BACKGROUND+"# Home Page"+RESET);
 
         System.out.println("1. Patient");
@@ -582,7 +579,7 @@ public class Main implements HospitalData, Color {
         }
     }
     public static void changePatientInfoPage() {
-        wait(0.5);
+        wait(1);
         System.out.println("\n# Change Patient Info Page");
         System.out.println("1. Change phoneNumber");
         System.out.println("2. Change address");
