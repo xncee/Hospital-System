@@ -9,28 +9,26 @@ public class Patient extends Person {
     private String department;
     private Doctor doctor;
     private Nurse nurse;
-    private List<MedicalRecord> medicalRecord;
+    private List<MedicalRecord> medicalRecords;
 
-    public Patient(String id, String name, String phoneNumber, int age, String gender, String address, String department, List<MedicalRecord> medicalRecord, Doctor doctor, Nurse nurse) {
+    public Patient(String id, String name, String phoneNumber, int age, String gender, String address, String department, List<MedicalRecord> medicalRecords, Doctor doctor, Nurse nurse) {
         super(id, name, phoneNumber);
         this.age = age;
         this.gender = gender;
         this.address = address;
         this.department = department;
-        this.medicalRecord = medicalRecord;
+        this.medicalRecords = medicalRecords;
         setDoctor(doctor); // set with if?
         setNurse(nurse);
     }
 
     public void addMedicalRecord(MedicalRecord record) {
-        medicalRecord.add(record);
+        medicalRecords.add(record);
     }
 
     public static Patient findPatient(String searchKey, String searchQuery) {
         for (Patient patient: patientsList) {
             String s = switch (searchKey) {
-                case "patientId":
-                    yield patient.getId();
                 case "patientName":
                     yield patient.getName();
                 case "phoneNumber":
@@ -42,7 +40,7 @@ public class Patient extends Person {
                             yield null;
                         }
                         //System.out.println(patient.getMedicalRecord().get(0).getId());
-                        yield patient.getMedicalRecord().get(0).getId();
+                        yield patient.getMedicalRecords().get(0).getId();
                     }
                     catch (Exception e) {
                         System.out.println("medicalRecord was not found!");
@@ -51,6 +49,7 @@ public class Patient extends Person {
                 }
                 default:
                     System.out.println("Invalid searchKey!");
+                case "patientId":
                     yield patient.getId();
             };
 
@@ -120,12 +119,12 @@ public class Patient extends Person {
             System.out.println("Invalid Nurse.");
     }
 
-    public List<MedicalRecord> getMedicalRecord() {
-        return medicalRecord;
+    public List<MedicalRecord> getMedicalRecords() {
+        return medicalRecords;
     }
 
-    public void setMedicalRecord(List<MedicalRecord> medicalRecord) {
-        this.medicalRecord = medicalRecord;
+    public void setMedicalRecords(List<MedicalRecord> medicalRecord) {
+        this.medicalRecords = medicalRecord;
     }
 
     //@Override
@@ -138,7 +137,7 @@ public class Patient extends Person {
                 ", department=" + department +
                 ", doctor=" + doctor.getId() +
                 ", nurse=" + nurse.getId() +
-                ", medicalRecord=" + medicalRecord +
+                ", medicalRecords=" + medicalRecords +
                 "}";
     }
 }

@@ -13,14 +13,13 @@ public class Doctor extends Person {
     public static Doctor findDoctor(String searchKey, String searchQuery) {
         for (Doctor doctor: doctorsList) {
             String s = switch (searchKey) {
-                case "doctorId":
-                    yield doctor.getId();
                 case "doctorName":
                     yield doctor.getName();
                 case "phoneNumber":
                     yield doctor.getPhoneNumber();
                 default:
                     System.out.println("Invalid searchKey!");
+                case "doctorId":
                     yield doctor.getId();
             };
 

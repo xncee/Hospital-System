@@ -1,102 +1,16 @@
 package hospital;
 
 import javax.print.Doc;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main implements HospitalData, Color {
-    /*
-    Main
-
-        // read the file and initialize these arrays.
-
-        +main(args: String[]): void
-            file = JsonFileReader / FileReader and split
-            initializePatients();
-            initializeDoctors();
-
-        +initializePatients(Hospital hospital): void
-        +initializeDoctors(Hospital hospital): void
-
-    Hospital
-        +HOSPITAL_NAME: String // final
-        +MAX_CAPACITY: int = value // final static
-        +patients: List<Patient>
-        +doctors: List<Doctor>
-        +nurses: List<Nurse>
-        +medicalRecords: List<MedicalRecord>
-        +appointments: List<Appointment>
-        +log: List<String>
-
-        +Hospital(hospitalName: String, MAX_CAPACITY: int)
-        +addPatient(Patient patient): void
-        +addDoctor(Doctor doctor): void
-        +addNurse(Nurse nurse): void
-        +addMedicalRecord(MedicalRecord medicalRecord): void
-        +addAppointment(Appointment appointment): void
-
-    Person extends Hospital
-        -id: String
-        -name: String
-        -phoneNumber: String
-
-        +Person(id: int, name: String, phoneNumber: String)
-
-        +setters & getters
-
-     <<interface>>
-
-        public boolean isAvailable();
-        public void checkIn();
-        public void checkOut();
-
-    Patient extends Person implements
-        -age: int
-        -gender: String
-        -address: String
-        -department: String
-        -medicalRecord: List<MedicalRecord>
-
-        +Patient(name: String, id: int, department: String, medicalRecord: String[])
-        +addMedicalRecord(MedicalRecord)
-        +getMedicalRecord(): String
-        +assignDoctor(Doctor doctor): void
-        +assignNurse(Nurse nurse): void
-
-    Doctor extends Person implements
-        -specialization: String
-
-        +Doctor(id: int, name: String, phoneNumber: int, specialization: String)
-
-    Nurse extends Person implements
-        -department: String
-
-        +Nurse(id: int, name: String, phoneNumber: int, department: String)
-
-    Appointment
-        -id: String
-        -patient: Patient;
-        -doctor: Doctor;
-        -date: Date;
-        -description: String;
-
-        +Appointment(id: int, patient: Patient, doctor: Doctor, date: Date, description: String)
-
-        +setters & getters
-
-    MedicalRecord
-        -patient: Patient;
-        -diagnose: String;
-        -treatment: String;
-        -date: Date;
-
-        +MedicalRecord(patient: Patient, diagnose: String, treatment: String, date: Date)
-
-        +setters & getters
-     */
     static Scanner input = new Scanner(System.in);
     // medical record (((id))) for new patients??
+    // handle null value
     static Hospital hospital = new Hospital("Al-Hayat Hospital", 700);
 
     public static void main(String[] args) {
@@ -131,7 +45,7 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 3:
-                medicalRecordsPage();
+                medicalRecordPage();
                 break;
             case 99:
                 System.exit(0);
@@ -195,11 +109,35 @@ public class Main implements HospitalData, Color {
         }
     }
 
-    public static void medicalRecordsPage() {
+    public static void medicalRecordPage() {
         wait(1);
-        System.out.println("\n# Medical Records Page");
+        System.out.println("\n# Medical Record Page");
         System.out.println("1. Print All MedicalRecords");
-        System.out.println("1. Print All MedicalRecords");
+        System.out.println("2. Search");
+        System.out.println("3. Manage MedicalRecord");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 99});
+
+        switch (c) {
+            case 1: {
+                for (List<MedicalRecord> medicalRecord: medicalRecordsList) {
+                    System.out.println(Arrays.toString(medicalRecord.toArray()));
+                }
+                break;
+            }
+            case 2: {
+                medicalRecordSearchPage();
+                break;
+            }
+            case 3: {
+                medicalRecordManagementPage();
+                break;
+            }
+            case 99:
+                homePage();
+                break;
+        }
+        medicalRecordPage();
     }
     public static void doctorPage() {
         wait(1);
@@ -475,6 +413,55 @@ public class Main implements HospitalData, Color {
             nurseSearchPage();
     }
 
+    public static void medicalRecordSearchPage() {
+        medicalRecordSearchPage(false);
+    }
+    public static void medicalRecordSearchPage(boolean showOneTime) {
+        wait(1);
+        System.out.println("\n# Medical Records Search Page");
+        System.out.println("1. Search by medicalRecordId");
+        System.out.println("2. Search by patientId");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 99});
+
+        switch (c) {
+            case 1: {
+                System.out.println("Enter medicalRecordId: ");
+                String medicalRecordsId = input.nextLine();
+                List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("medicalRecordsId", medicalRecordsId);
+
+                if (medicalRecords != null) {
+                    System.out.println("MedicalRecords found: ");
+                    System.out.println(medicalRecords);
+                }
+                else {
+                    System.out.println("MedicalRecords were not found!");
+                }
+                break;
+            }
+            case 2: {
+                System.out.println("Enter patientId: ");
+                String patientId = input.nextLine();
+                List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
+
+                if (medicalRecords != null) {
+                    System.out.println("MedicalRecords found: ");
+                    System.out.println(medicalRecords);
+                }
+                else {
+                    System.out.println("MedicalRecords were not found!");
+                }
+                break;
+            }
+            case 99: {
+                medicalRecordPage();
+                break;
+            }
+        }
+
+        if (!showOneTime)
+            medicalRecordSearchPage();
+    }
     public static Doctor validateDoctor() {
         Doctor doctor;
         while (true) {
@@ -491,8 +478,6 @@ public class Main implements HospitalData, Color {
             else
                return doctor;
         }
-        //System.out.println(doctor);
-        //return null;
     }
     public static Nurse validateNurse() {
         Nurse nurse;
@@ -510,8 +495,6 @@ public class Main implements HospitalData, Color {
             else
                 return nurse;
          }
-        //System.out.println(nurse);
-        //return null;
     }
     public static Patient validatePatient() {
         Patient patient;
@@ -556,11 +539,11 @@ public class Main implements HospitalData, Color {
                 String address = input.nextLine();
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
-                List<MedicalRecord> medicalRecord = new ArrayList<>();
+                List<MedicalRecord> medicalRecords = new ArrayList<>();
                 Doctor doctor = validateDoctor();
                 Nurse nurse = validateNurse();
 
-                hospital.add(new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecord, doctor, nurse));
+                hospital.add(new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecords, doctor, nurse));
                 System.out.println(GREEN+"Patient Added."+RESET);
                 break;
             }
@@ -583,6 +566,57 @@ public class Main implements HospitalData, Color {
             }
         }
         patientManagementPage();
+    }
+
+    public static void doctorManagementPage() {}
+
+    public static LocalDate validateDate() {
+        try {
+            System.out.println("Enter date: ");
+            LocalDate date = LocalDate.parse(input.nextLine());
+            return date;
+        }
+        catch (Exception e) {
+            return validateDate();
+        }
+    }
+    public static void medicalRecordManagementPage() {
+        wait(1);
+        System.out.println("\n# Medical Record Management Page");
+        System.out.println("1. Add MedicalRecord");
+        System.out.println("2. Remove MedicalRecord");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 99});
+
+        switch (c) {
+            case 1: {
+                // String id, String patientId, String diagnose, String treatment, LocalDate date
+                String patientId = validatePatient().getId();
+                List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
+                if (medicalRecords==null)
+                    medicalRecords = new ArrayList<>();
+
+                String id = medicalRecords.isEmpty()?MedicalRecord.getNewMedicalRecordId():medicalRecords.get(0).getId();
+                System.out.println("Enter diagnose: ");
+                String diagnose = input.nextLine();
+                System.out.println("Enter treatment: ");
+                String treatment = input.nextLine();
+                System.out.println("Enter date (YYYY-MM-dd) (keep blank for current date): ");
+                LocalDate date = validateDate();//LocalDate.parse(input.nextLine()); //
+
+                medicalRecords.add(new MedicalRecord(id, patientId, diagnose, treatment, date));
+                System.out.println("MedicalRecord Added.");
+                break;
+            }
+            case 2: {
+                break;
+            }
+            case 99: {
+                medicalRecordPage();
+                break;
+            }
+        }
+        medicalRecordPage();
     }
 
     public static int getUserInput(int[] choices) {

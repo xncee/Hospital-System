@@ -6,7 +6,7 @@
     "gender" : "M",
     "address" : "Amman/Jordan",
     "department" : "ICU",
-    "medicalRecord" : "MR01",
+    "medicalRecords" : "MR01",
     "doctor" : "D19",
     "nurse" : "N01"
   },
@@ -17,7 +17,7 @@
     "gender" : "M",
     "address" : "Amman/Jordan",
     "department" : "ICU",
-    "medicalRecord" : "MR02",
+    "medicalRecords" : "MR02",
     "doctor" : "D20",
     "nurse" : "N02"
   },
@@ -28,7 +28,7 @@
     "gender" : "M",
     "address" : "Amman/Jordan",
     "department" : "IC",
-    "medicalRecord" : null,
+    "medicalRecords" : null,
     "doctor" : "D19",
     "nurse" : "N01"
   }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import io.JsonFileWriter;
 
 import javax.management.InvalidAttributeValueException;
 import java.time.LocalDate;
@@ -123,11 +122,11 @@ public class Hospital implements HospitalData, Manageable, Color {
         String gender = node.get("gender").asText();
         String address = node.get("address").asText();
         String department = node.get("department").asText();
-        List<MedicalRecord> medicalRecord = getMedicalRecord(node.get("medicalRecord").asText());
+        List<MedicalRecord> medicalRecords = getMedicalRecords(node.get("medicalRecords").asText());
         Doctor doctor = getDotor(node.get("doctor").asText());
         Nurse nurse = getNurse(node.get("nurse").asText());
 
-        return new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecord, doctor, nurse);
+        return new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecords, doctor, nurse);
     }
     public Patient getPatient(String id) {
         for (Patient patient: patientsList) {
@@ -170,8 +169,8 @@ public class Hospital implements HospitalData, Manageable, Color {
         return null;
     }
 
-    public List<MedicalRecord> getMedicalRecord(JsonNode node, String id) {
-        List<MedicalRecord> medicalRecord = new ArrayList<>();
+    public List<MedicalRecord> getMedicalRecords(JsonNode node, String id) {
+        List<MedicalRecord> medicalRecords = new ArrayList<>();
 
         for (JsonNode jsonNode: node) {
             // medical records are initialized before medical patients
@@ -180,12 +179,12 @@ public class Hospital implements HospitalData, Manageable, Color {
             String treatment = jsonNode.get("treatment").asText();
             LocalDate date = LocalDate.parse(jsonNode.get("date").asText());
 
-            medicalRecord.add(new MedicalRecord(id, patient, diagnose, treatment, date));
+            medicalRecords.add(new MedicalRecord(id, patient, diagnose, treatment, date));
         }
 
-        return medicalRecord;
+        return medicalRecords;
     }
-    public List<MedicalRecord> getMedicalRecord(String id) {
+    public List<MedicalRecord> getMedicalRecords(String id) {
         for (List<MedicalRecord> record: medicalRecordsList) {
             for (MedicalRecord r: record) {
                 if (r.getId().equals(id)) {
@@ -231,7 +230,7 @@ public class Hospital implements HospitalData, Manageable, Color {
     private void initializeMedicalRecords() {
         Iterator<String> ids = medicalRecordsJson.fieldNames();
         for (JsonNode node: medicalRecordsJson) {
-            medicalRecordsList.add(getMedicalRecord(node, ids.next()));
+            medicalRecordsList.add(getMedicalRecords(node, ids.next()));
         }
     }
 
@@ -253,7 +252,7 @@ public class Hospital implements HospitalData, Manageable, Color {
                             .put("gender", patient.getGender())
                             .put("address", patient.getAddress())
                             .put("department", patient.getDepartment())
-                            .put("medicalRecord", patient.getMedicalRecord().isEmpty()?null:patient.getMedicalRecord().get(0).getId())
+                            .put("medicalRecords", patient.getMedicalRecords().isEmpty()?null:patient.getMedicalRecords().get(0).getId())
                             .put("doctor", patient.getDoctor().getId())
                             .put("nurse", patient.getNurse().getId())
             );

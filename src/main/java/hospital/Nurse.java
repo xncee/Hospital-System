@@ -11,14 +11,13 @@ public class Nurse extends Person {
     public static Nurse findNurse(String searchKey, String searchQuery) {
         for (Nurse nurse: nursesList) {
             String s = switch (searchKey) {
-                case "nurseId":
-                    yield nurse.getId();
                 case "nurseName":
                     yield nurse.getName();
                 case "phoneNumber":
                     yield nurse.getPhoneNumber();
                 default:
                     System.out.println("Invalid searchKey!");
+                case "nurseId":
                     yield nurse.getId();
             };
 

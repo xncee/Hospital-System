@@ -1,6 +1,7 @@
 package hospital;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MedicalRecord implements HospitalData {
     private String id;
@@ -17,6 +18,32 @@ public class MedicalRecord implements HospitalData {
         this.date = date;
     }
 
+    public static List<MedicalRecord> findMedicalRecords(String searchKey, String searchQuery) {
+        for (List<MedicalRecord> record: medicalRecordsList) {
+            String s = switch (searchKey) {
+                case "patientId":
+                    yield record.get(0).getPatientId();
+                default:
+                    System.out.println("Invalid searchKey!");
+                case "medicalRecordId":
+                    yield record.get(0).getId();
+            };
+
+            if (s==null)
+                return null;
+
+            s = s.toLowerCase();
+            //System.out.println(s);
+            if (s.equals(searchQuery.toLowerCase())) {
+                return record;
+            }
+        }
+        return null;
+    }
+
+    public static String getNewMedicalRecordId() {
+        return "MR"+(medicalRecordsList.size()+1);
+    }
     public String getId() {
         return id;
     }
