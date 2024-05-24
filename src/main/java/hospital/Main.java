@@ -198,6 +198,8 @@ public class Main implements HospitalData, Color {
     public static void medicalRecordsPage() {
         wait(1);
         System.out.println("\n# Medical Records Page");
+        System.out.println("1. Print All MedicalRecords");
+        System.out.println("1. Print All MedicalRecords");
     }
     public static void doctorPage() {
         wait(1);
