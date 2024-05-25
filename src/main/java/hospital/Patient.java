@@ -150,8 +150,8 @@ public class Patient extends Person {
                 ", gender=" + gender +
                 ", address=" + address +
                 ", department=" + department +
-                ", doctor=" + doctor.getId() +
-                ", nurse=" + nurse.getId() +
+                ", doctor=" + (doctor==null?null:doctor.getId()) +
+                ", nurse=" + (nurse==null?null:nurse.getId()) +
                 ", medicalRecords=" + medicalRecords +
                 "}";
     }
