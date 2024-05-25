@@ -16,15 +16,15 @@
     "date" : "2024-05-25"
   } ],
   "MR3" : [ {
-    "patient" : "P4",
-    "diagnose" : "none",
-    "treatment" : "not yet",
+    "patient" : "P2",
+    "diagnose" : "covid",
+    "treatment" : "some drugs",
     "date" : "2024-05-25"
   } ],
   "MR4" : [ {
     "patient" : "P5",
-    "diagnose" : "headache",
-    "treatment" : "some drug",
+    "diagnose" : "covid-19",
+    "treatment" : "drug",
     "date" : "2024-05-25"
   } ]
 }
