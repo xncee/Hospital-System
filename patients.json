@@ -1,15 +1,4 @@
 {
-  "P011" : {
-    "name" : "Saif Alkhalili",
-    "phoneNumber" : "0796027099",
-    "age" : 19,
-    "gender" : "M",
-    "address" : "Amman/Jordan",
-    "department" : "ICU",
-    "medicalRecords" : "MR01",
-    "doctor" : "D19",
-    "nurse" : "N01"
-  },
   "P012" : {
     "name" : "Ahmad Jabali",
     "phoneNumber" : "0798047654",

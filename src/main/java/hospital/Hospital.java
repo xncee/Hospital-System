@@ -42,19 +42,14 @@ public class Hospital implements HospitalData, Manageable, Color {
     public List getList(Object o) throws InvalidAttributeValueException {
         if (o instanceof Patient)
             return patientsList;
-
         else if (o instanceof Doctor)
             return doctorsList;
-
         else if (o instanceof Nurse)
             return nursesList;
-
         else if (o instanceof List)
             return medicalRecordsList;
-
         else if (o instanceof Appointment)
             return appointmentsList;
-
         throw new InvalidAttributeValueException("Invalid Argument.");
     }
 
@@ -68,6 +63,7 @@ public class Hospital implements HospitalData, Manageable, Color {
         }
 
         boolean removed = list.remove(o);
+        //System.out.println("removeFlag="+removed);
         if (removed)
             updateData();
         return removed;
@@ -119,6 +115,8 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public Patient getPatient(JsonNode node, String id) {
+        if (node==null)
+            return null;
         String name = node.get("name").asText();
         String phoneNumber = node.get("phoneNumber").asText();
         int age = node.get("age").asInt();
@@ -141,6 +139,8 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public Doctor getDotor(JsonNode node, String id) {
+        if (node==null)
+            return null;
         String name = node.get("name").asText();
         String phoneNumber = node.get("phoneNumber").asText();
         String specialization = node.get("specialization").asText();
@@ -173,6 +173,8 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public List<MedicalRecord> getMedicalRecords(JsonNode node, String id) {
+        if (node==null)
+            return null;
         List<MedicalRecord> medicalRecords = new ArrayList<>();
 
         for (JsonNode jsonNode: node) {
@@ -201,6 +203,8 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public Appointment getAppointment(JsonNode node, String id) {
+        if (node==null)
+            return null;
         Patient patient = getPatient(node.get("patient").asText());
         Doctor doctor = getDotor(node.get("doctor").asText());
         LocalDate date = LocalDate.parse(node.get("date").asText());
@@ -212,40 +216,52 @@ public class Hospital implements HospitalData, Manageable, Color {
     private void initializePatients() {
         Iterator<String> ids = patientsJson.fieldNames();
         for (JsonNode node: patientsJson) {
-            patientsList.add(getPatient(node, ids.next()));
+            Patient p = getPatient(node, ids.next());
+            if (p!=null)
+                patientsList.add(p);
         }
     }
 
     private void initializeDoctors() {
         Iterator<String> ids = doctorsJson.fieldNames();
         for (JsonNode node: doctorsJson) {
-            doctorsList.add(getDotor(node, ids.next()));
+            Doctor d = getDotor(node, ids.next());
+            if (d!=null)
+                doctorsList.add(d);
         }
     }
 
     private void initializeNurses() {
         Iterator<String> ids = nursesJson.fieldNames();
         for (JsonNode node: nursesJson) {
-            nursesList.add(getNurse(node, ids.next()));
+            Nurse n = getNurse(node, ids.next());
+            if (n!=null)
+                nursesList.add(n);
         }
     }
 
     private void initializeMedicalRecords() {
         Iterator<String> ids = medicalRecordsJson.fieldNames();
         for (JsonNode node: medicalRecordsJson) {
-            medicalRecordsList.add(getMedicalRecords(node, ids.next()));
+            List<MedicalRecord> m = getMedicalRecords(node, ids.next());
+            if (m!=null)
+                medicalRecordsList.add(m);
         }
     }
 
     private void initializeAppointmentsList() {
         Iterator<String> ids = appointmentsJson.fieldNames();
         for (JsonNode node: appointmentsJson) {
-            appointmentsList.add(getAppointment(node, ids.next()));
+            Appointment a = getAppointment(node, ids.next());
+            if (a!=null)
+                appointmentsList.add(a);
         }
     }
 
     public void updatePatients() {
+        patientsJson.removeAll();
         for (Patient patient: patientsList) {
+            // the Json is final as it is defined inside an interface, you might consider moving it to somewhere else and clear the JsonNode instead.
             patientsJson.put(
                     patient.getId(),
                     new ObjectMapper().createObjectNode()
@@ -265,6 +281,7 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public void updateDoctors() {
+        doctorsJson.removeAll();
         for (Doctor doctor: doctorsList) {
             doctorsJson.put(
                     doctor.getId(),
@@ -279,8 +296,9 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public void updateNurses() {
+        nursesJson.removeAll();
         for (Nurse nurse: nursesList) {
-            doctorsJson.put(
+            nursesJson.put(
                     nurse.getId(),
                     new ObjectMapper().createObjectNode()
                             .put("name", nurse.getName())
@@ -293,6 +311,7 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public void updateMedicalRecords() {
+        medicalRecordsJson.removeAll();
         for (List<MedicalRecord> record: medicalRecordsList) {
             List<JsonNode> nodes = new ArrayList<>();
             String id = record.get(0).getId();
@@ -312,8 +331,9 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public void updateAppointments() {
+        appointmentsJson.removeAll();
         for (Appointment appointment: appointmentsList) {
-            doctorsJson.put(
+            appointmentsJson.put(
                     appointment.getId(),
                     new ObjectMapper().createObjectNode()
                             .put("patient", appointment.getPatient().getId())

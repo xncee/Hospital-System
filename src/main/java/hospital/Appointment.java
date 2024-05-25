@@ -94,10 +94,10 @@ public class Appointment implements HospitalData {
     @Override
     public String toString() {
         return "Appointment{" +
-                "id="+id +
-                ", patient="+patient.getId() +
-                ", doctor="+doctor.getId() +
-                ", date="+date +
+                "id=" + id +
+                ", patient=" + (patient==null?null:patient.getId()) +
+                ", doctor="+ (doctor==null?null:doctor.getId()) +
+                ", date=" + date +
                 ", description=" + description +
                 "}";
     }
