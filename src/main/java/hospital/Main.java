@@ -33,8 +33,6 @@ Palliative Care: Offers care aimed at providing relief from the symptoms and str
 // add a menu for departments
 public class Main implements HospitalData, Color {
     static Scanner input = new Scanner(System.in);
-    // medical record (((id))) for new patients??
-    // handle null value
     static Hospital hospital = new Hospital("Al-Hayat Hospital", 700);
 
     public static void main(String[] args) {
