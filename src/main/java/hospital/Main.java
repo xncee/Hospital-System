@@ -44,7 +44,7 @@ public class Main implements HospitalData, Color {
 
     public static void wait(int seconds) {
         try {
-            Thread.sleep(seconds* 1000);
+            Thread.sleep(seconds*1000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -232,7 +232,9 @@ public class Main implements HospitalData, Color {
         System.out.println("1. Search by patientId");
         System.out.println("2. Search by patientName");
         System.out.println("3. Search by phoneNumber");
-        System.out.println("4. Search by medicalRecordId");
+        System.out.println("4. Search by nurseId");
+        System.out.println("5. Search by doctorId");
+        System.out.println("6. Search by medicalRecordId");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 4, 99});
 
@@ -252,7 +254,7 @@ public class Main implements HospitalData, Color {
 
                 List<Patient> patients = Patient.find("patientName", patientName);
                 if (!patients.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+patients.size()+")"+RESET);
                     for (Patient patient: patients) {
                         System.out.println(patient);
                     }
@@ -268,7 +270,7 @@ public class Main implements HospitalData, Color {
 
                 List<Patient> patients = Patient.find("phoneNumber", phoneNumber);
                 if (!patients.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+patients.size()+")"+RESET);
                     for (Patient patient: patients) {
                         System.out.println(patient);
                     }
@@ -279,6 +281,38 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 4: {
+                System.out.println("Enter nurseId: ");
+                String nurseId = input.nextLine().toLowerCase();
+
+                List<Patient> patients = Patient.find("nurseId", nurseId);
+                if (!patients.isEmpty()) {
+                    System.out.println(GREEN+"Results: ("+patients.size()+")"+RESET);
+                    for (Patient patient: patients) {
+                        System.out.println(patient);
+                    }
+                }
+                else {
+                    System.out.println(RED+"No Results!"+RESET);
+                }
+                break;
+            }
+            case 5: {
+                System.out.println("Enter doctorId: ");
+                String doctorId = input.nextLine().toLowerCase();
+
+                List<Patient> patients = Patient.find("doctorId", doctorId);
+                if (!patients.isEmpty()) {
+                    System.out.println(GREEN+"Results: ("+patients.size()+")"+RESET);
+                    for (Patient patient: patients) {
+                        System.out.println(patient);
+                    }
+                }
+                else {
+                    System.out.println(RED+"No Results!"+RESET);
+                }
+                break;
+            }
+            case 6: {
                 System.out.println("Enter medicalRecordId: ");
                 String medicalRecordId = input.nextLine();
 
@@ -329,7 +363,7 @@ public class Main implements HospitalData, Color {
 
                 List<Doctor> doctors = Doctor.find("doctorName", doctorName);
                 if (!doctors.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+doctors.size()+")"+RESET);
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
@@ -345,7 +379,7 @@ public class Main implements HospitalData, Color {
 
                 List<Doctor> doctors = Doctor.find("phoneNumber", phoneNumber);
                 if (!doctors.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+doctors.size()+")"+RESET);
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
@@ -360,7 +394,7 @@ public class Main implements HospitalData, Color {
 
                 List<Doctor> doctors = Doctor.find("specialization", specialization);
                 if (!doctors.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+doctors.size()+")"+RESET);
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
@@ -405,7 +439,7 @@ public class Main implements HospitalData, Color {
 
                 List<Nurse> nurses = Nurse.find("nurseName", nurseName);
                 if (!nurses.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+nurses.size()+")"+RESET);
                     for (Nurse nurse: nurses) {
                         System.out.println(nurse);
                     }
@@ -421,7 +455,7 @@ public class Main implements HospitalData, Color {
 
                 List<Nurse> nurses = Nurse.find("phoneNumber", phoneNumber);
                 if (!nurses.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+nurses.size()+")"+RESET);
                     for (Nurse nurse: nurses) {
                         System.out.println(nurse);
                     }
@@ -458,7 +492,7 @@ public class Main implements HospitalData, Color {
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("medicalRecordsId", medicalRecordsId);
 
                 if (medicalRecords != null) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+medicalRecords.size()+")"+RESET);
                     for (MedicalRecord r: medicalRecords) {
                         System.out.println(r);
                     }
@@ -478,7 +512,7 @@ public class Main implements HospitalData, Color {
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
 
                 if (medicalRecords != null) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+medicalRecords.size()+")"+RESET);
                     for (MedicalRecord r: medicalRecords) {
                         System.out.println(r);
                     }
@@ -530,7 +564,7 @@ public class Main implements HospitalData, Color {
 
                 List<Appointment> appointments = Appointment.find("patientId", patientId);
                 if (!appointments.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+appointments.size()+")"+RESET);
                     for (Appointment appointment: appointments) {
                         System.out.println(appointment);
                     }
@@ -541,11 +575,13 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 3: {
-                String doctorId = validateDoctor().getId();
+                Doctor doctor = validateDoctor();
+                if (doctor==null) break;
+                String doctorId = doctor.getId();
 
                 List<Appointment> appointments = Appointment.find("doctorId", doctorId);
                 if (!appointments.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+appointments.size()+")"+RESET);
                     for (Appointment appointment: appointments) {
                         System.out.println(appointment);
                     }
@@ -559,7 +595,7 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();
                 List<Appointment> appointments = Appointment.find("date", String.valueOf(date));
                 if (!appointments.isEmpty()) {
-                    System.out.println(GREEN+"Results: "+RESET);
+                    System.out.println(GREEN+"Results: ("+appointments.size()+")"+RESET);
                     for (Appointment appointment: appointments) {
                         System.out.println(appointment);
                     }
@@ -606,7 +642,7 @@ public class Main implements HospitalData, Color {
         Nurse nurse;
         while (true) {
             System.out.println("Enter nurseId (enter '#' to search or '=' to quit): ");
-            String nurseId = input.nextLine().toLowerCase();;
+            String nurseId = input.nextLine().toLowerCase();
             if (nurseId.equals("#")) {
                 nurseSearchPage(true);
                 continue;
@@ -630,7 +666,7 @@ public class Main implements HospitalData, Color {
         Patient patient;
         while (true) {
             System.out.println("Enter patientId (enter '#' to search or '=' to quit): ");
-            String patientId = input.nextLine().toLowerCase();;
+            String patientId = input.nextLine().toLowerCase();
             if (patientId.equals("#")) {
                 patientSearchPage(true);
                 continue;
@@ -655,7 +691,7 @@ public class Main implements HospitalData, Color {
         Appointment appointment;
         while (true) {
             System.out.println("Enter appointmentId (enter '#' to search or '=' to quit): ");
-            String appointmentId = input.nextLine().toLowerCase();;
+            String appointmentId = input.nextLine().toLowerCase();
             if (appointmentId.equals("#")) {
                 appointmentSearchPage(true);
                 continue;

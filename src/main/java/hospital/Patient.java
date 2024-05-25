@@ -23,10 +23,6 @@ public class Patient extends Person {
         setNurse(nurse);
     }
 
-    public void addMedicalRecord(MedicalRecord record) {
-        medicalRecords.add(record);
-    }
-
     public static List<Patient> find(String searchKey, String searchQuery) {
         List<Patient> patients = new ArrayList<>();
         for (Patient patient: patientsList) {
@@ -37,9 +33,11 @@ public class Patient extends Person {
                     yield patient.getPhoneNumber();
                 case "nurseId":
                     yield patient.getNurse().getId();
+                case "doctorId":
+                    yield patient.getDoctor().getId();
                 case "medicalRecordId": {
                     try {
-                        if (medicalRecordsJson.get(searchQuery)==null) {
+                        if (medicalRecordsJson.get(searchQuery.toUpperCase())==null) {
                             System.out.println("medicalRecord was not found!");
                             yield null;
                         }
@@ -58,14 +56,14 @@ public class Patient extends Person {
                     yield patient.getId();
             };
 
-            //if (s==null) return null;
+            if (s==null) break;
             s = s.toLowerCase();
             searchQuery = searchQuery.toLowerCase();
 
             if (s.equals(searchQuery)) {
                 patients.add(patient);
             }
-            else if (searchKey.equals("patientName") && s.startsWith(searchQuery)) {
+            else if ((searchKey.equals("patientName") || searchKey.equals("phoneNumber")) && s.startsWith(searchQuery)) {
                 patients.add(patient);
             }
         }

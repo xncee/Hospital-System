@@ -44,7 +44,7 @@ public class Doctor extends Person {
 //                    System.out.println("Invalid searchKey!");
 //                    s = doctor.getId();
 //            }
-            if (s==null) return null;
+            if (s==null) break;
             s = s.toLowerCase();
             searchQuery = searchQuery.toLowerCase();
 

@@ -27,7 +27,7 @@ public class Nurse extends Person {
                     yield nurse.getId();
             };
 
-            if (s==null) return null;
+            if (s==null) break;
             s = s.toLowerCase();
             searchQuery = searchQuery.toLowerCase();
 
