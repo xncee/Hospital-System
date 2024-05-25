@@ -1,5 +1,8 @@
 package hospital;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Nurse extends Person {
     private String department;
 
@@ -8,7 +11,8 @@ public class Nurse extends Person {
         this.department = department;
     }
 
-    public static Nurse findNurse(String searchKey, String searchQuery) {
+    public static List<Nurse> find(String searchKey, String searchQuery) {
+        List<Nurse> nurses = new ArrayList<>();
         for (Nurse nurse: nursesList) {
             String s = switch (searchKey) {
                 case "nurseName":
@@ -22,16 +26,18 @@ public class Nurse extends Person {
                     yield nurse.getId();
             };
 
-            if (s==null)
-                return null;
-
+            if (s==null) return null;
             s = s.toLowerCase();
-            //System.out.println(s);
+            searchQuery = searchQuery.toLowerCase();
+
             if (s.equals(searchQuery)) {
-                return nurse;
+                nurses.add(nurse);
+            }
+            else if (searchKey.equals("nurseName") && s.startsWith(searchQuery)) {
+                nurses.add(nurse);
             }
         }
-        return null;
+        return nurses;
     }
 
     public static String getNewNurseId() {

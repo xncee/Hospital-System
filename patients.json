@@ -20,5 +20,16 @@
     "medicalRecords" : "MR3",
     "doctor" : "D1",
     "nurse" : "N1"
+  },
+  "P3" : {
+    "name" : "Sanad R",
+    "phoneNumber" : "0776068794",
+    "age" : 18,
+    "gender" : "M",
+    "address" : "Irbid/Jordan",
+    "department" : "ICU",
+    "medicalRecords" : "MR3",
+    "doctor" : "D1",
+    "nurse" : "N1"
   }
 }

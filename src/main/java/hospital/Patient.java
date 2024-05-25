@@ -27,8 +27,8 @@ public class Patient extends Person {
         medicalRecords.add(record);
     }
 
-    public static Patient find(String searchKey, String searchQuery) {
-        // consider user .startsWith() (example: input->moh | output->[moha, mohk, mohmamd])
+    public static List<Patient> find(String searchKey, String searchQuery) {
+        List<Patient> patients = new ArrayList<>();
         for (Patient patient: patientsList) {
             String s = switch (searchKey) {
                 case "patientName":
@@ -56,16 +56,18 @@ public class Patient extends Person {
                     yield patient.getId();
             };
 
-            if (s==null)
-                return null;
-
+            if (s==null) return null;
             s = s.toLowerCase();
-            //System.out.println(s);
-            if (s.equals(searchQuery.toLowerCase())) {
-                return patient;
+            searchQuery = searchQuery.toLowerCase();
+
+            if (s.equals(searchQuery)) {
+                patients.add(patient);
+            }
+            else if (searchKey.equals("patientName") && s.startsWith(searchQuery)) {
+                patients.add(patient);
             }
         }
-        return null;
+        return patients;
     }
 
     public static String getNewPatientId() {

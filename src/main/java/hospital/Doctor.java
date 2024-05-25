@@ -1,17 +1,20 @@
 package hospital;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Doctor extends Person {
     private String specialization;
+    private HashMap<String, String> workingDays;
 
     public Doctor(String id, String name, String phoneNumber, String specialization) {
         super(id, name, phoneNumber);
         this.specialization = specialization;
     }
 
-    public static Doctor find(String searchKey, String searchQuery) {
+    public static List<Doctor> find(String searchKey, String searchQuery) {
+        List<Doctor> doctors = new ArrayList<>();
         for (Doctor doctor: doctorsList) {
             String s = switch (searchKey) {
                 case "doctorName":
@@ -20,6 +23,8 @@ public class Doctor extends Person {
                     yield doctor.getPhoneNumber();
                 case "doctorId":
                     yield doctor.getId();
+                case "specialization":
+                    yield doctor.getSpecialization();
                 default:
                     System.out.println("Invalid searchKey!");
                     yield doctor.getId();
@@ -39,16 +44,18 @@ public class Doctor extends Person {
 //                    System.out.println("Invalid searchKey!");
 //                    s = doctor.getId();
 //            }
-            if (s==null)
-                return null;
-
+            if (s==null) return null;
             s = s.toLowerCase();
+            searchQuery = searchQuery.toLowerCase();
 
-            if (s.equals(searchQuery.toLowerCase())) {
-                return doctor;
+            if (s.equals(searchQuery)) {
+                doctors.add(doctor);
+            }
+            else if (searchKey.equals("doctorName") && s.startsWith(searchQuery)) {
+                doctors.add(doctor);
             }
         }
-        return null;
+        return doctors;
     }
 
     public static String getNewDoctorId() {

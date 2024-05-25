@@ -6,7 +6,12 @@
   },
   "D2" : {
     "name" : "Noor",
-    "phoneNumber" : "Kareem",
+    "phoneNumber" : "0796753445",
     "specialization" : "Surgery"
+  },
+  "D3" : {
+    "name" : "Ahmad Q",
+    "phoneNumber" : "0787898900",
+    "specialization" : "Neurology"
   }
 }

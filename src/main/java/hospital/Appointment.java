@@ -49,7 +49,9 @@ public class Appointment implements HospitalData {
             };
             if (s==null) continue;
             s = s.toLowerCase();
-            if (s.equals(searchQuery.toLowerCase())) {
+            searchQuery = searchQuery.toLowerCase();
+
+            if (s.equals(searchQuery)) {
                 appointments.add(appointment);
             }
         }
