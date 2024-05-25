@@ -59,7 +59,7 @@ public class Appointment implements HospitalData {
 
     public static String getNewAppointmentId() {
         String str;
-        if (appointmentsList.isEmpty()) {
+        if (!appointmentsList.isEmpty()) {
             str = appointmentsList.get(appointmentsList.size() - 1).getId().split("AP")[1];
         }
         else

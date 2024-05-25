@@ -1,117 +1,117 @@
 {
-  "DP1": {
-    "name": "ED",
-    "description": "The Emergency Department (ED) handles urgent and life-threatening conditions requiring immediate attention. This includes cases such as heart attacks, severe injuries from accidents, strokes, respiratory distress, severe allergic reactions, and other critical emergencies. The ED is equipped for rapid diagnosis, stabilization, and treatment, with facilities for trauma care, emergency surgery, and intensive monitoring. Keywords: emergency care, acute medical conditions, urgent treatment, trauma, immediate medical attention.",
-    "maxCapacity": 200
+  "DP1" : {
+    "name" : "ED",
+    "description" : "The Emergency Department (ED) handles urgent and life-threatening conditions requiring immediate attention. This includes cases such as heart attacks, severe injuries from accidents, strokes, respiratory distress, severe allergic reactions, and other critical emergencies. The ED is equipped for rapid diagnosis, stabilization, and treatment, with facilities for trauma care, emergency surgery, and intensive monitoring. Keywords: emergency care, acute medical conditions, urgent treatment, trauma, immediate medical attention.",
+    "maxCapacity" : 200
   },
-  "DP2": {
-    "name": "ICU",
-    "description": "The Intensive Care Unit (ICU) provides care for critically ill patients needing constant monitoring and support. This includes severe infections, respiratory failure, major trauma, and post-operative care for high-risk surgeries. The ICU is equipped with advanced life-support technology and staffed by specialists trained in critical care. Keywords: critical care, life support, constant monitoring, severe illness, intensive monitoring.",
-    "maxCapacity": 50
+  "DP2" : {
+    "name" : "ICU",
+    "description" : "The Intensive Care Unit (ICU) provides care for critically ill patients needing constant monitoring and support. This includes severe infections, respiratory failure, major trauma, and post-operative care for high-risk surgeries. The ICU is equipped with advanced life-support technology and staffed by specialists trained in critical care. Keywords: critical care, life support, constant monitoring, severe illness, intensive monitoring.",
+    "maxCapacity" : 50
   },
-  "DP3": {
-    "name": "Oncology",
-    "description": "Oncology specializes in the diagnosis and treatment of cancer, offering services like chemotherapy, radiation therapy, immunotherapy, and surgical oncology. It manages a wide range of cancers, including breast, lung, colon, and prostate cancer, providing comprehensive care plans that include diagnosis, treatment, and palliative care. Keywords: cancer treatment, chemotherapy, radiation therapy, tumor, oncology care.",
-    "maxCapacity": 80
+  "DP3" : {
+    "name" : "Oncology",
+    "description" : "Oncology specializes in the diagnosis and treatment of cancer, offering services like chemotherapy, radiation therapy, immunotherapy, and surgical oncology. It manages a wide range of cancers, including breast, lung, colon, and prostate cancer, providing comprehensive care plans that include diagnosis, treatment, and palliative care. Keywords: cancer treatment, chemotherapy, radiation therapy, tumor, oncology care.",
+    "maxCapacity" : 80
   },
-  "DP4": {
-    "name": "Pediatrics",
-    "description": "Pediatrics provides medical care for infants, children, and adolescents, addressing a range of health issues from routine check-ups and vaccinations to the treatment of infectious diseases, congenital conditions, and chronic illnesses like asthma and diabetes. Pediatricians are trained to meet the unique needs of young patients. Keywords: child healthcare, infant care, adolescent medicine, vaccinations, pediatric diseases.",
-    "maxCapacity": 120
+  "DP4" : {
+    "name" : "Pediatrics",
+    "description" : "Pediatrics provides medical care for infants, children, and adolescents, addressing a range of health issues from routine check-ups and vaccinations to the treatment of infectious diseases, congenital conditions, and chronic illnesses like asthma and diabetes. Pediatricians are trained to meet the unique needs of young patients. Keywords: child healthcare, infant care, adolescent medicine, vaccinations, pediatric diseases.",
+    "maxCapacity" : 120
   },
-  "DP5": {
-    "name": "Surgery",
-    "description": "The Surgery department performs surgical procedures for various conditions, often divided into sub-specialties such as orthopedic, cardiovascular, and neurosurgery. It handles cases requiring operative intervention, including appendectomies, joint replacements, heart bypass surgeries, and brain tumor removals. Surgeons work closely with other specialists to provide comprehensive care before, during, and after surgery. Keywords: surgical procedures, operative care, orthopedic surgery, cardiovascular surgery, neurosurgery.",
-    "maxCapacity": 100
+  "DP5" : {
+    "name" : "Surgery",
+    "description" : "The Surgery department performs surgical procedures for various conditions, often divided into sub-specialties such as orthopedic, cardiovascular, and neurosurgery. It handles cases requiring operative intervention, including appendectomies, joint replacements, heart bypass surgeries, and brain tumor removals. Surgeons work closely with other specialists to provide comprehensive care before, during, and after surgery. Keywords: surgical procedures, operative care, orthopedic surgery, cardiovascular surgery, neurosurgery.",
+    "maxCapacity" : 100
   },
-  "DP6": {
-    "name": "Neurology",
-    "description": "Neurology diagnoses and treats disorders of the nervous system, including the brain, spinal cord, and nerves. This department handles conditions like epilepsy, multiple sclerosis, Parkinson's disease, strokes, migraines, and neuropathies. Neurologists use advanced diagnostic tools and therapies to manage these complex conditions. Keywords: brain disorders, nervous system, epilepsy, Parkinson's disease, stroke, neuropathy.",
-    "maxCapacity": 70
+  "DP6" : {
+    "name" : "Neurology",
+    "description" : "Neurology diagnoses and treats disorders of the nervous system, including the brain, spinal cord, and nerves. This department handles conditions like epilepsy, multiple sclerosis, Parkinson's disease, strokes, migraines, and neuropathies. Neurologists use advanced diagnostic tools and therapies to manage these complex conditions. Keywords: brain disorders, nervous system, epilepsy, Parkinson's disease, stroke, neuropathy.",
+    "maxCapacity" : 70
   },
-  "DP7": {
-    "name": "Radiology",
-    "description": "Radiology uses imaging techniques such as X-rays, CT scans, MRIs, and ultrasounds to diagnose and treat diseases. This department supports various medical specialties by providing critical imaging services for diagnosing fractures, tumors, internal injuries, and other conditions. Radiologists interpret these images to assist in patient care. Keywords: medical imaging, X-rays, CT scans, MRI, ultrasound, diagnostic imaging.",
-    "maxCapacity": 60
+  "DP7" : {
+    "name" : "Radiology",
+    "description" : "Radiology uses imaging techniques such as X-rays, CT scans, MRIs, and ultrasounds to diagnose and treat diseases. This department supports various medical specialties by providing critical imaging services for diagnosing fractures, tumors, internal injuries, and other conditions. Radiologists interpret these images to assist in patient care. Keywords: medical imaging, X-rays, CT scans, MRI, ultrasound, diagnostic imaging.",
+    "maxCapacity" : 60
   },
-  "DP8": {
-    "name": "Anesthesiology",
-    "description": "Anesthesiology manages pain and provides anesthesia during surgeries and other medical procedures. This department ensures patient comfort and safety during operations, childbirth, and invasive diagnostic procedures. Anesthesiologists are skilled in various forms of anesthesia, including general, regional, and local anesthesia. Keywords: pain management, anesthesia, surgical anesthesia, patient comfort, anesthesiologist.",
-    "maxCapacity": 40
+  "DP8" : {
+    "name" : "Anesthesiology",
+    "description" : "Anesthesiology manages pain and provides anesthesia during surgeries and other medical procedures. This department ensures patient comfort and safety during operations, childbirth, and invasive diagnostic procedures. Anesthesiologists are skilled in various forms of anesthesia, including general, regional, and local anesthesia. Keywords: pain management, anesthesia, surgical anesthesia, patient comfort, anesthesiologist.",
+    "maxCapacity" : 40
   },
-  "DP9": {
-    "name": "Orthopedics",
-    "description": "Orthopedics treats musculoskeletal system issues, including bones, joints, ligaments, tendons, and muscles. This department manages conditions such as fractures, arthritis, sports injuries, spinal disorders, and joint replacements. Orthopedic surgeons provide both surgical and non-surgical treatments to restore function and relieve pain. Keywords: musculoskeletal system, bone fractures, arthritis treatment, sports injuries, joint replacement.",
-    "maxCapacity": 90
+  "DP9" : {
+    "name" : "Orthopedics",
+    "description" : "Orthopedics treats musculoskeletal system issues, including bones, joints, ligaments, tendons, and muscles. This department manages conditions such as fractures, arthritis, sports injuries, spinal disorders, and joint replacements. Orthopedic surgeons provide both surgical and non-surgical treatments to restore function and relieve pain. Keywords: musculoskeletal system, bone fractures, arthritis treatment, sports injuries, joint replacement.",
+    "maxCapacity" : 90
   },
-  "DP10": {
-    "name": "Gastroenterology",
-    "description": "Gastroenterology focuses on the digestive system and its disorders, treating conditions like GERD, Crohn's disease, ulcerative colitis, hepatitis, and irritable bowel syndrome. This department provides endoscopic procedures, diagnostic evaluations, and medical management of gastrointestinal diseases. Keywords: digestive health, GERD, Crohn's disease, endoscopy, liver disease, bowel disorders.",
-    "maxCapacity": 50
+  "DP10" : {
+    "name" : "Gastroenterology",
+    "description" : "Gastroenterology focuses on the digestive system and its disorders, treating conditions like GERD, Crohn's disease, ulcerative colitis, hepatitis, and irritable bowel syndrome. This department provides endoscopic procedures, diagnostic evaluations, and medical management of gastrointestinal diseases. Keywords: digestive health, GERD, Crohn's disease, endoscopy, liver disease, bowel disorders.",
+    "maxCapacity" : 50
   },
-  "DP11": {
-    "name": "Nephrology",
-    "description": "Nephrology specializes in kidney care and treating kidney-related diseases, including chronic kidney disease, acute kidney injury, hypertension, and electrolyte imbalances. This department provides dialysis, transplant evaluation, and management of complex renal conditions. Keywords: kidney health, dialysis, chronic kidney disease, hypertension, renal care.",
-    "maxCapacity": 40
+  "DP11" : {
+    "name" : "Nephrology",
+    "description" : "Nephrology specializes in kidney care and treating kidney-related diseases, including chronic kidney disease, acute kidney injury, hypertension, and electrolyte imbalances. This department provides dialysis, transplant evaluation, and management of complex renal conditions. Keywords: kidney health, dialysis, chronic kidney disease, hypertension, renal care.",
+    "maxCapacity" : 40
   },
-  "DP12": {
-    "name": "Urology",
-    "description": "Urology deals with the urinary system and male reproductive organs, treating conditions such as urinary tract infections, kidney stones, bladder control problems, prostate issues, and male infertility. This department offers both surgical and non-surgical treatments. Keywords: urinary system, kidney stones, urinary tract infections, prostate health, male infertility.",
-    "maxCapacity": 60
+  "DP12" : {
+    "name" : "Urology",
+    "description" : "Urology deals with the urinary system and male reproductive organs, treating conditions such as urinary tract infections, kidney stones, bladder control problems, prostate issues, and male infertility. This department offers both surgical and non-surgical treatments. Keywords: urinary system, kidney stones, urinary tract infections, prostate health, male infertility.",
+    "maxCapacity" : 60
   },
-  "DP13": {
-    "name": "Endocrinology",
-    "description": "Endocrinology treats hormonal imbalances and disorders, including diabetes, thyroid issues, adrenal disorders, and metabolic conditions. This department manages complex endocrine conditions through diagnostic evaluations, medical management, and hormone replacement therapies. Keywords: hormonal disorders, diabetes management, thyroid treatment, endocrine system, metabolic health.",
-    "maxCapacity": 50
+  "DP13" : {
+    "name" : "Endocrinology",
+    "description" : "Endocrinology treats hormonal imbalances and disorders, including diabetes, thyroid issues, adrenal disorders, and metabolic conditions. This department manages complex endocrine conditions through diagnostic evaluations, medical management, and hormone replacement therapies. Keywords: hormonal disorders, diabetes management, thyroid treatment, endocrine system, metabolic health.",
+    "maxCapacity" : 50
   },
-  "DP14": {
-    "name": "Dermatology",
-    "description": "Dermatology manages skin-related conditions such as acne, eczema, psoriasis, skin infections, and skin cancers. This department provides diagnostic evaluations, medical and surgical treatments, and cosmetic procedures for various dermatologic conditions. Keywords: skin health, acne treatment, eczema, psoriasis, skin cancer, dermatologic surgery.",
-    "maxCapacity": 70
+  "DP14" : {
+    "name" : "Dermatology",
+    "description" : "Dermatology manages skin-related conditions such as acne, eczema, psoriasis, skin infections, and skin cancers. This department provides diagnostic evaluations, medical and surgical treatments, and cosmetic procedures for various dermatologic conditions. Keywords: skin health, acne treatment, eczema, psoriasis, skin cancer, dermatologic surgery.",
+    "maxCapacity" : 70
   },
-  "DP15": {
-    "name": "Psychiatry and Psychology",
-    "description": "Psychiatry and Psychology provide mental health services, including therapy and psychiatric medication management. This department handles cases of depression, anxiety, bipolar disorder, schizophrenia, and other mental health conditions, offering both outpatient and inpatient care. Keywords: mental health, therapy, psychiatric medication, depression, anxiety, schizophrenia.",
-    "maxCapacity": 90
+  "DP15" : {
+    "name" : "Psychiatry and Psychology",
+    "description" : "Psychiatry and Psychology provide mental health services, including therapy and psychiatric medication management. This department handles cases of depression, anxiety, bipolar disorder, schizophrenia, and other mental health conditions, offering both outpatient and inpatient care. Keywords: mental health, therapy, psychiatric medication, depression, anxiety, schizophrenia.",
+    "maxCapacity" : 90
   },
-  "DP16": {
-    "name": "Pathology",
-    "description": "Pathology examines tissues, cells, and bodily fluids to diagnose diseases. This department supports all medical specialties by providing critical diagnostic information from biopsies, blood tests, and cytology studies, aiding in the diagnosis and management of diseases. Keywords: disease diagnosis, tissue analysis, blood tests, biopsy, cytology, laboratory diagnostics.",
-    "maxCapacity": 50
+  "DP16" : {
+    "name" : "Pathology",
+    "description" : "Pathology examines tissues, cells, and bodily fluids to diagnose diseases. This department supports all medical specialties by providing critical diagnostic information from biopsies, blood tests, and cytology studies, aiding in the diagnosis and management of diseases. Keywords: disease diagnosis, tissue analysis, blood tests, biopsy, cytology, laboratory diagnostics.",
+    "maxCapacity" : 50
   },
-  "DP17": {
-    "name": "Ophthalmology",
-    "description": "Ophthalmology focuses on eye care and vision-related issues, treating conditions such as cataracts, glaucoma, macular degeneration, diabetic retinopathy, and refractive errors. This department provides comprehensive eye exams, surgical interventions, and medical treatments. Keywords: eye care, vision health, cataract surgery, glaucoma, macular degeneration, diabetic eye disease.",
-    "maxCapacity": 80
+  "DP17" : {
+    "name" : "Ophthalmology",
+    "description" : "Ophthalmology focuses on eye care and vision-related issues, treating conditions such as cataracts, glaucoma, macular degeneration, diabetic retinopathy, and refractive errors. This department provides comprehensive eye exams, surgical interventions, and medical treatments. Keywords: eye care, vision health, cataract surgery, glaucoma, macular degeneration, diabetic eye disease.",
+    "maxCapacity" : 80
   },
-  "DP18": {
-    "name": "Otolaryngology (ENT)",
-    "description": "Otolaryngology (ENT) treats conditions related to the ear, nose, and throat, including sinusitis, hearing loss, tonsillitis, voice disorders, and head and neck cancers. This department offers both medical and surgical treatments for ENT-related conditions. Keywords: ear, nose, and throat, sinusitis, hearing loss, tonsillitis, voice disorders, ENT surgery.",
-    "maxCapacity": 60
+  "DP18" : {
+    "name" : "Otolaryngology (ENT)",
+    "description" : "Otolaryngology (ENT) treats conditions related to the ear, nose, and throat, including sinusitis, hearing loss, tonsillitis, voice disorders, and head and neck cancers. This department offers both medical and surgical treatments for ENT-related conditions. Keywords: ear, nose, and throat, sinusitis, hearing loss, tonsillitis, voice disorders, ENT surgery.",
+    "maxCapacity" : 60
   },
-  "DP19": {
-    "name": "Rehabilitation Services",
-    "description": "Rehabilitation Services provides physical therapy, occupational therapy, and speech therapy to help patients recover and improve function after injuries, surgeries, strokes, or chronic conditions. This department focuses on restoring mobility, strength, and independence. Keywords: physical therapy, occupational therapy, speech therapy, rehabilitation, recovery, mobility improvement.",
-    "maxCapacity": 50
+  "DP19" : {
+    "name" : "Rehabilitation Services",
+    "description" : "Rehabilitation Services provides physical therapy, occupational therapy, and speech therapy to help patients recover and improve function after injuries, surgeries, strokes, or chronic conditions. This department focuses on restoring mobility, strength, and independence. Keywords: physical therapy, occupational therapy, speech therapy, rehabilitation, recovery, mobility improvement.",
+    "maxCapacity" : 50
   },
-  "DP20": {
-    "name": "Pharmacy",
-    "description": "Pharmacy manages the dispensing of medications and provides pharmaceutical care. This department ensures the safe and effective use of medications, offering services such as medication counseling, drug interactions monitoring, and compounding of specialized medications. Keywords: medication management, pharmaceutical care, drug dispensing, medication counseling, pharmacy services.",
-    "maxCapacity": 30
+  "DP20" : {
+    "name" : "Pharmacy",
+    "description" : "Pharmacy manages the dispensing of medications and provides pharmaceutical care. This department ensures the safe and effective use of medications, offering services such as medication counseling, drug interactions monitoring, and compounding of specialized medications. Keywords: medication management, pharmaceutical care, drug dispensing, medication counseling, pharmacy services.",
+    "maxCapacity" : 30
   },
-  "DP21": {
-    "name": "Laboratory Services",
-    "description": "Laboratory Services conducts various tests on blood, tissue, and other samples to aid in diagnosis and treatment. This department provides critical diagnostic information through hematology, microbiology, clinical chemistry, and pathology testing. Keywords: laboratory testing, blood tests, diagnostic analysis, tissue samples, microbiology, clinical chemistry.",
-    "maxCapacity": 100
+  "DP21" : {
+    "name" : "Laboratory Services",
+    "description" : "Laboratory Services conducts various tests on blood, tissue, and other samples to aid in diagnosis and treatment. This department provides critical diagnostic information through hematology, microbiology, clinical chemistry, and pathology testing. Keywords: laboratory testing, blood tests, diagnostic analysis, tissue samples, microbiology, clinical chemistry.",
+    "maxCapacity" : 100
   },
-  "DP22": {
-    "name": "Infectious Disease",
-    "description": "Infectious Disease specializes in the treatment of infections caused by bacteria, viruses, fungi, and parasites. This department handles complex cases such as HIV/AIDS, tuberculosis, hepatitis, and emerging infectious diseases, offering both outpatient and inpatient care. Keywords: infection treatment, bacterial infections, viral infections, fungal infections, parasitic infections, HIV/AIDS, tuberculosis.",
-    "maxCapacity": 40
+  "DP22" : {
+    "name" : "Infectious Disease",
+    "description" : "Infectious Disease specializes in the treatment of infections caused by bacteria, viruses, fungi, and parasites. This department handles complex cases such as HIV/AIDS, tuberculosis, hepatitis, and emerging infectious diseases, offering both outpatient and inpatient care. Keywords: infection treatment, bacterial infections, viral infections, fungal infections, parasitic infections, HIV/AIDS, tuberculosis.",
+    "maxCapacity" : 40
   },
-  "DP23": {
-    "name": "Palliative Care",
-    "description": "Palliative Care offers care aimed at providing relief from the symptoms and stress of serious illness. This department focuses on improving quality of life for patients with chronic or terminal conditions, providing pain management, emotional support, and advanced care planning. Keywords: symptom relief, serious illness, chronic conditions, terminal illness, pain management, emotional support, quality of life.",
-    "maxCapacity": 30
+  "DP23" : {
+    "name" : "Palliative Care",
+    "description" : "Palliative Care offers care aimed at providing relief from the symptoms and stress of serious illness. This department focuses on improving quality of life for patients with chronic or terminal conditions, providing pain management, emotional support, and advanced care planning. Keywords: symptom relief, serious illness, chronic conditions, terminal illness, pain management, emotional support, quality of life.",
+    "maxCapacity" : 30
   }
 }

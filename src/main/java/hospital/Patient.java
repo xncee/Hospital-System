@@ -74,7 +74,7 @@ public class Patient extends Person {
 
     public static String getNewPatientId() {
         String str;
-        if (patientsList.isEmpty()) {
+        if (!patientsList.isEmpty()) {
             str = patientsList.get(patientsList.size() - 1).getId().split("P")[1];
         }
         else

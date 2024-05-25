@@ -43,7 +43,7 @@ public class Nurse extends Person {
 
     public static String getNewNurseId() {
         String str;
-        if (nursesList.isEmpty()) {
+        if (!nursesList.isEmpty()) {
             str = nursesList.get(nursesList.size() - 1).getId().split("NU")[1];
         }
         else
