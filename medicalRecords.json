@@ -1,18 +1,8 @@
 {
   "MR1" : [ {
     "patient" : "P1",
-    "diagnose" : "covid-22",
-    "treatment" : "antibiotics",
-    "date" : "2024-05-25"
-  }, {
-    "patient" : "P1",
-    "diagnose" : "flu",
-    "treatment" : "nothing",
-    "date" : "2024-05-25"
-  }, {
-    "patient" : "P1",
-    "diagnose" : "jjk",
-    "treatment" : "jk",
+    "diagnose" : "Covid",
+    "treatment" : "something cool",
     "date" : "2024-05-25"
   } ],
   "MR3" : [ {
@@ -37,6 +27,36 @@
     "patient" : "P7",
     "diagnose" : "jk",
     "treatment" : "jk",
+    "date" : "2024-05-25"
+  } ],
+  "MR7" : [ {
+    "patient" : "P8",
+    "diagnose" : "jjjk",
+    "treatment" : "af",
+    "date" : "2024-05-25"
+  } ],
+  "MR8" : [ {
+    "patient" : "P9",
+    "diagnose" : "Covid 2",
+    "treatment" : "Drugs",
+    "date" : "2024-05-25"
+  } ],
+  "MR9" : [ {
+    "patient" : "P10",
+    "diagnose" : "Food poisining",
+    "treatment" : "stomach wash",
+    "date" : "2024-05-25"
+  } ],
+  "MR10" : [ {
+    "patient" : "P11",
+    "diagnose" : "broken leg",
+    "treatment" : "some medicine and rest",
+    "date" : "2024-03-17"
+  } ],
+  "MR11" : [ {
+    "patient" : "P12",
+    "diagnose" : "Covid",
+    "treatment" : "some drugs",
     "date" : "2024-05-25"
   } ]
 }

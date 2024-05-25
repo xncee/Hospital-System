@@ -10,10 +10,7 @@ public class Main implements HospitalData, Color {
     static Scanner input = new Scanner(System.in);
     static Hospital hospital = new Hospital("Al-Hayat Hospital", 700);
 
-    // Bank + subclasses(current, saving), Bank services interface
-    // User, FinicalCurrencies, Encryption
     public static void main(String[] args) {
-        //hospital.printAll();
         homePage();
     }
 
@@ -45,13 +42,6 @@ public class Main implements HospitalData, Color {
                 medicalStaffPage();
                 break;
             }
-            /*
-            P2
-            P3
-            P4
-            p5
-             */
-
             case 3:
                 medicalRecordPage();
                 break;

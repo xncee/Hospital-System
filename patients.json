@@ -1,14 +1,14 @@
 {
   "P1" : {
-    "name" : "Saif Alkhalili",
-    "phoneNumber" : "0796033199",
-    "age" : 19,
+    "name" : "Waseem Alkhalili",
+    "phoneNumber" : "0798754233",
+    "age" : 18,
     "gender" : "M",
-    "address" : "Jordan",
-    "department" : "X-Ray",
+    "address" : "Amman",
+    "department" : "ED",
     "medicalRecords" : "MR1",
     "doctor" : "DR1",
-    "nurse" : "NU2"
+    "nurse" : "NU5"
   },
   "P2" : {
     "name" : "Ahmad Jabali",
@@ -16,10 +16,10 @@
     "age" : 29,
     "gender" : "M",
     "address" : "Zarqa/Jordan",
-    "department" : "Surgery",
+    "department" : "ED",
     "medicalRecords" : "MR3",
     "doctor" : "DR1",
-    "nurse" : "NU2"
+    "nurse" : "NU3"
   },
   "P3" : {
     "name" : "Sanad R",
@@ -27,10 +27,10 @@
     "age" : 18,
     "gender" : "M",
     "address" : "Irbid/Jordan",
-    "department" : "ICU",
+    "department" : "ED",
     "medicalRecords" : "MR3",
     "doctor" : "DR1",
-    "nurse" : "NU2"
+    "nurse" : "NU3"
   },
   "P4" : {
     "name" : "Mohammad Ahmad",
@@ -41,7 +41,7 @@
     "department" : "ED",
     "medicalRecords" : "MR3",
     "doctor" : "DR1",
-    "nurse" : "NU2"
+    "nurse" : "NU3"
   },
   "P5" : {
     "name" : "mohaa",
@@ -52,7 +52,7 @@
     "department" : "ED",
     "medicalRecords" : "MR4",
     "doctor" : "DR2",
-    "nurse" : "NU2"
+    "nurse" : "NU3"
   },
   "P6" : {
     "name" : "said ahmad",
@@ -62,7 +62,7 @@
     "address" : "Amman",
     "department" : "ED",
     "medicalRecords" : "MR5",
-    "doctor" : "DR1",
+    "doctor" : "DR3",
     "nurse" : "NU3"
   },
   "P7" : {
@@ -70,10 +70,65 @@
     "phoneNumber" : "787",
     "age" : 7,
     "gender" : "F",
-    "address" : "Amman",
+    "address" : "Amman/Jordan",
     "department" : "ED",
     "medicalRecords" : "MR6",
     "doctor" : "DR1",
-    "nurse" : "NU2"
+    "nurse" : "NU3"
+  },
+  "P8" : {
+    "name" : "Saif Khalili",
+    "phoneNumber" : "0798076567",
+    "age" : 18,
+    "gender" : "M",
+    "address" : "amman",
+    "department" : "ED",
+    "medicalRecords" : "MR7",
+    "doctor" : "DR1",
+    "nurse" : "NU3"
+  },
+  "P9" : {
+    "name" : "Khalili Alkhalili",
+    "phoneNumber" : "0798756788",
+    "age" : 14,
+    "gender" : "M",
+    "address" : "Amman",
+    "department" : "ED",
+    "medicalRecords" : "MR8",
+    "doctor" : "DR1",
+    "nurse" : "NU3"
+  },
+  "P10" : {
+    "name" : "Amal",
+    "phoneNumber" : "0797645322",
+    "age" : 18,
+    "gender" : "F",
+    "address" : "Amman Jordan",
+    "department" : "ED",
+    "medicalRecords" : "MR9",
+    "doctor" : "DR1",
+    "nurse" : "NU3"
+  },
+  "P11" : {
+    "name" : "Saif Alkhalili",
+    "phoneNumber" : "0796089899",
+    "age" : 19,
+    "gender" : "M",
+    "address" : "Amman/Jordan",
+    "department" : "Surgery",
+    "medicalRecords" : "MR10",
+    "doctor" : "DR1",
+    "nurse" : "NU4"
+  },
+  "P12" : {
+    "name" : "Wesam",
+    "phoneNumber" : "0786654566",
+    "age" : 17,
+    "gender" : "M",
+    "address" : "Amman. Jordan",
+    "department" : "Oncology",
+    "medicalRecords" : "MR11",
+    "doctor" : "DR2",
+    "nurse" : "NU6"
   }
 }
