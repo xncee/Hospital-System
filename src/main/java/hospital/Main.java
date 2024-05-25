@@ -67,6 +67,8 @@ public class Main implements HospitalData, Color {
                 for (Patient patient: patientsList) {
                     System.out.println(patient);
                 }
+                if (patientsList.isEmpty())
+                    System.out.println(RED+"There's no patients!"+RESET);
                 break;
             }
             case 2: {
@@ -217,8 +219,10 @@ public class Main implements HospitalData, Color {
             case 1: {
                 Patient patient = validatePatient();
                 //Patient patient = Patient.find("patientId", patientId);
-                System.out.println("Patient found: ");
-                System.out.println(patient);
+                if (patient!=null) {
+                    System.out.println(GREEN + "Patient found: " + RESET);
+                    System.out.println(patient);
+                }
                 break;
             }
             case 2: {
@@ -230,7 +234,7 @@ public class Main implements HospitalData, Color {
                     System.out.println("Patient found: ");
                     System.out.println(patient);
                 } else {
-                    System.out.println("Patient was not found!");
+                    System.out.println(RED+"Patient was not found!"+RESET);
                 }
                 break;
             }
@@ -240,10 +244,10 @@ public class Main implements HospitalData, Color {
 
                 Patient patient = Patient.find("phoneNumber", phoneNumber);
                 if (patient != null) {
-                    System.out.println("Patient found: ");
+                    System.out.println(GREEN+"Patient found: "+RESET);
                     System.out.println(patient);
                 } else {
-                    System.out.println("Patient was not found!");
+                    System.out.println(RED+"Patient was not found!"+RESET);
                 }
                 break;
             }
@@ -253,10 +257,10 @@ public class Main implements HospitalData, Color {
 
                 Patient patient = Patient.find("medicalRecordId", medicalRecordId);
                 if (patient != null) {
-                    System.out.println("Patient found: ");
+                    System.out.println(GREEN+"Patient found: "+RESET);
                     System.out.println(patient);
                 } else {
-                    System.out.println("Patient was not found!");
+                    System.out.println(RED+"Patient was not found!"+RESET);
                 }
                 break;
             }
@@ -285,9 +289,10 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Doctor doctor = validateDoctor();
-                //Doctor doctor = Doctor.find("doctorId", doctorId);
-                System.out.println("Doctor found: ");
-                System.out.println(doctor);
+                if (doctor!=null) {
+                    System.out.println(GREEN + "Doctor found: " + RESET);
+                    System.out.println(doctor);
+                }
                 break;
             }
             case 2: {
@@ -296,11 +301,11 @@ public class Main implements HospitalData, Color {
 
                 Doctor doctor = Doctor.find("doctorName", doctorName);
                 if (doctor != null) {
-                    System.out.println("Doctor found: ");
+                    System.out.println(GREEN+"Doctor found: "+RESET);
                     System.out.println(doctor);
                 }
                 else {
-                    System.out.println("Doctor was not found!");
+                    System.out.println(RED+"Doctor was not found!"+RESET);
                 }
                 break;
             }
@@ -310,10 +315,10 @@ public class Main implements HospitalData, Color {
 
                 Doctor doctor = Doctor.find("phoneNumber", phoneNumber);
                 if (doctor != null) {
-                    System.out.println("Doctor found: ");
+                    System.out.println(GREEN+"Doctor found: "+RESET);
                     System.out.println(doctor);
                 } else {
-                    System.out.println("Doctor was not found!");
+                    System.out.println(RED+"Doctor was not found!"+RESET);
                 }
                 break;
             }
@@ -341,9 +346,10 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Nurse nurse = validateNurse();
-                //Nurse nurse = Nurse.findNurse("nurseId", nurseId);
-                System.out.println("Nurse found: ");
-                System.out.println(nurse);
+                if (nurse!=null) {
+                    System.out.println(GREEN + "Nurse found: " + RESET);
+                    System.out.println(nurse);
+                }
                 break;
             }
             case 2: {
@@ -352,11 +358,11 @@ public class Main implements HospitalData, Color {
 
                 Nurse nurse = Nurse.findNurse("nurseName", nurseName);
                 if (nurse != null) {
-                    System.out.println("Nurse found: ");
+                    System.out.println(RED+"Nurse found: "+RESET);
                     System.out.println(nurse);
                 }
                 else {
-                    System.out.println("Nurse was not found!");
+                    System.out.println(RED+"Nurse was not found!"+RESET);
                 }
                 break;
             }
@@ -366,10 +372,10 @@ public class Main implements HospitalData, Color {
 
                 Nurse nurse = Nurse.findNurse("phoneNumber", phoneNumber);
                 if (nurse != null) {
-                    System.out.println("Nurse found: ");
+                    System.out.println(GREEN+"Nurse found: "+RESET);
                     System.out.println(nurse);
                 } else {
-                    System.out.println("Nurse was not found!");
+                    System.out.println(RED+"Nurse was not found!"+RESET);
                 }
                 break;
             }
@@ -400,11 +406,11 @@ public class Main implements HospitalData, Color {
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("medicalRecordsId", medicalRecordsId);
 
                 if (medicalRecords != null) {
-                    System.out.println("MedicalRecords found: ");
+                    System.out.println(GREEN+"MedicalRecords found: "+RESET);
                     System.out.println(medicalRecords);
                 }
                 else {
-                    System.out.println("MedicalRecords were not found!");
+                    System.out.println(RED+"MedicalRecords were not found!"+RESET);
                 }
                 break;
             }
@@ -414,11 +420,11 @@ public class Main implements HospitalData, Color {
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
 
                 if (medicalRecords != null) {
-                    System.out.println("MedicalRecords found: ");
+                    System.out.println(GREEN+"MedicalRecords found: "+RESET);
                     System.out.println(medicalRecords);
                 }
                 else {
-                    System.out.println("MedicalRecords were not found!");
+                    System.out.println(RED+"MedicalRecords were not found!"+RESET);
                 }
                 break;
             }
@@ -448,8 +454,10 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Appointment appointment = validateAppointment();
-                System.out.println("Appointment found: ");
-                System.out.println(appointment);
+                if (appointment!=null) {
+                    System.out.println(GREEN + "Appointment found: " + RESET);
+                    System.out.println(appointment);
+                }
                 break;
             }
             case 2: {
@@ -457,10 +465,10 @@ public class Main implements HospitalData, Color {
 
                 List<Appointment> appointments = Appointment.find("patientId", patientId);
                 if (appointments.isEmpty() || appointments==null) {
-                    System.out.println("No Results!");
+                    System.out.println(RED+"No Results!"+RESET);
                 }
                 else {
-                    System.out.println("Results: ");
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Appointment appointment: appointments) {
                         System.out.println(appointment);
                     }
@@ -472,10 +480,10 @@ public class Main implements HospitalData, Color {
 
                 List<Appointment> appointments = Appointment.find("doctorId", doctorId);
                 if (appointments.isEmpty() || appointments==null) {
-                    System.out.println("No Results!");
+                    System.out.println(RED+"No Results!"+RESET);
                 }
                 else {
-                    System.out.println("Results: ");
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Appointment appointment: appointments) {
                         System.out.println(appointment);
                     }
@@ -486,10 +494,10 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();
                 List<Appointment> appointments = Appointment.find("date", String.valueOf(date));
                 if (appointments.isEmpty() || appointments==null) {
-                    System.out.println("No Results!");
+                    System.out.println(RED+"No Results!"+RESET);
                 }
                 else {
-                    System.out.println("Results: ");
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Appointment appointment: appointments) {
                         System.out.println(appointment);
                     }
@@ -508,16 +516,19 @@ public class Main implements HospitalData, Color {
     public static Doctor validateDoctor() {
         Doctor doctor;
         while (true) {
-            System.out.println("Enter doctorId (enter # to search): ");
+            System.out.println("Enter doctorId (enter '#' to search or '=' to quit): ");
             String doctorId = input.nextLine().toLowerCase();
             if (doctorId.equals("#")) {
                 doctorSearchPage(true);
                 continue;
             }
+            else if (doctorId.equals("=")) {
+                return null;
+            }
 
             doctor = Doctor.find("doctorId", doctorId);
             if (doctor==null)
-                System.out.println("Invalid Doctor!");
+                System.out.println(RED+"Invalid Doctor!"+RESET);
             else
                return doctor;
         }
@@ -525,16 +536,19 @@ public class Main implements HospitalData, Color {
     public static Nurse validateNurse() {
         Nurse nurse;
         while (true) {
-            System.out.println("Enter nurseId (enter # to search): ");
+            System.out.println("Enter nurseId (enter '#' to search or '=' to quit): ");
             String nurseId = input.nextLine().toLowerCase();;
             if (nurseId.equals("#")) {
                 nurseSearchPage(true);
                 continue;
             }
+            else if (nurseId.equals("=")) {
+                return null;
+            }
 
             nurse = Nurse.findNurse("nurseId", nurseId);
             if (nurse==null)
-                System.out.println("Invalid Nurse!");
+                System.out.println(RED+"Invalid Nurse!"+RESET);
             else
                 return nurse;
          }
@@ -542,16 +556,19 @@ public class Main implements HospitalData, Color {
     public static Patient validatePatient() {
         Patient patient;
         while (true) {
-            System.out.println("Enter patientId (enter # to search): ");
+            System.out.println("Enter patientId (enter '#' to search or '=' to quit): ");
             String patientId = input.nextLine().toLowerCase();;
             if (patientId.equals("#")) {
                 patientSearchPage(true);
                 continue;
             }
+            else if (patientId.equals("=")) {
+                return null;
+            }
 
             patient = Patient.find("patientId", patientId);
             if (patient==null)
-                System.out.println("Invalid Patient!");
+                System.out.println(RED+"Invalid Patient!"+RESET);
             else
                 return patient;
         }
@@ -560,11 +577,14 @@ public class Main implements HospitalData, Color {
     public static Appointment validateAppointment() {
         Appointment appointment;
         while (true) {
-            System.out.println("Enter appointmentId (enter # to search): ");
+            System.out.println("Enter appointmentId (enter '#' to search or '=' to quit): ");
             String appointmentId = input.nextLine().toLowerCase();;
             if (appointmentId.equals("#")) {
                 appointmentSearchPage(true);
                 continue;
+            }
+            else if (appointmentId.equals("=")) {
+                return null;
             }
 
             //List<Appointment> a = ;
@@ -575,7 +595,7 @@ public class Main implements HospitalData, Color {
             }
 
             if (appointment==null)
-                System.out.println("Invalid Appointment!");
+                System.out.println(RED+"Invalid Appointment!"+RESET);
             else
                 return appointment;
         }
@@ -604,9 +624,17 @@ public class Main implements HospitalData, Color {
                 String address = input.nextLine();
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
-                List<MedicalRecord> medicalRecords = new ArrayList<>();
                 Doctor doctor = validateDoctor();
                 Nurse nurse = validateNurse();
+
+                List<MedicalRecord> medicalRecords = new ArrayList<>();
+                System.out.println("*Medical Record*");
+                System.out.println("Enter diagnose: ");
+                String diagnose = input.nextLine();
+                System.out.println("Enter treatment: ");
+                String treatment = input.nextLine();
+                LocalDate date = validateDate();
+                medicalRecords.add(new MedicalRecord(MedicalRecord.getNewMedicalRecordId(), id, diagnose, treatment, date));
 
                 hospital.add(new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecords, doctor, nurse));
                 System.out.println(GREEN+"Patient Added."+RESET);
@@ -703,7 +731,7 @@ public class Main implements HospitalData, Color {
         String name = input.nextLine();
         for (Doctor doctor: doctorsList) {
             if (name.equals(doctor.getName())) {
-                System.out.println("This doctorName is already registered!");
+                System.out.println(RED+"This doctorName is already registered!"+RESET);
                 validateDoctorName();
                 break;
             }
@@ -734,7 +762,7 @@ public class Main implements HospitalData, Color {
             case 2: {
                 Doctor doctor = validateDoctor();
                 hospital.remove(doctor);
-                System.out.println(RED+"Dr. "+doctor.getName()+" was removed."+RESET);
+                System.out.println(YELLOW+"Dr. "+doctor.getName()+" was removed."+RESET);
                 break;
             }
             case 3: {
@@ -753,7 +781,7 @@ public class Main implements HospitalData, Color {
         String name = input.nextLine();
         for (Nurse nurse: nursesList) {
             if (name.equals(nurse.getName())) {
-                System.out.println("This nurseName is already registered!");
+                System.out.println(RED+"This nurseName is already registered!"+RESET);
                 validateNurseName();
                 break;
             }
@@ -785,7 +813,7 @@ public class Main implements HospitalData, Color {
             case 2: {
                 Nurse nurse = validateNurse();
                 hospital.remove(nurse);
-                System.out.println(RED+"Nurse. "+nurse.getName()+" was removed."+RESET);
+                System.out.println(YELLOW+"Nurse. "+nurse.getName()+" was removed."+RESET);
                 break;
             }
             case 3: {
@@ -957,11 +985,12 @@ public class Main implements HospitalData, Color {
 
                 medicalRecords.add(new MedicalRecord(id, patientId, diagnose, treatment, date));
                 hospital.add(medicalRecords);
-                System.out.println("MedicalRecord Added.");
+                System.out.println(GREEN+"MedicalRecord has been added."+RESET);
                 break;
             }
             case 2: {
                 boolean removed = false;
+                System.out.println("Enter medicalRecordID: ");
                 String medicalRecordId = input.nextLine();
                 out:for (List<MedicalRecord> record: medicalRecordsList) {
                     for (MedicalRecord r: record) {
@@ -976,7 +1005,7 @@ public class Main implements HospitalData, Color {
                 }
                 if (removed) {
                     hospital.updateData();
-                    System.out.println(YELLOW+"MedicalRecord removed."+RESET);
+                    System.out.println(YELLOW+"MedicalRecord has been removed."+RESET);
                 }
                 else
                     System.out.println(RED+"MedicalRecord wasn't found!"+RESET);

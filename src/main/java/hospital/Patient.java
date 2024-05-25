@@ -28,6 +28,7 @@ public class Patient extends Person {
     }
 
     public static Patient find(String searchKey, String searchQuery) {
+        // consider user .startsWith() (example: input->moh | output->[moha, mohk, mohmamd])
         for (Patient patient: patientsList) {
             String s = switch (searchKey) {
                 case "patientName":

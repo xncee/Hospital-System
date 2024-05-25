@@ -38,16 +38,16 @@ public class Appointment implements HospitalData {
                 case "appointmentId":
                     yield appointment.getId();
                 case "patientId":
-                    yield appointment.getPatient().getId();
+                    yield appointment.getPatient()==null?null:appointment.getPatient().getId();
                 case "doctorId":
-                    yield appointment.getDoctor().getId();
+                    yield appointment.getDoctor()==null?null:appointment.getDoctor().getId();
                 case "date":
                     yield String.valueOf(appointment.getDate());
                 default:
                     System.out.println("Invalid searchKey!");
                     yield appointment.getId();
             };
-
+            if (s==null) continue;
             s = s.toLowerCase();
             if (s.equals(searchQuery.toLowerCase())) {
                 appointments.add(appointment);

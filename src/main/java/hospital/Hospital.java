@@ -157,6 +157,8 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     public Nurse getNurse(JsonNode node, String id) {
+        if (node==null)
+            return null;
         String name = node.get("name").asText();
         String phoneNumber = node.get("phoneNumber").asText();
         String department = node.get("department").asText();
