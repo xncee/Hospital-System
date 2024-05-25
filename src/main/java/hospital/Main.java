@@ -1,11 +1,7 @@
 package hospital;
 
-import javax.print.Doc;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main implements HospitalData, Color {
     static Scanner input = new Scanner(System.in);
@@ -27,13 +23,14 @@ public class Main implements HospitalData, Color {
     }
     public static void homePage() {
         wait(1);
-        System.out.println("\n"+YELLOW_BACKGROUND+"# Home Page"+RESET);
+        System.out.println("\n"+"# Home Page");
 
         System.out.println("1. Patient");
         System.out.println("2. Medical Staff");
         System.out.println("3. Medical Records");
+        System.out.println("4. Appointments");
         System.out.println("99. Exit.. ");
-        int c = getUserInput(new int[] {1, 2, 3, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
 
         switch (c) {
             case 1: {
@@ -47,6 +44,9 @@ public class Main implements HospitalData, Color {
             case 3:
                 medicalRecordPage();
                 break;
+            case 4:
+                appointmentsPage();
+                break;
             case 99:
                 System.exit(0);
         }
@@ -59,13 +59,11 @@ public class Main implements HospitalData, Color {
         System.out.println("1. Print All Patients");
         System.out.println("2. Search");
         System.out.println("3. Manage Patient");
-        System.out.println("4. Appointments");
         System.out.println("99. <<");
-        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 99});
 
         switch (c) {
             case 1: {
-
                 for (Patient patient: patientsList) {
                     System.out.println(patient);
                 }
@@ -100,13 +98,14 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 2: {
-                //nursesPage();
+                nursePage();
                 break;
             }
             case 99:
                 homePage();
                 break;
         }
+        medicalStaffPage();
     }
 
     public static void medicalRecordPage() {
@@ -145,9 +144,8 @@ public class Main implements HospitalData, Color {
         System.out.println("1. Print All Doctors");
         System.out.println("2. Search");
         System.out.println("3. Manage Doctor");
-        System.out.println("4. Appointments");
         System.out.println("99. <<");
-        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 99});
 
         switch (c) {
             case 1: {
@@ -161,11 +159,7 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 3: {
-                //doctorManagementPage();
-                break;
-            }
-            case 4: {
-                //doctorAppointmentsPage()
+                doctorManagementPage();
                 break;
             }
             case 99:
@@ -181,9 +175,8 @@ public class Main implements HospitalData, Color {
         System.out.println("1. Print All Nurses");
         System.out.println("2. Search");
         System.out.println("3. Manage Nurse");
-        System.out.println("4. Appointments");
         System.out.println("99. <<");
-        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 99});
 
         switch (c) {
             case 1: {
@@ -197,11 +190,7 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 3: {
-                //nurseManagementPage();
-                break;
-            }
-            case 4: {
-                //nurseAppointmentsPage()
+                nurseManagementPage();
                 break;
             }
             case 99:
@@ -217,7 +206,7 @@ public class Main implements HospitalData, Color {
     public static void patientSearchPage(boolean showOneTime) {
         wait(1);
         System.out.println("\n# Patient Search Page");
-        System.out.println("1. Search by patientId");
+        System.out.println("1. search by patientId");
         System.out.println("2. Search by patientName");
         System.out.println("3. search by phoneNumber");
         System.out.println("4. search by medicalRecordId");
@@ -226,23 +215,17 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                System.out.println("Enter patientId: ");
-                String patientId = input.nextLine().toLowerCase();
-
-                Patient patient = Patient.findPatient("patientId", patientId);
-                if (patient != null) {
-                    System.out.println("Patient found: ");
-                    System.out.println(patient);
-                } else {
-                    System.out.println("Patient was not found!");
-                }
+                Patient patient = validatePatient();
+                //Patient patient = Patient.find("patientId", patientId);
+                System.out.println("Patient found: ");
+                System.out.println(patient);
                 break;
             }
             case 2: {
                 System.out.println("Enter patientName: ");
                 String patientName = input.nextLine().toLowerCase();
 
-                Patient patient = Patient.findPatient("patientName", patientName);
+                Patient patient = Patient.find("patientName", patientName);
                 if (patient != null) {
                     System.out.println("Patient found: ");
                     System.out.println(patient);
@@ -255,7 +238,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
 
-                Patient patient = Patient.findPatient("phoneNumber", phoneNumber);
+                Patient patient = Patient.find("phoneNumber", phoneNumber);
                 if (patient != null) {
                     System.out.println("Patient found: ");
                     System.out.println(patient);
@@ -268,7 +251,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter medicalRecordId: ");
                 String medicalRecordId = input.nextLine();
 
-                Patient patient = Patient.findPatient("medicalRecordId", medicalRecordId);
+                Patient patient = Patient.find("medicalRecordId", medicalRecordId);
                 if (patient != null) {
                     System.out.println("Patient found: ");
                     System.out.println(patient);
@@ -301,24 +284,17 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                System.out.println("Enter doctorId: ");
-                String doctorId = input.nextLine().toLowerCase();
-
-                Doctor doctor = Doctor.findDoctor("doctorId", doctorId);
-                if (doctor != null) {
-                    System.out.println("Doctor found: ");
-                    System.out.println(doctor);
-                }
-                else {
-                    System.out.println("Doctor was not found!");
-                }
+                Doctor doctor = validateDoctor();
+                //Doctor doctor = Doctor.find("doctorId", doctorId);
+                System.out.println("Doctor found: ");
+                System.out.println(doctor);
                 break;
             }
             case 2: {
                 System.out.println("Enter doctorName: ");
                 String doctorName = input.nextLine().toLowerCase();
 
-                Doctor doctor = Doctor.findDoctor("doctorName", doctorName);
+                Doctor doctor = Doctor.find("doctorName", doctorName);
                 if (doctor != null) {
                     System.out.println("Doctor found: ");
                     System.out.println(doctor);
@@ -332,7 +308,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
 
-                Doctor doctor = Doctor.findDoctor("phoneNumber", phoneNumber);
+                Doctor doctor = Doctor.find("phoneNumber", phoneNumber);
                 if (doctor != null) {
                     System.out.println("Doctor found: ");
                     System.out.println(doctor);
@@ -364,17 +340,10 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                System.out.println("Enter nurseId: ");
-                String nurseId = input.nextLine().toLowerCase();
-
-                Nurse nurse = Nurse.findNurse("nurseId", nurseId);
-                if (nurse != null) {
-                    System.out.println("Nurse found: ");
-                    System.out.println(nurse);
-                }
-                else {
-                    System.out.println("Nurse was not found!");
-                }
+                Nurse nurse = validateNurse();
+                //Nurse nurse = Nurse.findNurse("nurseId", nurseId);
+                System.out.println("Nurse found: ");
+                System.out.println(nurse);
                 break;
             }
             case 2: {
@@ -462,6 +431,80 @@ public class Main implements HospitalData, Color {
         if (!showOneTime)
             medicalRecordSearchPage();
     }
+
+    public static void appointmentsSearchPage() {
+        appointmentSearchPage(false);
+    }
+    public static void appointmentSearchPage(boolean showOneTime) {
+        wait(1);
+        System.out.println("\n# Appointments Search Page");
+        System.out.println("1. search by appointmentId");
+        System.out.println("2. search by patientId");
+        System.out.println("3. search by doctorId");
+        System.out.println("4. search by date");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 4, 9});
+
+        switch (c) {
+            case 1: {
+                Appointment appointment = validateAppointment();
+                System.out.println("Appointment found: ");
+                System.out.println(appointment);
+                break;
+            }
+            case 2: {
+                String patientId = validatePatient().getId();
+
+                List<Appointment> appointments = Appointment.find("patientId", patientId);
+                if (appointments.isEmpty() || appointments==null) {
+                    System.out.println("No Results!");
+                }
+                else {
+                    System.out.println("Results: ");
+                    for (Appointment appointment: appointments) {
+                        System.out.println(appointment);
+                    }
+                }
+                break;
+            }
+            case 3: {
+                String doctorId = validateDoctor().getId();
+
+                List<Appointment> appointments = Appointment.find("doctorId", doctorId);
+                if (appointments.isEmpty() || appointments==null) {
+                    System.out.println("No Results!");
+                }
+                else {
+                    System.out.println("Results: ");
+                    for (Appointment appointment: appointments) {
+                        System.out.println(appointment);
+                    }
+                }
+                break;
+            }
+            case 4: {
+                LocalDate date = validateDate();
+                List<Appointment> appointments = Appointment.find("date", String.valueOf(date));
+                if (appointments.isEmpty() || appointments==null) {
+                    System.out.println("No Results!");
+                }
+                else {
+                    System.out.println("Results: ");
+                    for (Appointment appointment: appointments) {
+                        System.out.println(appointment);
+                    }
+                }
+                break;
+            }
+            case 99:
+                if (!showOneTime)
+                    appointmentsManagementPage();
+                break;
+        }
+        if (!showOneTime)
+            appointmentsSearchPage();
+    }
+
     public static Doctor validateDoctor() {
         Doctor doctor;
         while (true) {
@@ -472,7 +515,7 @@ public class Main implements HospitalData, Color {
                 continue;
             }
 
-            doctor = Doctor.findDoctor("doctorId", doctorId);
+            doctor = Doctor.find("doctorId", doctorId);
             if (doctor==null)
                 System.out.println("Invalid Doctor!");
             else
@@ -506,11 +549,35 @@ public class Main implements HospitalData, Color {
                 continue;
             }
 
-            patient = Patient.findPatient("patientId", patientId);
+            patient = Patient.find("patientId", patientId);
             if (patient==null)
                 System.out.println("Invalid Patient!");
             else
                 return patient;
+        }
+    }
+
+    public static Appointment validateAppointment() {
+        Appointment appointment;
+        while (true) {
+            System.out.println("Enter appointmentId (enter # to search): ");
+            String appointmentId = input.nextLine().toLowerCase();;
+            if (appointmentId.equals("#")) {
+                appointmentSearchPage(true);
+                continue;
+            }
+
+            //List<Appointment> a = ;
+            try {
+                appointment = Appointment.find("appointmentId", appointmentId).get(0);
+            } catch (Exception e) {
+                appointment = null;
+            }
+
+            if (appointment==null)
+                System.out.println("Invalid Appointment!");
+            else
+                return appointment;
         }
     }
     public static void patientManagementPage() {
@@ -566,13 +633,180 @@ public class Main implements HospitalData, Color {
         patientManagementPage();
     }
 
-    public static void doctorManagementPage() {}
+    public static void appointmentsPage() {
+        wait(1);
+        System.out.println("\n# Appointments Page");
+        System.out.println("1. Search");
+        System.out.println("2. Manage Appointments");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 99});
+
+        switch (c) {
+            case 1: {
+                appointmentsSearchPage();
+                break;
+            }
+            case 2: {
+                appointmentsManagementPage();
+                break;
+            }
+            case 99:
+                homePage();
+                break;
+        }
+        appointmentsPage();
+    }
+
+    public static void appointmentsManagementPage() {
+        wait(1);
+        System.out.println("\n# Manage Appointments Page");
+        System.out.println("1. Add Appointment");
+        System.out.println("2. Cancel Appointment");
+        System.out.println("3. Change Appointment Date");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 99});
+
+        switch (c) {
+            case 1: {
+                String id = Appointment.getNewAppointmentId();
+                Patient patient = validatePatient();
+                Doctor doctor = validateDoctor();
+                LocalDate date = validateDate();
+                String description = input.nextLine();
+
+                hospital.add(new Appointment(id, patient, doctor, date, description));
+                System.out.println(GREEN+"Appointment has been added."+RESET);
+                break;
+            }
+            case 2: {
+                Appointment appointment = validateAppointment();
+                hospital.remove(appointment);
+                System.out.println(YELLOW+"Appointment has been canceled."+RESET);
+                break;
+            }
+            case 3: {
+                Appointment appointment = validateAppointment();
+                LocalDate date = validateDate();
+                appointment.setDate(date);
+                hospital.updateData();
+                System.out.println(GREEN+"Appointment date has been changed."+RESET);
+                break;
+            }
+            case 99:
+                appointmentsPage();
+                break;
+        }
+        appointmentsManagementPage();
+    }
+    public static String validateDoctorName() {
+        System.out.println("Enter doctorName: ");
+        String name = input.nextLine();
+        for (Doctor doctor: doctorsList) {
+            if (name.equals(doctor.getName())) {
+                System.out.println("This doctorName is already registered!");
+                validateDoctorName();
+                break;
+            }
+        }
+        return name;
+    }
+    public static void doctorManagementPage() {
+        System.out.println("\n# Doctor Management Page");
+        System.out.println("1. Add Doctor");
+        System.out.println("2. Remove Doctor");
+        System.out.println("3. Change Info");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 99});
+
+        switch (c) {
+            case 1: {
+                String id = Doctor.getNewDoctorId();
+                String name = validateDoctorName();
+                System.out.println("Enter phoneNumber: ");
+                String phoneNumber = input.nextLine();
+                System.out.println("Enter specialization: ");
+                String specialization = input.nextLine();
+
+                hospital.add(new Doctor(id, name, phoneNumber, specialization));
+                System.out.println(GREEN+"Dr. "+name+" was added."+RESET);
+                break;
+            }
+            case 2: {
+                Doctor doctor = validateDoctor();
+                hospital.remove(doctor);
+                System.out.println(RED+"Dr. "+doctor.getName()+" was removed."+RESET);
+                break;
+            }
+            case 3: {
+                changeDoctorInfoPage();
+                break;
+            }
+            case 99:
+                doctorPage();
+                break;
+        }
+        doctorManagementPage();
+    }
+
+    public static String validateNurseName() {
+        System.out.println("Enter nurseName: ");
+        String name = input.nextLine();
+        for (Nurse nurse: nursesList) {
+            if (name.equals(nurse.getName())) {
+                System.out.println("This nurseName is already registered!");
+                validateNurseName();
+                break;
+            }
+        }
+        return name;
+    }
+
+    public static void nurseManagementPage() {
+        System.out.println("\n# Nurse ManagementPage");
+        System.out.println("1. Add Nurse");
+        System.out.println("2. Remove Nurse");
+        System.out.println("3. Change Info");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 99});
+
+        switch (c) {
+            case 1: {
+                String id = Nurse.getNewNurseId();
+                String name = validateNurseName();
+                System.out.println("Enter phoneNumber: ");
+                String phoneNumber = input.nextLine();
+                System.out.println("Enter department: ");
+                String department = input.nextLine();
+
+                hospital.add(new Nurse(id, name, phoneNumber, department));
+                System.out.println(GREEN+"Nurse. "+name+" was added."+RESET);
+                break;
+            }
+            case 2: {
+                Nurse nurse = validateNurse();
+                hospital.remove(nurse);
+                System.out.println(RED+"Nurse. "+nurse.getName()+" was removed."+RESET);
+                break;
+            }
+            case 3: {
+                changeNurseInfoPage();
+                break;
+            }
+            case 99:
+                nursePage();
+                break;
+        }
+        nurseManagementPage();
+    }
 
     public static LocalDate validateDate() {
         try {
-            System.out.println("Enter date: ");
-            LocalDate date = LocalDate.parse(input.nextLine());
-            return date;
+            System.out.println("Enter date (YYYY-MM-dd) (keep blank for current date): ");
+            String strDate = input.nextLine();
+            if (strDate.isEmpty())
+                return LocalDate.now();
+
+            return LocalDate.parse(strDate);
         }
         catch (Exception e) {
             return validateDate();
@@ -595,7 +829,8 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 patient.setPhoneNumber(phoneNumber);
-                System.out.println("phoneNumber updated.");
+                hospital.updateData();
+                System.out.println(GREEN+"phoneNumber has been updated."+RESET);
                 break;
             }
             case 2: {
@@ -603,7 +838,8 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter address: ");
                 String address = input.nextLine();
                 patient.setAddress(address);
-                System.out.println("address updated.");
+                hospital.updateData();
+                System.out.println(GREEN+"address has been updated."+RESET);
                 break;
             }
             case 3: {
@@ -611,21 +847,24 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
                 patient.setDepartment(department);
-                System.out.println("department updated.");
+                hospital.updateData();
+                System.out.println(GREEN+"department has been updated."+RESET);
                 break;
             }
             case 4: {
                 Patient patient = validatePatient();
                 Doctor doctor = validateDoctor();
                 patient.setDoctor(doctor);
-                System.out.println("Doctor was updated.");
+                hospital.updateData();
+                System.out.println(GREEN+"Doctor has been updated."+RESET);
                 break;
             }
             case 5: {
                 Patient patient = validatePatient();
                 Nurse nurse = validateNurse();
                 patient.setNurse(nurse);
-                System.out.println("Nurse was updated.");
+                hospital.updateData();
+                System.out.println(GREEN+"Nurse has been updated."+RESET);
                 break;
             }
             case 99: {
@@ -633,6 +872,66 @@ public class Main implements HospitalData, Color {
                 break;
             }
         }
+        changePatientInfoPage();
+    }
+
+    public static void changeDoctorInfoPage() {
+        wait(1);
+        System.out.println("\n# Change Doctor Info Page");
+        System.out.println("1. Change phoneNumber");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 99});
+
+        switch (c) {
+            case 1: {
+                Doctor doctor = validateDoctor();
+                System.out.println("Enter phoneNumber: ");
+                String phoneNumber = input.nextLine();
+                doctor.setPhoneNumber(phoneNumber);
+                hospital.updateData();
+                System.out.println(GREEN+"phoneNumber has been updated."+RESET);
+                break;
+            }
+            case 99: {
+                doctorManagementPage();
+                break;
+            }
+        }
+        changeDoctorInfoPage();
+    }
+
+    public static void changeNurseInfoPage() {
+        wait(1);
+        System.out.println("\n# Change Nurse Info Page");
+        System.out.println("1. Change phoneNumber");
+        System.out.println("2. Change department");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 99});
+
+        switch (c) {
+            case 1: {
+                Nurse nurse = validateNurse();
+                System.out.println("Enter phoneNumber: ");
+                String phoneNumber = input.nextLine();
+                nurse.setPhoneNumber(phoneNumber);
+                hospital.updateData();
+                System.out.println(GREEN+"phoneNumber has been updated."+RESET);
+                break;
+            }
+            case 2:
+                Nurse nurse = validateNurse();
+                System.out.println("Enter department: ");
+                String department = input.nextLine();
+                nurse.setDepartment(department);
+                hospital.updateData();
+                System.out.println(GREEN+"department has been updated."+RESET);
+                break;
+            case 99: {
+                nurseManagementPage();
+                break;
+            }
+        }
+        changeNurseInfoPage();
     }
     public static void medicalRecordManagementPage() {
         wait(1);
@@ -654,8 +953,7 @@ public class Main implements HospitalData, Color {
                 String diagnose = input.nextLine();
                 System.out.println("Enter treatment: ");
                 String treatment = input.nextLine();
-                System.out.println("Enter date (YYYY-MM-dd) (keep blank for current date): ");
-                LocalDate date = validateDate();//LocalDate.parse(input.nextLine()); //
+                LocalDate date = validateDate();
 
                 medicalRecords.add(new MedicalRecord(id, patientId, diagnose, treatment, date));
                 hospital.add(medicalRecords);
@@ -663,6 +961,25 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 2: {
+                boolean removed = false;
+                String medicalRecordId = input.nextLine();
+                out:for (List<MedicalRecord> record: medicalRecordsList) {
+                    for (MedicalRecord r: record) {
+                        if (r.getId().equals(medicalRecordId)) {
+                            hospital.remove(record);
+                            removed = true;
+                            break out;
+                        }
+                        else
+                            break;
+                    }
+                }
+                if (removed) {
+                    hospital.updateData();
+                    System.out.println(YELLOW+"MedicalRecord removed."+RESET);
+                }
+                else
+                    System.out.println(RED+"MedicalRecord wasn't found!"+RESET);
                 break;
             }
             case 99: {
@@ -670,7 +987,7 @@ public class Main implements HospitalData, Color {
                 break;
             }
         }
-        medicalRecordPage();
+        medicalRecordManagementPage();
     }
 
     public static int getUserInput(int[] choices) {

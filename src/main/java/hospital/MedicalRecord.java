@@ -23,9 +23,10 @@ public class MedicalRecord implements HospitalData {
             String s = switch (searchKey) {
                 case "patientId":
                     yield record.get(0).getPatientId();
+                case "medicalRecordId":
+                    yield record.get(0).getId();
                 default:
                     System.out.println("Invalid searchKey!");
-                case "medicalRecordId":
                     yield record.get(0).getId();
             };
 

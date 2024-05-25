@@ -15,9 +15,10 @@ public class Nurse extends Person {
                     yield nurse.getName();
                 case "phoneNumber":
                     yield nurse.getPhoneNumber();
+                case "nurseId":
+                    yield nurse.getId();
                 default:
                     System.out.println("Invalid searchKey!");
-                case "nurseId":
                     yield nurse.getId();
             };
 
@@ -33,6 +34,9 @@ public class Nurse extends Person {
         return null;
     }
 
+    public static String getNewNurseId() {
+        return "N"+(nursesList.size()+1);
+    }
     public String getDepartment() {
         return department;
     }

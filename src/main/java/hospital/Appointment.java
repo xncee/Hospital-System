@@ -1,6 +1,8 @@
 package hospital;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Appointment implements HospitalData {
     private String id;
@@ -29,6 +31,34 @@ public class Appointment implements HospitalData {
 
     }
 
+    public static List<Appointment> find(String searchKey, String searchQuery) {
+        List<Appointment> appointments = new ArrayList<>();
+        for (Appointment appointment: appointmentsList) {
+            String s = switch (searchKey) {
+                case "appointmentId":
+                    yield appointment.getId();
+                case "patientId":
+                    yield appointment.getPatient().getId();
+                case "doctorId":
+                    yield appointment.getDoctor().getId();
+                case "date":
+                    yield String.valueOf(appointment.getDate());
+                default:
+                    System.out.println("Invalid searchKey!");
+                    yield appointment.getId();
+            };
+
+            s = s.toLowerCase();
+            if (s.equals(searchQuery.toLowerCase())) {
+                appointments.add(appointment);
+            }
+        }
+        return appointments;
+    }
+
+    public static String getNewAppointmentId() {
+        return "AP"+(appointmentsList.size()+1);
+    }
     public Patient getPatient() {
         return patient;
     }
@@ -64,7 +94,7 @@ public class Appointment implements HospitalData {
     @Override
     public String toString() {
         return "Appointment{" +
-                ", id="+id +
+                "id="+id +
                 ", patient="+patient.getId() +
                 ", doctor="+doctor.getId() +
                 ", date="+date +

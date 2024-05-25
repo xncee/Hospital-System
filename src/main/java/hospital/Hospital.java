@@ -52,6 +52,9 @@ public class Hospital implements HospitalData, Manageable, Color {
         else if (o instanceof List)
             return medicalRecordsList;
 
+        else if (o instanceof Appointment)
+            return appointmentsList;
+
         throw new InvalidAttributeValueException("Invalid Argument.");
     }
 
@@ -66,7 +69,7 @@ public class Hospital implements HospitalData, Manageable, Color {
 
         boolean removed = list.remove(o);
         if (removed)
-            updateDate();
+            updateData();
         return removed;
     }
 
@@ -85,7 +88,7 @@ public class Hospital implements HospitalData, Manageable, Color {
             return;
         }
         list.add(o);
-        updateDate();
+        updateData();
     }
 
     protected void printAll() {
@@ -324,7 +327,7 @@ public class Hospital implements HospitalData, Manageable, Color {
     }
 
     @Override
-    public void updateDate() {
+    public void updateData() {
         updatePatients();
         updateDoctors();
         updateNurses();

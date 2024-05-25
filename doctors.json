@@ -2,11 +2,11 @@
   "D19" : {
     "name" : "Moha Q",
     "phoneNumber" : "07xxxxxxxx",
-    "specialization" : "General:test"
+    "specialization" : "General"
   },
   "D20" : {
     "name" : "Ahmad M",
     "phoneNumber" : "07xxxxxxxx",
-    "specialization" : "Cancer:test"
+    "specialization" : "Cancer"
   }
 }

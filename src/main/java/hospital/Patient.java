@@ -1,5 +1,6 @@
 package hospital;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Patient extends Person {
@@ -26,7 +27,7 @@ public class Patient extends Person {
         medicalRecords.add(record);
     }
 
-    public static Patient findPatient(String searchKey, String searchQuery) {
+    public static Patient find(String searchKey, String searchQuery) {
         for (Patient patient: patientsList) {
             String s = switch (searchKey) {
                 case "patientName":
@@ -47,9 +48,10 @@ public class Patient extends Person {
                         yield null;
                     }
                 }
+                case "patientId":
+                    yield patient.getId();
                 default:
                     System.out.println("Invalid searchKey!");
-                case "patientId":
                     yield patient.getId();
             };
 
@@ -67,6 +69,17 @@ public class Patient extends Person {
 
     public static String getNewPatientId() {
         return "P"+(patientsList.size()+1);
+    }
+
+    public List<Appointment> getAppointments() {
+        List<Appointment> appointments = new ArrayList<>();
+        for (Appointment appointment: appointmentsList) {
+            if (appointment.getPatient().getId().equals(getId())) {
+                appointments.add(appointment);
+            }
+        }
+
+        return appointments;
     }
 
     public int getAge() {
@@ -120,7 +133,9 @@ public class Patient extends Person {
     }
 
     public List<MedicalRecord> getMedicalRecords() {
-        return medicalRecords;
+        if (medicalRecords!=null)
+            return medicalRecords;
+        return new ArrayList<>();
     }
 
     public void setMedicalRecords(List<MedicalRecord> medicalRecord) {
