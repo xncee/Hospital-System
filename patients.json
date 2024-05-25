@@ -5,7 +5,7 @@
     "age" : 19,
     "gender" : "M",
     "address" : "Jordan",
-    "department" : "ICU",
+    "department" : "X-Ray",
     "medicalRecords" : "MR1",
     "doctor" : "D1",
     "nurse" : "N1"

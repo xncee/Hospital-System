@@ -461,7 +461,8 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 99: {
-                medicalRecordPage();
+                if (!showOneTime)
+                    medicalRecordPage();
                 break;
             }
         }
@@ -481,7 +482,7 @@ public class Main implements HospitalData, Color {
         System.out.println("3. search by doctorId");
         System.out.println("4. search by date");
         System.out.println("99. <<");
-        int c = getUserInput(new int[] {1, 2, 3, 4, 9});
+        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
 
         switch (c) {
             case 1: {
@@ -641,7 +642,7 @@ public class Main implements HospitalData, Color {
         System.out.println("\n# Patient Management Page");
         System.out.println("1. Add Patient");
         System.out.println("2. Remove Patient");
-        System.out.println("3. Change Information");
+        System.out.println("3. Update Information");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
@@ -740,9 +741,9 @@ public class Main implements HospitalData, Color {
     public static void appointmentsManagementPage() {
         wait(1);
         System.out.println("\n# Manage Appointments Page");
-        System.out.println("1. Add Appointment");
-        System.out.println("2. Cancel Appointment");
-        System.out.println("3. Change Appointment Date");
+        System.out.println("1. Schedule Appointment");
+        System.out.println("2. Reschedule Appointment");
+        System.out.println("3. Cancel Appointment");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
@@ -758,6 +759,7 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();
                 if (date==null)
                     break;
+                System.out.println("Enter description: ");
                 String description = input.nextLine();
 
                 hospital.add(new Appointment(id, patient, doctor, date, description));
@@ -768,18 +770,18 @@ public class Main implements HospitalData, Color {
                 Appointment appointment = validateAppointment();
                 if (appointment==null)
                     break;
-                hospital.remove(appointment);
-                System.out.println(YELLOW+"Appointment canceled successfully."+RESET);
+                LocalDate date = validateDate();
+                appointment.setDate(date);
+                hospital.updateData();
+                System.out.println(GREEN+"Appointment rescheduled successfully."+RESET);
                 break;
             }
             case 3: {
                 Appointment appointment = validateAppointment();
                 if (appointment==null)
                     break;
-                LocalDate date = validateDate();
-                appointment.setDate(date);
-                hospital.updateData();
-                System.out.println(GREEN+"Appointment rescheduled successfully."+RESET);
+                hospital.remove(appointment);
+                System.out.println(YELLOW+"Appointment canceled successfully."+RESET);
                 break;
             }
             case 99:
@@ -805,7 +807,7 @@ public class Main implements HospitalData, Color {
         System.out.println("\n# Doctor Management Page");
         System.out.println("1. Add Doctor");
         System.out.println("2. Remove Doctor");
-        System.out.println("3. Change Info");
+        System.out.println("3. Update Info");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
@@ -860,7 +862,7 @@ public class Main implements HospitalData, Color {
         System.out.println("\n# Nurse ManagementPage");
         System.out.println("1. Add Nurse");
         System.out.println("2. Remove Nurse");
-        System.out.println("3. Change Info");
+        System.out.println("3. Update Info");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
@@ -910,11 +912,11 @@ public class Main implements HospitalData, Color {
     public static void changePatientInfoPage() {
         wait(1);
         System.out.println("\n# Change Patient Info Page");
-        System.out.println("1. Change phoneNumber");
-        System.out.println("2. Change address");
-        System.out.println("3. Change department");
-        System.out.println("4. Change doctor");
-        System.out.println("5. Change nurse");
+        System.out.println("1. Update phoneNumber");
+        System.out.println("2. Update address");
+        System.out.println("3. Update department");
+        System.out.println("4. Update doctor");
+        System.out.println("5. Update nurse");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 4, 5, 99});
 
@@ -987,7 +989,7 @@ public class Main implements HospitalData, Color {
     public static void changeDoctorInfoPage() {
         wait(1);
         System.out.println("\n# Change Doctor Info Page");
-        System.out.println("1. Change phoneNumber");
+        System.out.println("1. Update phoneNumber");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 99});
 
@@ -1014,8 +1016,8 @@ public class Main implements HospitalData, Color {
     public static void changeNurseInfoPage() {
         wait(1);
         System.out.println("\n# Change Nurse Info Page");
-        System.out.println("1. Change phoneNumber");
-        System.out.println("2. Change department");
+        System.out.println("1. Update phoneNumber");
+        System.out.println("2. Update department");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 99});
 
