@@ -7,8 +7,8 @@
     "address" : "Jordan",
     "department" : "X-Ray",
     "medicalRecords" : "MR1",
-    "doctor" : "D1",
-    "nurse" : "N1"
+    "doctor" : "DR1",
+    "nurse" : "NU2"
   },
   "P2" : {
     "name" : "Ahmad Jabali",
@@ -18,8 +18,8 @@
     "address" : "Zarqa/Jordan",
     "department" : "Surgery",
     "medicalRecords" : "MR3",
-    "doctor" : "D1",
-    "nurse" : "N1"
+    "doctor" : "DR1",
+    "nurse" : "NU2"
   },
   "P3" : {
     "name" : "Sanad R",
@@ -29,8 +29,8 @@
     "address" : "Irbid/Jordan",
     "department" : "ICU",
     "medicalRecords" : "MR3",
-    "doctor" : "D1",
-    "nurse" : "N1"
+    "doctor" : "DR1",
+    "nurse" : "NU2"
   },
   "P4" : {
     "name" : "Mohammad Ahmad",
@@ -40,8 +40,8 @@
     "address" : "Madaba/Jordan",
     "department" : "ED",
     "medicalRecords" : "MR3",
-    "doctor" : "D1",
-    "nurse" : "N1"
+    "doctor" : "DR1",
+    "nurse" : "NU2"
   },
   "P5" : {
     "name" : "mohaa",
@@ -51,7 +51,29 @@
     "address" : "Amman",
     "department" : "ED",
     "medicalRecords" : "MR4",
-    "doctor" : "D2",
-    "nurse" : "N1"
+    "doctor" : "DR2",
+    "nurse" : "NU2"
+  },
+  "P6" : {
+    "name" : "said ahmad",
+    "phoneNumber" : "0787654433",
+    "age" : 23,
+    "gender" : "M",
+    "address" : "Amman",
+    "department" : "ED",
+    "medicalRecords" : "MR5",
+    "doctor" : "DR1",
+    "nurse" : "NU3"
+  },
+  "P7" : {
+    "name" : "HHH",
+    "phoneNumber" : "787",
+    "age" : 7,
+    "gender" : "F",
+    "address" : "Amman",
+    "department" : "ED",
+    "medicalRecords" : "MR6",
+    "doctor" : "DR1",
+    "nurse" : "NU2"
   }
 }

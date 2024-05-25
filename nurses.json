@@ -1,1 +1,17 @@
-{}
+{
+  "NU2" : {
+    "name" : "Norhan Khalil",
+    "phoneNumber" : "0777867899",
+    "department" : "ICU"
+  },
+  "NU3" : {
+    "name" : "Moha S",
+    "phoneNumber" : "0787867788",
+    "department" : "ED"
+  },
+  "NU4" : {
+    "name" : "Mohmmad Khalili",
+    "phoneNumber" : "0786732011",
+    "department" : "ED"
+  }
+}

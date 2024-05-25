@@ -1,43 +1,43 @@
 {
   "AP1" : {
     "patient" : "P1",
-    "doctor" : "D1",
+    "doctor" : "DR1",
     "date" : "2024-05-30",
     "description" : "check-up"
   },
   "AP2" : {
     "patient" : "P2",
-    "doctor" : "D2",
+    "doctor" : "DR2",
     "date" : "2025-05-24",
     "description" : "open heart surgery"
   },
   "AP3" : {
     "patient" : "P1",
-    "doctor" : "D1",
+    "doctor" : "DR1",
     "date" : "2024-09-07",
     "description" : "Regular checkup"
   },
   "AP4" : {
     "patient" : "P2",
-    "doctor" : "D1",
+    "doctor" : "DR1",
     "date" : "2024-08-19",
     "description" : "x-ray"
   },
   "AP5" : {
     "patient" : "P1",
-    "doctor" : "D2",
+    "doctor" : "DR2",
     "date" : "2024-05-25",
     "description" : "dik"
   },
   "AP6" : {
     "patient" : "P3",
-    "doctor" : "D3",
+    "doctor" : "DR3",
     "date" : "2024-05-25",
     "description" : "broken arm"
   },
   "AP7" : {
     "patient" : "P5",
-    "doctor" : "D4",
+    "doctor" : "DR4",
     "date" : "2024-10-17",
     "description" : "Don't know yet"
   }

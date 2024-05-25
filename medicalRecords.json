@@ -26,5 +26,17 @@
     "diagnose" : "covid-19",
     "treatment" : "drug",
     "date" : "2024-05-25"
+  } ],
+  "MR5" : [ {
+    "patient" : "P6",
+    "diagnose" : "covid",
+    "treatment" : "some medicine",
+    "date" : "2024-05-25"
+  } ],
+  "MR6" : [ {
+    "patient" : "P7",
+    "diagnose" : "jk",
+    "treatment" : "jk",
+    "date" : "2024-05-25"
   } ]
 }

@@ -59,7 +59,8 @@ public class Doctor extends Person {
     }
 
     public static String getNewDoctorId() {
-        return "D"+(doctorsList.size()+1);
+        String str = doctorsList.get(doctorsList.size()-1).getId().split("DR")[1];
+        return "DR"+(Integer.parseInt(str)+1);
     }
 
     public List<Appointment> getAppointments() {

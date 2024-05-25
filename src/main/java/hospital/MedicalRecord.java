@@ -43,7 +43,8 @@ public class MedicalRecord implements HospitalData {
     }
 
     public static String getNewMedicalRecordId() {
-        return "MR"+(medicalRecordsList.size()+1);
+        String str = medicalRecordsList.get(medicalRecordsList.size()-1).get(0).getId().split("MR")[1];
+        return "MR"+(Integer.parseInt(str)+1);
     }
     public String getId() {
         return id;

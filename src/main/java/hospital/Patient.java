@@ -35,6 +35,8 @@ public class Patient extends Person {
                     yield patient.getName();
                 case "phoneNumber":
                     yield patient.getPhoneNumber();
+                case "nurseId":
+                    yield patient.getNurse().getId();
                 case "medicalRecordId": {
                     try {
                         if (medicalRecordsJson.get(searchQuery)==null) {
@@ -56,7 +58,7 @@ public class Patient extends Person {
                     yield patient.getId();
             };
 
-            if (s==null) return null;
+            //if (s==null) return null;
             s = s.toLowerCase();
             searchQuery = searchQuery.toLowerCase();
 
@@ -71,7 +73,8 @@ public class Patient extends Person {
     }
 
     public static String getNewPatientId() {
-        return "P"+(patientsList.size()+1);
+        String str = patientsList.get(patientsList.size()-1).getId().split("P")[1];
+        return "P"+(Integer.parseInt(str)+1);
     }
 
     public List<Appointment> getAppointments() {

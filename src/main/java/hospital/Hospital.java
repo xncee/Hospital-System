@@ -277,7 +277,7 @@ public class Hospital implements HospitalData, Manageable, Color {
                             .put("department", patient.getDepartment())
                             .put("medicalRecords", patient.getMedicalRecords().isEmpty()?null:patient.getMedicalRecords().get(0).getId())
                             .put("doctor", patient.getDoctor().getId())
-                            .put("nurse", patient.getNurse().getId())
+                            .put("nurse", patient.getNurse()==null?null:patient.getNurse().getId())
             );
         }
         //System.out.println(patientsJson.toPrettyString());
@@ -352,9 +352,9 @@ public class Hospital implements HospitalData, Manageable, Color {
 
     @Override
     public void updateData() {
-        updatePatients();
-        updateDoctors();
         updateNurses();
+        updateDoctors();
+        updatePatients();
         updateMedicalRecords();
         updateAppointments();
     }

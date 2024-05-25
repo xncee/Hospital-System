@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Nurse extends Person {
+    final short MAX_CAPACITY = 6;
     private String department;
 
     public Nurse(String id, String name, String phoneNumber, String department) {
@@ -41,7 +42,22 @@ public class Nurse extends Person {
     }
 
     public static String getNewNurseId() {
-        return "N"+(nursesList.size()+1);
+        String str = nursesList.get(nursesList.size()-1).getId().split("NU")[1];
+        return "NU"+(Integer.parseInt(str)+1);
+    }
+
+    public boolean isAvailable() {
+        List<Patient> patients = Patient.find("nurseId", getId());
+        return patients.size()<MAX_CAPACITY;
+    }
+    public static List<Nurse> getAvailableNurses() {
+        List<Nurse> nurses = new ArrayList<>();
+        for (Nurse nurse: nursesList) {
+            if (nurse.isAvailable())
+                nurses.add(nurse);
+        }
+
+        return nurses;
     }
     public String getDepartment() {
         return department;

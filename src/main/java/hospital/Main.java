@@ -86,7 +86,7 @@ public class Main implements HospitalData, Color {
         System.out.println("\n# Patient Page");
         System.out.println("1. Print All Patients");
         System.out.println("2. Search");
-        System.out.println("3. Manage Patient");
+        System.out.println("3. Manage Patients");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
@@ -166,7 +166,7 @@ public class Main implements HospitalData, Color {
         System.out.println("\n# Doctor Page");
         System.out.println("1. Print All Doctors");
         System.out.println("2. Search");
-        System.out.println("3. Manage Doctor");
+        System.out.println("3. Manage Doctors");
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
@@ -710,11 +710,10 @@ public class Main implements HospitalData, Color {
                 String department = input.nextLine();
 
                 Doctor doctor = validateDoctor();
-                if (doctor==null)
-                    break;
-                Nurse nurse = validateNurse();
-                if (nurse==null)
-                    break;
+                if (doctor==null) break;
+                //Nurse nurse = validateNurse();
+                Nurse nurse = getRandomNurse(Nurse.getAvailableNurses());
+                if (nurse==null) break;
 
                 List<MedicalRecord> medicalRecords = new ArrayList<>();
                 System.out.println("*Medical Record*");
@@ -895,6 +894,16 @@ public class Main implements HospitalData, Color {
         return name;
     }
 
+    public static double getRandomNumber(double min, double max) {
+        return min+Math.random()*(max-min);
+    }
+
+    public static Nurse getRandomNurse(List<Nurse> nurses) {
+        if (nurses.isEmpty()) return null;
+
+        int randomInt = (int) (getRandomNumber(0, nurses.size()));
+        return nurses.get(randomInt);
+    }
     public static void nurseManagementPage() {
         wait(1);
         System.out.println("\n# Nurse ManagementPage");
@@ -904,9 +913,10 @@ public class Main implements HospitalData, Color {
         System.out.println("99. <<");
         int c = getUserInput(new int[] {1, 2, 3, 99});
 
-        switch (c) {
+        sw:switch (c) {
             case 1: {
                 String id = Nurse.getNewNurseId();
+                //System.out.println(id);
                 String name = validateNurseName();
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
@@ -919,6 +929,42 @@ public class Main implements HospitalData, Color {
             }
             case 2: {
                 Nurse nurse = validateNurse();
+                if (nurse == null) break;
+
+                List<Patient> patients = Patient.find("nurseId", nurse.getId());
+
+                if (!patients.isEmpty()) {
+                    // consider replacing the nurse in this case.
+                    System.out.println(RED+"Nurse is assigned to "+patients.size()+" Patient(s)."+RESET);
+                    List<Nurse> availableNurses = Nurse.getAvailableNurses();
+                    availableNurses.remove(nurse);
+                    if (availableNurses.isEmpty()) {
+                        System.out.println(RED + "No other Nurse(s) are available!" + RESET);
+                        break;
+                    }
+                    else {
+                        for (Patient patient: patients) {
+                            Nurse replacementNurse = getRandomNurse(availableNurses);
+                            if (replacementNurse==null) {
+                                System.out.println(RED + "Available Nurses weren't enough to replace Nurse. " + nurse.getName() + RESET);
+                                hospital.updatePatients();
+                                break sw;
+                                // a label is used to break the entire switch.
+                                // using break statement without a label would just break the loop and not the switch.
+                            }
+
+                            if (replacementNurse.isAvailable()) {
+                                patient.setNurse(replacementNurse);
+                            }
+                            else {
+                                availableNurses.remove(replacementNurse);
+                                patients.add(patient);
+                            }
+                        }
+                        System.out.println(PURPLE+"Nurse. "+nurse.getName()+" was replaced with other Nurses."+RESET);
+                        hospital.updatePatients();
+                    }
+                }
                 hospital.remove(nurse);
                 System.out.println(YELLOW+"Nurse. "+nurse.getName()+" removed successfully."+RESET);
                 break;
@@ -1167,5 +1213,4 @@ public class Main implements HospitalData, Color {
         System.out.println("Invalid input!");
         return getUserInput(choices);
     }
-
 }

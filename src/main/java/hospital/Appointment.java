@@ -28,7 +28,6 @@ public class Appointment implements HospitalData {
             this.id = id;
         else
             System.out.println("Appointment must start with 'AP'.");
-
     }
 
     public static List<Appointment> find(String searchKey, String searchQuery) {
@@ -59,7 +58,8 @@ public class Appointment implements HospitalData {
     }
 
     public static String getNewAppointmentId() {
-        return "AP"+(appointmentsList.size()+1);
+        String str = appointmentsList.get(appointmentsList.size()-1).getId().split("AP")[1];
+        return "AP"+(Integer.parseInt(str)+1);
     }
     public Patient getPatient() {
         return patient;
