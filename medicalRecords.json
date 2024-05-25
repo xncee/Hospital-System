@@ -1,1 +1,8 @@
-{}
+{
+  "MR1" : [ {
+    "patient" : "P1",
+    "diagnose" : "covid-22",
+    "treatment" : "antibiotics",
+    "date" : "2024-05-25"
+  } ]
+}

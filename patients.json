@@ -1,1 +1,13 @@
-{}
+{
+  "P1" : {
+    "name" : "Saif Alkhalili",
+    "phoneNumber" : "0796033199",
+    "age" : 19,
+    "gender" : "M",
+    "address" : "Jordan",
+    "department" : "ICU",
+    "medicalRecords" : "MR1",
+    "doctor" : "D1",
+    "nurse" : "N1"
+  }
+}

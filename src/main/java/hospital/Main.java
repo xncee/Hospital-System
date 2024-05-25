@@ -358,7 +358,7 @@ public class Main implements HospitalData, Color {
 
                 Nurse nurse = Nurse.findNurse("nurseName", nurseName);
                 if (nurse != null) {
-                    System.out.println(RED+"Nurse found: "+RESET);
+                    System.out.println(GREEN+"Nurse found: "+RESET);
                     System.out.println(nurse);
                 }
                 else {
@@ -415,8 +415,12 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 2: {
-                System.out.println("Enter patientId: ");
-                String patientId = input.nextLine();
+                Patient patient = validatePatient();
+                if (patient==null) {
+                    medicalRecordSearchPage();
+                    break;
+                }
+                String patientId = patient.getId();
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
 
                 if (medicalRecords != null) {
@@ -461,7 +465,11 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 2: {
-                String patientId = validatePatient().getId();
+                Patient patient = validatePatient();
+                if (patient==null) {
+                    break;
+                }
+                String patientId = patient.getId();
 
                 List<Appointment> appointments = Appointment.find("patientId", patientId);
                 if (appointments.isEmpty() || appointments==null) {
@@ -611,6 +619,15 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
+                if (doctorsList.isEmpty()) {
+                    System.out.println(RED + "There's no Doctors!" + RESET);
+                    patientManagementPage();
+                }
+                if (nursesList.isEmpty()) {
+                    System.out.println(RED + "There's no Nurses!" + RESET);
+                    patientManagementPage();
+                }
+
                 String id = Patient.getNewPatientId();
                 System.out.println("Enter patientName: ");
                 String name = input.nextLine();
@@ -624,8 +641,13 @@ public class Main implements HospitalData, Color {
                 String address = input.nextLine();
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
+
                 Doctor doctor = validateDoctor();
+                if (doctor==null)
+                    break;
                 Nurse nurse = validateNurse();
+                if (nurse==null)
+                    break;
 
                 List<MedicalRecord> medicalRecords = new ArrayList<>();
                 System.out.println("*Medical Record*");
@@ -635,13 +657,15 @@ public class Main implements HospitalData, Color {
                 String treatment = input.nextLine();
                 LocalDate date = validateDate();
                 medicalRecords.add(new MedicalRecord(MedicalRecord.getNewMedicalRecordId(), id, diagnose, treatment, date));
-
+                hospital.add(medicalRecords);
                 hospital.add(new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecords, doctor, nurse));
                 System.out.println(GREEN+"Patient Added."+RESET);
                 break;
             }
             case 2: {
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
 
                 if (hospital.remove(patient))
                     System.out.println(YELLOW+"Patient was removed."+RESET);
@@ -698,8 +722,14 @@ public class Main implements HospitalData, Color {
             case 1: {
                 String id = Appointment.getNewAppointmentId();
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
                 Doctor doctor = validateDoctor();
+                if (doctor==null)
+                    break;
                 LocalDate date = validateDate();
+                if (date==null)
+                    break;
                 String description = input.nextLine();
 
                 hospital.add(new Appointment(id, patient, doctor, date, description));
@@ -708,12 +738,16 @@ public class Main implements HospitalData, Color {
             }
             case 2: {
                 Appointment appointment = validateAppointment();
+                if (appointment==null)
+                    break;
                 hospital.remove(appointment);
                 System.out.println(YELLOW+"Appointment has been canceled."+RESET);
                 break;
             }
             case 3: {
                 Appointment appointment = validateAppointment();
+                if (appointment==null)
+                    break;
                 LocalDate date = validateDate();
                 appointment.setDate(date);
                 hospital.updateData();
@@ -739,6 +773,7 @@ public class Main implements HospitalData, Color {
         return name;
     }
     public static void doctorManagementPage() {
+        wait(1);
         System.out.println("\n# Doctor Management Page");
         System.out.println("1. Add Doctor");
         System.out.println("2. Remove Doctor");
@@ -750,6 +785,7 @@ public class Main implements HospitalData, Color {
             case 1: {
                 String id = Doctor.getNewDoctorId();
                 String name = validateDoctorName();
+
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 System.out.println("Enter specialization: ");
@@ -761,6 +797,8 @@ public class Main implements HospitalData, Color {
             }
             case 2: {
                 Doctor doctor = validateDoctor();
+                if (doctor==null)
+                    break;
                 hospital.remove(doctor);
                 System.out.println(YELLOW+"Dr. "+doctor.getName()+" was removed."+RESET);
                 break;
@@ -790,6 +828,7 @@ public class Main implements HospitalData, Color {
     }
 
     public static void nurseManagementPage() {
+        wait(1);
         System.out.println("\n# Nurse ManagementPage");
         System.out.println("1. Add Nurse");
         System.out.println("2. Remove Nurse");
@@ -854,6 +893,8 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 patient.setPhoneNumber(phoneNumber);
@@ -863,6 +904,8 @@ public class Main implements HospitalData, Color {
             }
             case 2: {
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
                 System.out.println("Enter address: ");
                 String address = input.nextLine();
                 patient.setAddress(address);
@@ -872,6 +915,8 @@ public class Main implements HospitalData, Color {
             }
             case 3: {
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
                 patient.setDepartment(department);
@@ -881,7 +926,11 @@ public class Main implements HospitalData, Color {
             }
             case 4: {
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
                 Doctor doctor = validateDoctor();
+                if (doctor==null)
+                    break;
                 patient.setDoctor(doctor);
                 hospital.updateData();
                 System.out.println(GREEN+"Doctor has been updated."+RESET);
@@ -889,7 +938,11 @@ public class Main implements HospitalData, Color {
             }
             case 5: {
                 Patient patient = validatePatient();
+                if (patient==null)
+                    break;
                 Nurse nurse = validateNurse();
+                if (nurse==null)
+                    break;
                 patient.setNurse(nurse);
                 hospital.updateData();
                 System.out.println(GREEN+"Nurse has been updated."+RESET);
@@ -913,6 +966,8 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Doctor doctor = validateDoctor();
+                if (doctor==null)
+                    break;
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 doctor.setPhoneNumber(phoneNumber);
@@ -939,6 +994,8 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Nurse nurse = validateNurse();
+                if (nurse==null)
+                    break;
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 nurse.setPhoneNumber(phoneNumber);
@@ -948,6 +1005,8 @@ public class Main implements HospitalData, Color {
             }
             case 2:
                 Nurse nurse = validateNurse();
+                if (nurse==null)
+                    break;
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
                 nurse.setDepartment(department);
@@ -971,7 +1030,10 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                String patientId = validatePatient().getId();
+                Patient patient = validatePatient();
+                if (patient==null)
+                    break;
+                String patientId = patient.getId();
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
                 if (medicalRecords==null)
                     medicalRecords = new ArrayList<>();
