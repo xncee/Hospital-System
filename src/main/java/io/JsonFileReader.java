@@ -3,10 +3,11 @@ package io;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import design.Color;
 
 import java.io.File;
 
-public class JsonFileReader {
+public class JsonFileReader implements Color {
     private final String fileLocation;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private JsonNode jsonNode;
@@ -18,6 +19,7 @@ public class JsonFileReader {
         try {
             jsonNode = objectMapper.readTree(new File(fileLocation));
         } catch (Exception e) {
+            System.out.println("");
             throw new RuntimeException(e);
         }
     }

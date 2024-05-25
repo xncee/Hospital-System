@@ -1,4 +1,4 @@
-package hospital;
+package design;
 
 public interface Color {
     // ANSI COLORS

@@ -1,5 +1,7 @@
 package hospital;
 
+import design.Color;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -250,7 +252,7 @@ public class Main implements HospitalData, Color {
 
                 List<Patient> patients = Patient.find("patientName", patientName);
                 if (!patients.isEmpty()) {
-                    System.out.println(GREEN+"Patients found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Patient patient: patients) {
                         System.out.println(patient);
                     }
@@ -266,7 +268,7 @@ public class Main implements HospitalData, Color {
 
                 List<Patient> patients = Patient.find("phoneNumber", phoneNumber);
                 if (!patients.isEmpty()) {
-                    System.out.println(GREEN+"Patients found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Patient patient: patients) {
                         System.out.println(patient);
                     }
@@ -327,7 +329,7 @@ public class Main implements HospitalData, Color {
 
                 List<Doctor> doctors = Doctor.find("doctorName", doctorName);
                 if (!doctors.isEmpty()) {
-                    System.out.println(GREEN+"Doctors found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
@@ -343,7 +345,7 @@ public class Main implements HospitalData, Color {
 
                 List<Doctor> doctors = Doctor.find("phoneNumber", phoneNumber);
                 if (!doctors.isEmpty()) {
-                    System.out.println(GREEN+"Doctor found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
@@ -358,7 +360,7 @@ public class Main implements HospitalData, Color {
 
                 List<Doctor> doctors = Doctor.find("specialization", specialization);
                 if (!doctors.isEmpty()) {
-                    System.out.println(GREEN+"Doctors found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
@@ -403,7 +405,7 @@ public class Main implements HospitalData, Color {
 
                 List<Nurse> nurses = Nurse.find("nurseName", nurseName);
                 if (!nurses.isEmpty()) {
-                    System.out.println(GREEN+"Nurses found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Nurse nurse: nurses) {
                         System.out.println(nurse);
                     }
@@ -419,7 +421,7 @@ public class Main implements HospitalData, Color {
 
                 List<Nurse> nurses = Nurse.find("phoneNumber", phoneNumber);
                 if (!nurses.isEmpty()) {
-                    System.out.println(GREEN+"Nurses found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (Nurse nurse: nurses) {
                         System.out.println(nurse);
                     }
@@ -456,13 +458,13 @@ public class Main implements HospitalData, Color {
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("medicalRecordsId", medicalRecordsId);
 
                 if (medicalRecords != null) {
-                    System.out.println(GREEN+"MedicalRecords found: "+RESET);
+                    System.out.println(GREEN+"Results: "+RESET);
                     for (MedicalRecord r: medicalRecords) {
                         System.out.println(r);
                     }
                 }
                 else {
-                    System.out.println(RED+"MedicalRecords were not found!"+RESET);
+                    System.out.println(RED+"No Results!"+RESET);
                 }
                 break;
             }
@@ -476,11 +478,13 @@ public class Main implements HospitalData, Color {
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
 
                 if (medicalRecords != null) {
-                    System.out.println(GREEN+"MedicalRecords found: "+RESET);
-                    System.out.println(medicalRecords);
+                    System.out.println(GREEN+"Results: "+RESET);
+                    for (MedicalRecord r: medicalRecords) {
+                        System.out.println(r);
+                    }
                 }
                 else {
-                    System.out.println(RED+"MedicalRecords were not found!"+RESET);
+                    System.out.println(RED+"No Results!"+RESET);
                 }
                 break;
             }
@@ -1095,8 +1099,7 @@ public class Main implements HospitalData, Color {
         switch (c) {
             case 1: {
                 Patient patient = validatePatient();
-                if (patient==null)
-                    break;
+                if (patient==null) break;
                 String patientId = patient.getId();
                 List<MedicalRecord> medicalRecords = MedicalRecord.findMedicalRecords("patientId", patientId);
                 if (medicalRecords==null)
@@ -1110,6 +1113,7 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();
 
                 medicalRecords.add(new MedicalRecord(id, patientId, diagnose, treatment, date));
+                patient.setMedicalRecords(medicalRecords);
                 hospital.add(medicalRecords);
                 System.out.println(GREEN+"MedicalRecord added successfully."+RESET);
                 break;
@@ -1134,7 +1138,7 @@ public class Main implements HospitalData, Color {
                     System.out.println(YELLOW+"MedicalRecord removed successfully."+RESET);
                 }
                 else
-                    System.out.println(RED+"MedicalRecord wasn't found!"+RESET);
+                    System.out.println(RED+"Not Results!"+RESET);
                 break;
             }
             case 99: {

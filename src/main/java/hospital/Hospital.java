@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import design.Color;
 
 import javax.management.InvalidAttributeValueException;
 import java.time.LocalDate;
@@ -260,10 +261,11 @@ public class Hospital implements HospitalData, Manageable, Color {
         }
     }
 
+    // These methods are inefficient and need to be optimized later.
+    // the node is final as it is defined inside an interface, you might consider moving it to somewhere else.
     public void updatePatients() {
         patientsJson.removeAll();
         for (Patient patient: patientsList) {
-            // the Json is final as it is defined inside an interface, you might consider moving it to somewhere else and clear the JsonNode instead.
             patientsJson.put(
                     patient.getId(),
                     new ObjectMapper().createObjectNode()
