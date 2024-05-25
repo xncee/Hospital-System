@@ -25,19 +25,18 @@ public class Hospital implements HospitalData, Manageable, Color {
 
         // The order of these invocations is critical.
         initializeMedicalRecords();
-        //System.out.println("MedicalRecords Initialized Successfully.");
         initializeDoctors();
-        //System.out.println("Doctors Initialized Successfully.");
         initializeNurses();
-        //System.out.println("Nurses Initialized Successfully.");
         initializePatients();
-        //System.out.println("Patients Initialized Successfully.");
         initializeAppointmentsList();
-        //System.out.println("Appointments Initialized Successfully.");
+        initializeDepartmentsList();
+
         if (doctorsList.isEmpty())
             System.out.println(RED+"There is no doctors!"+RESET);
         if (nursesList.isEmpty())
             System.out.println(RED+"There is no nurses!"+RESET);
+        if (departmentsList.isEmpty())
+            System.out.println(RED+"There is no departments!"+RESET);
     }
 
     public List getList(Object o) throws InvalidAttributeValueException {
@@ -51,6 +50,8 @@ public class Hospital implements HospitalData, Manageable, Color {
             return medicalRecordsList;
         else if (o instanceof Appointment)
             return appointmentsList;
+        else if (o instanceof Department)
+            return departmentsList;
         throw new InvalidAttributeValueException("Invalid Argument.");
     }
 
@@ -64,9 +65,8 @@ public class Hospital implements HospitalData, Manageable, Color {
         }
 
         boolean removed = list.remove(o);
-        //System.out.println("removeFlag="+removed);
         if (removed)
-            updateData();
+            updateData(); // this is inefficient
         return removed;
     }
 
@@ -85,7 +85,7 @@ public class Hospital implements HospitalData, Manageable, Color {
             return;
         }
         list.add(o);
-        updateData();
+        updateData(); // this is inefficient
     }
 
     protected void printAll() {
@@ -216,6 +216,16 @@ public class Hospital implements HospitalData, Manageable, Color {
         return new Appointment(id, patient, doctor, date, description);
     }
 
+    public Department getDepartment(JsonNode node, String id) {
+        if (node==null)
+            return null;
+        String name = node.get("name").asText();
+        String description = node.get("description").asText();
+        int maxCapacity = node.get("maxCapacity").asInt();
+
+        return new Department(id, name, description, maxCapacity);
+    }
+
     private void initializePatients() {
         Iterator<String> ids = patientsJson.fieldNames();
         for (JsonNode node: patientsJson) {
@@ -261,6 +271,15 @@ public class Hospital implements HospitalData, Manageable, Color {
         }
     }
 
+    private void initializeDepartmentsList() {
+        Iterator<String> ids = departmentsJson.fieldNames();
+        for (JsonNode node: departmentsJson) {
+            Department dp = getDepartment(node, ids.next());
+            if (dp!=null)
+                departmentsList.add(dp);
+        }
+    }
+
     // These methods are inefficient and need to be optimized later.
     // the node is final as it is defined inside an interface, you might consider moving it to somewhere else.
     public void updatePatients() {
@@ -274,7 +293,7 @@ public class Hospital implements HospitalData, Manageable, Color {
                             .put("age", patient.getAge())
                             .put("gender", patient.getGender())
                             .put("address", patient.getAddress())
-                            .put("department", patient.getDepartment())
+                            .put("department", patient.getDepartmentName())
                             .put("medicalRecords", patient.getMedicalRecords().isEmpty()?null:patient.getMedicalRecords().get(0).getId())
                             .put("doctor", patient.getDoctor().getId())
                             .put("nurse", patient.getNurse()==null?null:patient.getNurse().getId())
@@ -307,7 +326,7 @@ public class Hospital implements HospitalData, Manageable, Color {
                     new ObjectMapper().createObjectNode()
                             .put("name", nurse.getName())
                             .put("phoneNumber", nurse.getPhoneNumber())
-                            .put("department", nurse.getDepartment())
+                            .put("department", nurse.getDepartmentName())
             );
         }
         //System.out.println(nursesJson.toPrettyString());
@@ -350,6 +369,21 @@ public class Hospital implements HospitalData, Manageable, Color {
         appointmentsFile.write();
     }
 
+    public void updateDepartments() {
+        departmentsJson.removeAll();
+        for (Department department: departmentsList) {
+            departmentsJson.put(
+                    department.getId(),
+                    new ObjectMapper().createObjectNode()
+                            .put("name", department.getName())
+                            .put("description", department.getDescription())
+                            .put("maxCapacity", department.getMAX_PATIENT_CAPACITY())
+            );
+        }
+        //System.out.println(departmentsJson.toPrettyString());
+        departmentsFile.write();
+    }
+
     @Override
     public void updateData() {
         updateNurses();
@@ -357,6 +391,7 @@ public class Hospital implements HospitalData, Manageable, Color {
         updatePatients();
         updateMedicalRecords();
         updateAppointments();
+        updateDepartments();
     }
 
 }

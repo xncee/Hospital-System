@@ -2,7 +2,7 @@
   "NU2" : {
     "name" : "Norhan Khalil",
     "phoneNumber" : "0777867899",
-    "department" : "ICU"
+    "department" : "ED"
   },
   "NU3" : {
     "name" : "Moha S",
@@ -10,8 +10,13 @@
     "department" : "ED"
   },
   "NU4" : {
-    "name" : "Mohmmad Khalili",
-    "phoneNumber" : "0786732011",
-    "department" : "ED"
+    "name" : "Nora Hassan",
+    "phoneNumber" : "0776565411",
+    "department" : "Surgery"
+  },
+  "NU5" : {
+    "name" : "Mohammad Ahmad",
+    "phoneNumber" : "0799875311",
+    "department" : "Radiology"
   }
 }

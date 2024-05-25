@@ -7,17 +7,17 @@ public class Patient extends Person {
     private int age;
     private final String gender;
     private String address;
-    private String department;
+    private String departmentName;
     private Doctor doctor;
     private Nurse nurse;
     private List<MedicalRecord> medicalRecords;
 
-    public Patient(String id, String name, String phoneNumber, int age, String gender, String address, String department, List<MedicalRecord> medicalRecords, Doctor doctor, Nurse nurse) {
+    public Patient(String id, String name, String phoneNumber, int age, String gender, String address, String departmentName, List<MedicalRecord> medicalRecords, Doctor doctor, Nurse nurse) {
         super(id, name, phoneNumber);
         this.age = age;
         this.gender = gender;
         this.address = address;
-        this.department = department;
+        this.departmentName = departmentName;
         this.medicalRecords = medicalRecords;
         setDoctor(doctor); // set with if?
         setNurse(nurse);
@@ -51,6 +51,8 @@ public class Patient extends Person {
                 }
                 case "patientId":
                     yield patient.getId();
+                case "departmentName":
+                    yield patient.getDepartmentName();
                 default:
                     System.out.println("Invalid searchKey!");
                     yield patient.getId();
@@ -71,7 +73,12 @@ public class Patient extends Person {
     }
 
     public static String getNewPatientId() {
-        String str = patientsList.get(patientsList.size()-1).getId().split("P")[1];
+        String str;
+        if (patientsList.isEmpty()) {
+            str = patientsList.get(patientsList.size() - 1).getId().split("P")[1];
+        }
+        else
+            str = "0";
         return "P"+(Integer.parseInt(str)+1);
     }
 
@@ -106,12 +113,12 @@ public class Patient extends Person {
         this.address = address;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     public Doctor getDoctor() {
@@ -153,7 +160,7 @@ public class Patient extends Person {
                 ", age=" + age +
                 ", gender=" + gender +
                 ", address=" + address +
-                ", department=" + department +
+                ", departmentName=" + departmentName +
                 ", doctor=" + (doctor==null?null:doctor.getId()) +
                 ", nurse=" + (nurse==null?null:nurse.getId()) +
                 ", medicalRecords=" + medicalRecords +

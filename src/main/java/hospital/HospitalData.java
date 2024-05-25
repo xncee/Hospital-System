@@ -15,12 +15,14 @@ public interface HospitalData {
     File nursesFile = new File("nurses.json");
     ObjectNode nursesJson = nursesFile.read();
     List<Nurse> nursesList = new ArrayList<>();
-    File medicalRecordsFile = new File("medicalRecords.json"); // array node
+    File medicalRecordsFile = new File("medicalRecords.json");
     ObjectNode medicalRecordsJson = medicalRecordsFile.read();
     List<List<MedicalRecord>> medicalRecordsList = new ArrayList<>();
-    File appointmentsFile = new File("appointments.json"); // array node
+    File appointmentsFile = new File("appointments.json");
     ObjectNode appointmentsJson = appointmentsFile.read();
     List<Appointment> appointmentsList = new ArrayList<>();
 
-
+    File departmentsFile = new File("departments.json");
+    ObjectNode departmentsJson = departmentsFile.read();
+    List<Department> departmentsList = new ArrayList<>();
 }

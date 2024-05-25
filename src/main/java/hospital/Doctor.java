@@ -59,7 +59,12 @@ public class Doctor extends Person {
     }
 
     public static String getNewDoctorId() {
-        String str = doctorsList.get(doctorsList.size()-1).getId().split("DR")[1];
+        String str;
+        if (doctorsList.isEmpty()) {
+            str = doctorsList.get(doctorsList.size() - 1).getId().split("DR")[1];
+        }
+        else
+            str = "0";
         return "DR"+(Integer.parseInt(str)+1);
     }
 

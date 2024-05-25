@@ -5,33 +5,6 @@ import design.Color;
 import java.time.LocalDate;
 import java.util.*;
 
-/*
-Emergency Department (ED): Handles urgent and life-threatening conditions requiring immediate attention.
-Intensive Care Unit (ICU): Provides care for critically ill patients who need constant monitoring and support.
-Cardiology: Focuses on heart-related conditions, offering diagnostic and treatment services for cardiovascular diseases.
-Oncology: Specializes in the diagnosis and treatment of cancer, including chemotherapy, radiation therapy, and surgery.
-Pediatrics: Provides medical care for infants, children, and adolescents.
-Obstetrics and Gynecology (OB/GYN): Manages pregnancy, childbirth, and disorders of the female reproductive system.
-Surgery: Performs surgical procedures for various conditions, often divided into sub-specialties like orthopedic, cardiovascular, and neurosurgery.
-Neurology: Diagnoses and treats disorders of the nervous system, including the brain, spinal cord, and nerves.
-Radiology: Uses imaging techniques like X-rays, CT scans, MRIs, and ultrasounds to diagnose and treat diseases.
-Anesthesiology: Manages pain and provides anesthesia during surgeries and other medical procedures.
-Orthopedics: Treats musculoskeletal system issues, including bones, joints, ligaments, tendons, and muscles.
-Gastroenterology: Focuses on the digestive system and its disorders.
-Nephrology: Specializes in kidney care and treating kidney-related diseases.
-Urology: Deals with the urinary system and male reproductive organs.
-Endocrinology: Treats hormonal imbalances and disorders, including diabetes and thyroid issues.
-Dermatology: Manages skin-related conditions.
-Psychiatry and Psychology: Provides mental health services, including therapy and psychiatric medication management.
-Pathology: Examines tissues, cells, and bodily fluids to diagnose diseases.
-Ophthalmology: Focuses on eye care and vision-related issues.
-Otolaryngology (ENT): Treats conditions related to the ear, nose, and throat.
-Rehabilitation Services: Provides physical therapy, occupational therapy, and speech therapy to help patients recover and improve function.
-Pharmacy: Manages the dispensing of medications and provides pharmaceutical care.
-Laboratory Services: Conducts various tests on blood, tissue, and other samples to aid in diagnosis and treatment.
-Infectious Disease: Specializes in the treatment of infections, including those caused by bacteria, viruses, fungi, and parasites.
-Palliative Care: Offers care aimed at providing relief from the symptoms and stress of serious illness.
- */
 // add a menu for departments
 public class Main implements HospitalData, Color {
     static Scanner input = new Scanner(System.in);
@@ -57,8 +30,9 @@ public class Main implements HospitalData, Color {
         System.out.println("2. Medical Staff");
         System.out.println("3. Medical Records");
         System.out.println("4. Appointments");
+        System.out.println("5. Departments");
         System.out.println("99. Exit.. ");
-        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 4, 5, 99});
 
         switch (c) {
             case 1: {
@@ -74,6 +48,9 @@ public class Main implements HospitalData, Color {
                 break;
             case 4:
                 appointmentsPage();
+                break;
+            case 5:
+                departmentsPage();
                 break;
             case 99:
                 System.exit(0);
@@ -235,8 +212,9 @@ public class Main implements HospitalData, Color {
         System.out.println("4. Search by nurseId");
         System.out.println("5. Search by doctorId");
         System.out.println("6. Search by medicalRecordId");
+        System.out.println("7. Search by departmentName");
         System.out.println("99. <<");
-        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 4, 5, 6, 7, 99});
 
         switch (c) {
             case 1: {
@@ -321,6 +299,22 @@ public class Main implements HospitalData, Color {
                     System.out.println(GREEN+"Patient found: "+RESET);
                     System.out.println(patients.get(0));
                 } else {
+                    System.out.println(RED+"No Results!"+RESET);
+                }
+                break;
+            }
+            case 7: {
+                System.out.println("Enter departmentName: ");
+                String departmentName = input.nextLine();
+
+                List<Patient> patients = Patient.find("departmentName", departmentName);
+                if (!patients.isEmpty()) {
+                    System.out.println(GREEN+"Results: ("+patients.size()+")"+RESET);
+                    for (Patient patient: patients) {
+                        System.out.println(patient);
+                    }
+                }
+                else {
                     System.out.println(RED+"No Results!"+RESET);
                 }
                 break;
@@ -614,6 +608,68 @@ public class Main implements HospitalData, Color {
             appointmentsSearchPage();
     }
 
+    public static void departmentsSearchPage() {
+        departmentSearchPage(false);
+    }
+    public static void departmentSearchPage(boolean showOneTime) {
+        wait(1);
+        System.out.println("\n# Departments Search Page");
+        System.out.println("1. Search by departmentId");
+        System.out.println("2. Search by departmentName");
+        System.out.println("3. Search by departmentDescription");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 99});
+
+        switch (c) {
+            case 1: {
+                Department department = validateDepartment();
+                if (department!=null) {
+                    System.out.println(GREEN + "Department found: " + RESET);
+                    System.out.println(department);
+                }
+                break;
+            }
+            case 2: {
+                System.out.println("Enter departmentName: ");
+                String departmentName = input.nextLine();
+
+                List<Department> departments = Department.find("departmentName", departmentName);
+                if (!departments.isEmpty()) {
+                    System.out.println(GREEN+"Results: ("+departments.size()+")"+RESET);
+                    for (Department department: departments) {
+                        System.out.println(department);
+                    }
+                }
+                else {
+                    System.out.println(RED+"No Results!"+RESET);
+                }
+                break;
+            }
+            case 3: {
+                System.out.println("Enter departmentDescription: ");
+                String departmentDescription = input.nextLine();
+
+                List<Department> departments = Department.find("departmentDescription", departmentDescription);
+                if (!departments.isEmpty()) {
+                    System.out.println(GREEN+"Results: ("+departments.size()+")"+RESET);
+                    for (Department department: departments) {
+                        System.out.println(department);
+                    }
+                }
+                else {
+                    System.out.println(RED+"No Results!"+RESET);
+                }
+                break;
+            }
+            case 99:
+                if (!showOneTime)
+                    departmentsPage();
+                break;
+        }
+        if (!showOneTime)
+            departmentsSearchPage();
+    }
+
     public static Doctor validateDoctor() {
         Doctor doctor;
         while (true) {
@@ -711,6 +767,31 @@ public class Main implements HospitalData, Color {
             return appointment;
         }
     }
+
+    public static Department validateDepartment() {
+        Department department;
+        while (true) {
+            System.out.println("Enter departmentId (enter '#' to search or '=' to quit): ");
+            String departmentId = input.nextLine().toLowerCase();
+            if (departmentId.equals("#")) {
+                departmentSearchPage(true);
+                continue;
+            }
+            else if (departmentId.equals("=")) {
+                return null;
+            }
+
+            List<Department> departments = Department.find("departmentId", departmentId);
+
+            if (departments.isEmpty()) {
+                System.out.println(RED + "No Results!" + RESET);
+                continue;
+            }
+
+            department = departments.get(0);
+            return department;
+        }
+    }
     public static void patientManagementPage() {
         wait(1);
         System.out.println("\n# Patient Management Page");
@@ -742,15 +823,20 @@ public class Main implements HospitalData, Color {
                 String gender = input.nextLine();
                 System.out.println("Enter address: ");
                 String address = input.nextLine();
-                System.out.println("Enter department: ");
-                String department = input.nextLine();
+                //System.out.println("Enter department: ");
+                Department department = validateDepartment();
+                if (department==null) break;
+                String departmentName = department.getName();
+                if (department.isFull()) {
+                    System.out.println(RED+"Department is full!"+RESET);
+                    break;
+                }
 
                 Doctor doctor = validateDoctor();
                 if (doctor==null) break;
                 //Nurse nurse = validateNurse();
                 Nurse nurse = getRandomNurse(Nurse.getAvailableNurses());
                 if (nurse==null) break;
-
                 List<MedicalRecord> medicalRecords = new ArrayList<>();
                 System.out.println("*Medical Record*");
                 System.out.println("Enter diagnose: ");
@@ -760,7 +846,7 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();
                 medicalRecords.add(new MedicalRecord(MedicalRecord.getNewMedicalRecordId(), id, diagnose, treatment, date));
                 hospital.add(medicalRecords);
-                hospital.add(new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecords, doctor, nurse));
+                hospital.add(new Patient(id, name, phoneNumber, age, gender, address, departmentName, medicalRecords, doctor, nurse));
                 System.out.println(GREEN+"Patient added successfully."+RESET);
                 break;
             }
@@ -811,6 +897,55 @@ public class Main implements HospitalData, Color {
         appointmentsPage();
     }
 
+    public static void departmentsPage() {
+        wait(1);
+        System.out.println("\n# Departments Page");
+        System.out.println("1. View Departments");
+        System.out.println("2. Search");
+        System.out.println("3. Add Department");
+        System.out.println("4. Remove Department");
+        System.out.println("99. <<");
+        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
+
+        switch (c) {
+            case 1: {
+                for (Department department: departmentsList) {
+                    System.out.println(department);
+                }
+                break;
+            }
+            case 2: {
+                departmentsSearchPage();
+                break;
+            }
+            case 3: {
+                String id = Department.getNewDepartmentId();
+                System.out.println("Enter name: ");
+                String name = input.nextLine();
+                System.out.println("Enter description: ");
+                String description = input.nextLine();
+                System.out.println("Enter maxCapacity: ");
+                int maxCapacity = input.nextInt();
+                input.nextLine();
+
+                hospital.add(new Department(id, name, description, maxCapacity));
+                System.out.println(GREEN+"Department added successfully."+RESET);
+                break;
+            }
+            case 4: {
+                Department department = validateDepartment();
+                if (department==null) break;
+                hospital.remove(department);
+                System.out.println(YELLOW+"Department removed successfully."+RESET);
+                break;
+            }
+            case 99:
+                homePage();
+                break;
+        }
+        departmentsPage();
+    }
+
     public static void appointmentsManagementPage() {
         wait(1);
         System.out.println("\n# Manage Appointments Page");
@@ -845,7 +980,7 @@ public class Main implements HospitalData, Color {
                     break;
                 LocalDate date = validateDate();
                 appointment.setDate(date);
-                hospital.updateData();
+                hospital.updateAppointments();
                 System.out.println(GREEN+"Appointment rescheduled successfully."+RESET);
                 break;
             }
@@ -957,9 +1092,11 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 System.out.println("Enter department: ");
-                String department = input.nextLine();
+                Department department = validateDepartment();
+                if (department==null) break;
+                String departmentName = department.getName();
 
-                hospital.add(new Nurse(id, name, phoneNumber, department));
+                hospital.add(new Nurse(id, name, phoneNumber, departmentName));
                 System.out.println(GREEN+"Nurse. "+name+" added successfully."+RESET);
                 break;
             }
@@ -980,7 +1117,7 @@ public class Main implements HospitalData, Color {
                     }
                     else {
                         for (Patient patient: patients) {
-                            Nurse replacementNurse = getRandomNurse(availableNurses);
+                            Nurse replacementNurse = getRandomNurse(availableNurses); //
                             if (replacementNurse==null) {
                                 System.out.println(RED + "Available Nurses weren't enough to replace Nurse. " + nurse.getName() + RESET);
                                 hospital.updatePatients();
@@ -989,12 +1126,9 @@ public class Main implements HospitalData, Color {
                                 // using break statement without a label would just break the loop and not the switch.
                             }
 
-                            if (replacementNurse.isAvailable()) {
-                                patient.setNurse(replacementNurse);
-                            }
-                            else {
+                            patient.setNurse(replacementNurse);
+                            if (!replacementNurse.isAvailable()) {
                                 availableNurses.remove(replacementNurse);
-                                patients.add(patient);
                             }
                         }
                         System.out.println(PURPLE+"Nurse. "+nurse.getName()+" was replaced with other Nurses."+RESET);
@@ -1048,7 +1182,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 patient.setPhoneNumber(phoneNumber);
-                hospital.updateData();
+                hospital.updatePatients();
                 System.out.println(GREEN+"phoneNumber updated successfully."+RESET);
                 break;
             }
@@ -1059,7 +1193,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter address: ");
                 String address = input.nextLine();
                 patient.setAddress(address);
-                hospital.updateData();
+                hospital.updatePatients();
                 System.out.println(GREEN+"address updated successfully."+RESET);
                 break;
             }
@@ -1068,9 +1202,17 @@ public class Main implements HospitalData, Color {
                 if (patient==null)
                     break;
                 System.out.println("Enter department: ");
-                String department = input.nextLine();
-                patient.setDepartment(department);
-                hospital.updateData();
+                Department department = validateDepartment();
+                if (department==null) break;
+                String departmentName = department.getName();
+                if (department.isFull()) {
+                    System.out.println(RED+"Department is full!"+RESET);
+                    break;
+                }
+
+                patient.setDepartmentName(departmentName);
+
+                hospital.updatePatients();
                 System.out.println(GREEN+"department updated successfully."+RESET);
                 break;
             }
@@ -1082,7 +1224,7 @@ public class Main implements HospitalData, Color {
                 if (doctor==null)
                     break;
                 patient.setDoctor(doctor);
-                hospital.updateData();
+                hospital.updatePatients();
                 System.out.println(GREEN+"Doctor updated successfully."+RESET);
                 break;
             }
@@ -1094,7 +1236,7 @@ public class Main implements HospitalData, Color {
                 if (nurse==null)
                     break;
                 patient.setNurse(nurse);
-                hospital.updateData();
+                hospital.updatePatients();
                 System.out.println(GREEN+"Nurse updated successfully."+RESET);
                 break;
             }
@@ -1121,7 +1263,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 doctor.setPhoneNumber(phoneNumber);
-                hospital.updateData();
+                hospital.updateDoctors();
                 System.out.println(GREEN+"phoneNumber updated successfully."+RESET);
                 break;
             }
@@ -1149,7 +1291,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
                 nurse.setPhoneNumber(phoneNumber);
-                hospital.updateData();
+                hospital.updateNurses();
                 System.out.println(GREEN+"phoneNumber updated successfully."+RESET);
                 break;
             }
@@ -1159,8 +1301,8 @@ public class Main implements HospitalData, Color {
                     break;
                 System.out.println("Enter department: ");
                 String department = input.nextLine();
-                nurse.setDepartment(department);
-                hospital.updateData();
+                nurse.setDepartmentName(department);
+                hospital.updateNurses();
                 System.out.println(GREEN+"department updated successfully."+RESET);
                 break;
             case 99: {
@@ -1216,7 +1358,7 @@ public class Main implements HospitalData, Color {
                     }
                 }
                 if (removed) {
-                    hospital.updateData();
+                    hospital.updateMedicalRecords();
                     System.out.println(YELLOW+"MedicalRecord removed successfully."+RESET);
                 }
                 else
