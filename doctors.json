@@ -1,17 +1,1 @@
-{
-  "D1" : {
-    "name" : "Moha Sh",
-    "phoneNumber" : "0778987766",
-    "specialization" : "phisical training"
-  },
-  "D2" : {
-    "name" : "Noor",
-    "phoneNumber" : "0796753445",
-    "specialization" : "Surgery"
-  },
-  "D3" : {
-    "name" : "Ahmad Q",
-    "phoneNumber" : "0787898900",
-    "specialization" : "Neurology"
-  }
-}
+{}
