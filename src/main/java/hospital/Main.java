@@ -5,11 +5,13 @@ import design.Color;
 import java.time.LocalDate;
 import java.util.*;
 
-// add a menu for departments
+
 public class Main implements HospitalData, Color {
     static Scanner input = new Scanner(System.in);
     static Hospital hospital = new Hospital("Al-Hayat Hospital", 700);
 
+    // Bank + subclasses(current, saving), Bank services interface
+    // User, FinicalCurrencies, Encryption
     public static void main(String[] args) {
         //hospital.printAll();
         homePage();
@@ -43,6 +45,13 @@ public class Main implements HospitalData, Color {
                 medicalStaffPage();
                 break;
             }
+            /*
+            P2
+            P3
+            P4
+            p5
+             */
+
             case 3:
                 medicalRecordPage();
                 break;
@@ -1109,7 +1118,6 @@ public class Main implements HospitalData, Color {
                 String name = validateNurseName();
                 System.out.println("Enter phoneNumber: ");
                 String phoneNumber = input.nextLine();
-                System.out.println("Enter department: ");
                 Department department = validateDepartment();
                 if (department==null) break;
                 String departmentName = department.getName();
@@ -1325,9 +1333,10 @@ public class Main implements HospitalData, Color {
                 Nurse nurse = validateNurse();
                 if (nurse==null)
                     break;
-                System.out.println("Enter department: ");
-                String department = input.nextLine();
-                nurse.setDepartmentName(department);
+                Department department = validateDepartment();
+                if (department==null) break;
+                String departmentName = department.getName();
+                nurse.setDepartmentName(departmentName);
                 hospital.updateNurses();
                 System.out.println(GREEN+"department updated successfully."+RESET);
                 break;

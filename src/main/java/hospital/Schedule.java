@@ -27,6 +27,8 @@ public class Schedule {
     }
 
     private void update() {
+
+        scheduleList.remove(5);
         for (LocalDate date: scheduleList.keySet()) {
             if (date.isBefore(LocalDate.now())) {
                 scheduleList.remove(date);

@@ -21,7 +21,7 @@ public class Hospital implements HospitalData, Manageable, Color {
     public Hospital(String HOSPITAL_NAME, int MAX_CAPACITY) {
         this.HOSPITAL_NAME = HOSPITAL_NAME;
         this.MAX_CAPACITY = MAX_CAPACITY;
-        System.out.println(WHITE_BACKGROUND+"# "+HOSPITAL_NAME+RESET);
+        System.out.println("# "+HOSPITAL_NAME+RESET);
 
         // The order of these invocations is critical.
         initializeMedicalRecords();
