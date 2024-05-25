@@ -4,5 +4,16 @@
     "diagnose" : "covid-22",
     "treatment" : "antibiotics",
     "date" : "2024-05-25"
+  }, {
+    "patient" : "P1",
+    "diagnose" : "flu",
+    "treatment" : "nothing",
+    "date" : "2024-05-25"
+  } ],
+  "MR3" : [ {
+    "patient" : "P2",
+    "diagnose" : "broken bone",
+    "treatment" : "rest & eat",
+    "date" : "2024-05-25"
   } ]
 }

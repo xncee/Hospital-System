@@ -3,6 +3,34 @@ package hospital;
 import java.time.LocalDate;
 import java.util.*;
 
+/*
+Emergency Department (ED): Handles urgent and life-threatening conditions requiring immediate attention.
+Intensive Care Unit (ICU): Provides care for critically ill patients who need constant monitoring and support.
+Cardiology: Focuses on heart-related conditions, offering diagnostic and treatment services for cardiovascular diseases.
+Oncology: Specializes in the diagnosis and treatment of cancer, including chemotherapy, radiation therapy, and surgery.
+Pediatrics: Provides medical care for infants, children, and adolescents.
+Obstetrics and Gynecology (OB/GYN): Manages pregnancy, childbirth, and disorders of the female reproductive system.
+Surgery: Performs surgical procedures for various conditions, often divided into sub-specialties like orthopedic, cardiovascular, and neurosurgery.
+Neurology: Diagnoses and treats disorders of the nervous system, including the brain, spinal cord, and nerves.
+Radiology: Uses imaging techniques like X-rays, CT scans, MRIs, and ultrasounds to diagnose and treat diseases.
+Anesthesiology: Manages pain and provides anesthesia during surgeries and other medical procedures.
+Orthopedics: Treats musculoskeletal system issues, including bones, joints, ligaments, tendons, and muscles.
+Gastroenterology: Focuses on the digestive system and its disorders.
+Nephrology: Specializes in kidney care and treating kidney-related diseases.
+Urology: Deals with the urinary system and male reproductive organs.
+Endocrinology: Treats hormonal imbalances and disorders, including diabetes and thyroid issues.
+Dermatology: Manages skin-related conditions.
+Psychiatry and Psychology: Provides mental health services, including therapy and psychiatric medication management.
+Pathology: Examines tissues, cells, and bodily fluids to diagnose diseases.
+Ophthalmology: Focuses on eye care and vision-related issues.
+Otolaryngology (ENT): Treats conditions related to the ear, nose, and throat.
+Rehabilitation Services: Provides physical therapy, occupational therapy, and speech therapy to help patients recover and improve function.
+Pharmacy: Manages the dispensing of medications and provides pharmaceutical care.
+Laboratory Services: Conducts various tests on blood, tissue, and other samples to aid in diagnosis and treatment.
+Infectious Disease: Specializes in the treatment of infections, including those caused by bacteria, viruses, fungi, and parasites.
+Palliative Care: Offers care aimed at providing relief from the symptoms and stress of serious illness.
+ */
+// add a menu for departments
 public class Main implements HospitalData, Color {
     static Scanner input = new Scanner(System.in);
     // medical record (((id))) for new patients??
@@ -659,7 +687,7 @@ public class Main implements HospitalData, Color {
                 medicalRecords.add(new MedicalRecord(MedicalRecord.getNewMedicalRecordId(), id, diagnose, treatment, date));
                 hospital.add(medicalRecords);
                 hospital.add(new Patient(id, name, phoneNumber, age, gender, address, department, medicalRecords, doctor, nurse));
-                System.out.println(GREEN+"Patient Added."+RESET);
+                System.out.println(GREEN+"Patient added successfully."+RESET);
                 break;
             }
             case 2: {
@@ -668,7 +696,7 @@ public class Main implements HospitalData, Color {
                     break;
 
                 if (hospital.remove(patient))
-                    System.out.println(YELLOW+"Patient was removed."+RESET);
+                    System.out.println(YELLOW+"Patient removed successfully."+RESET);
                 else
                     System.out.println(RED+"Patient wasn't removed."+RESET);
                 break;
@@ -733,7 +761,7 @@ public class Main implements HospitalData, Color {
                 String description = input.nextLine();
 
                 hospital.add(new Appointment(id, patient, doctor, date, description));
-                System.out.println(GREEN+"Appointment has been added."+RESET);
+                System.out.println(GREEN+"Appointment scheduled successfully."+RESET);
                 break;
             }
             case 2: {
@@ -741,7 +769,7 @@ public class Main implements HospitalData, Color {
                 if (appointment==null)
                     break;
                 hospital.remove(appointment);
-                System.out.println(YELLOW+"Appointment has been canceled."+RESET);
+                System.out.println(YELLOW+"Appointment canceled successfully."+RESET);
                 break;
             }
             case 3: {
@@ -751,7 +779,7 @@ public class Main implements HospitalData, Color {
                 LocalDate date = validateDate();
                 appointment.setDate(date);
                 hospital.updateData();
-                System.out.println(GREEN+"Appointment date has been changed."+RESET);
+                System.out.println(GREEN+"Appointment rescheduled successfully."+RESET);
                 break;
             }
             case 99:
@@ -765,7 +793,7 @@ public class Main implements HospitalData, Color {
         String name = input.nextLine();
         for (Doctor doctor: doctorsList) {
             if (name.equals(doctor.getName())) {
-                System.out.println(RED+"This doctorName is already registered!"+RESET);
+                System.out.println(RED+"doctorName is already registered!"+RESET);
                 validateDoctorName();
                 break;
             }
@@ -792,7 +820,7 @@ public class Main implements HospitalData, Color {
                 String specialization = input.nextLine();
 
                 hospital.add(new Doctor(id, name, phoneNumber, specialization));
-                System.out.println(GREEN+"Dr. "+name+" was added."+RESET);
+                System.out.println(GREEN+"Dr. "+name+" added successfully."+RESET);
                 break;
             }
             case 2: {
@@ -800,7 +828,7 @@ public class Main implements HospitalData, Color {
                 if (doctor==null)
                     break;
                 hospital.remove(doctor);
-                System.out.println(YELLOW+"Dr. "+doctor.getName()+" was removed."+RESET);
+                System.out.println(YELLOW+"Dr. "+doctor.getName()+" removed successfully."+RESET);
                 break;
             }
             case 3: {
@@ -819,7 +847,7 @@ public class Main implements HospitalData, Color {
         String name = input.nextLine();
         for (Nurse nurse: nursesList) {
             if (name.equals(nurse.getName())) {
-                System.out.println(RED+"This nurseName is already registered!"+RESET);
+                System.out.println(RED+"nurseName is already registered!"+RESET);
                 validateNurseName();
                 break;
             }
@@ -846,13 +874,13 @@ public class Main implements HospitalData, Color {
                 String department = input.nextLine();
 
                 hospital.add(new Nurse(id, name, phoneNumber, department));
-                System.out.println(GREEN+"Nurse. "+name+" was added."+RESET);
+                System.out.println(GREEN+"Nurse. "+name+" added successfully."+RESET);
                 break;
             }
             case 2: {
                 Nurse nurse = validateNurse();
                 hospital.remove(nurse);
-                System.out.println(YELLOW+"Nurse. "+nurse.getName()+" was removed."+RESET);
+                System.out.println(YELLOW+"Nurse. "+nurse.getName()+" removed successfully."+RESET);
                 break;
             }
             case 3: {
@@ -899,7 +927,7 @@ public class Main implements HospitalData, Color {
                 String phoneNumber = input.nextLine();
                 patient.setPhoneNumber(phoneNumber);
                 hospital.updateData();
-                System.out.println(GREEN+"phoneNumber has been updated."+RESET);
+                System.out.println(GREEN+"phoneNumber updated successfully."+RESET);
                 break;
             }
             case 2: {
@@ -910,7 +938,7 @@ public class Main implements HospitalData, Color {
                 String address = input.nextLine();
                 patient.setAddress(address);
                 hospital.updateData();
-                System.out.println(GREEN+"address has been updated."+RESET);
+                System.out.println(GREEN+"address updated successfully."+RESET);
                 break;
             }
             case 3: {
@@ -921,7 +949,7 @@ public class Main implements HospitalData, Color {
                 String department = input.nextLine();
                 patient.setDepartment(department);
                 hospital.updateData();
-                System.out.println(GREEN+"department has been updated."+RESET);
+                System.out.println(GREEN+"department updated successfully."+RESET);
                 break;
             }
             case 4: {
@@ -933,7 +961,7 @@ public class Main implements HospitalData, Color {
                     break;
                 patient.setDoctor(doctor);
                 hospital.updateData();
-                System.out.println(GREEN+"Doctor has been updated."+RESET);
+                System.out.println(GREEN+"Doctor updated successfully."+RESET);
                 break;
             }
             case 5: {
@@ -945,7 +973,7 @@ public class Main implements HospitalData, Color {
                     break;
                 patient.setNurse(nurse);
                 hospital.updateData();
-                System.out.println(GREEN+"Nurse has been updated."+RESET);
+                System.out.println(GREEN+"Nurse updated successfully."+RESET);
                 break;
             }
             case 99: {
@@ -972,7 +1000,7 @@ public class Main implements HospitalData, Color {
                 String phoneNumber = input.nextLine();
                 doctor.setPhoneNumber(phoneNumber);
                 hospital.updateData();
-                System.out.println(GREEN+"phoneNumber has been updated."+RESET);
+                System.out.println(GREEN+"phoneNumber updated successfully."+RESET);
                 break;
             }
             case 99: {
@@ -1000,7 +1028,7 @@ public class Main implements HospitalData, Color {
                 String phoneNumber = input.nextLine();
                 nurse.setPhoneNumber(phoneNumber);
                 hospital.updateData();
-                System.out.println(GREEN+"phoneNumber has been updated."+RESET);
+                System.out.println(GREEN+"phoneNumber updated successfully."+RESET);
                 break;
             }
             case 2:
@@ -1011,7 +1039,7 @@ public class Main implements HospitalData, Color {
                 String department = input.nextLine();
                 nurse.setDepartment(department);
                 hospital.updateData();
-                System.out.println(GREEN+"department has been updated."+RESET);
+                System.out.println(GREEN+"department updated successfully."+RESET);
                 break;
             case 99: {
                 nurseManagementPage();
@@ -1047,7 +1075,7 @@ public class Main implements HospitalData, Color {
 
                 medicalRecords.add(new MedicalRecord(id, patientId, diagnose, treatment, date));
                 hospital.add(medicalRecords);
-                System.out.println(GREEN+"MedicalRecord has been added."+RESET);
+                System.out.println(GREEN+"MedicalRecord added successfully."+RESET);
                 break;
             }
             case 2: {
@@ -1067,7 +1095,7 @@ public class Main implements HospitalData, Color {
                 }
                 if (removed) {
                     hospital.updateData();
-                    System.out.println(YELLOW+"MedicalRecord has been removed."+RESET);
+                    System.out.println(YELLOW+"MedicalRecord removed successfully."+RESET);
                 }
                 else
                     System.out.println(RED+"MedicalRecord wasn't found!"+RESET);

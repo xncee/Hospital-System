@@ -1,1 +1,8 @@
-{ }
+{
+  "AP1" : {
+    "patient" : "P1",
+    "doctor" : "D1",
+    "date" : "2024-05-25",
+    "description" : ""
+  }
+}

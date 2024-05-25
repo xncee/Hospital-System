@@ -9,5 +9,16 @@
     "medicalRecords" : "MR1",
     "doctor" : "D1",
     "nurse" : "N1"
+  },
+  "P2" : {
+    "name" : "Ahmad Jabali",
+    "phoneNumber" : "0798047654",
+    "age" : 29,
+    "gender" : "M",
+    "address" : "Zarqa/Jordan",
+    "department" : "Surgery",
+    "medicalRecords" : "MR3",
+    "doctor" : "D1",
+    "nurse" : "N1"
   }
 }
