@@ -61,7 +61,7 @@ public class Main implements HospitalData, Color {
     public static void patientPage() {
         wait(1);
         System.out.println("\n# Patient Page");
-        System.out.println("1. Print All Patients");
+        System.out.println("1. View Patients");
         System.out.println("2. Search");
         System.out.println("3. Manage Patients");
         System.out.println("99. <<");
@@ -141,7 +141,7 @@ public class Main implements HospitalData, Color {
     public static void doctorPage() {
         wait(1);
         System.out.println("\n# Doctor Page");
-        System.out.println("1. Print All Doctors");
+        System.out.println("1. View Doctors");
         System.out.println("2. Search");
         System.out.println("3. Manage Doctors");
         System.out.println("99. <<");
@@ -172,7 +172,7 @@ public class Main implements HospitalData, Color {
     public static void nursePage() {
         wait(1);
         System.out.println("\n# Nurse Page");
-        System.out.println("1. Print All Nurses");
+        System.out.println("1. View Nurses");
         System.out.println("2. Search");
         System.out.println("3. Manage Nurse");
         System.out.println("99. <<");
@@ -392,7 +392,8 @@ public class Main implements HospitalData, Color {
                     for (Doctor doctor: doctors) {
                         System.out.println(doctor);
                     }
-                } else {
+                }
+                else {
                     System.out.println(RED+"No Results!"+RESET);
                 }
                 break;
@@ -415,8 +416,9 @@ public class Main implements HospitalData, Color {
         System.out.println("1. Search by nurseId");
         System.out.println("2. Search by nurseName");
         System.out.println("3. Search by phoneNumber");
+        System.out.println("4. Search by departmentName");
         System.out.println("99. <<");
-        int c = getUserInput(new int[] {1, 2, 3, 99});
+        int c = getUserInput(new int[] {1, 2, 3, 4, 99});
 
         switch (c) {
             case 1: {
@@ -448,6 +450,22 @@ public class Main implements HospitalData, Color {
                 String phoneNumber = input.nextLine();
 
                 List<Nurse> nurses = Nurse.find("phoneNumber", phoneNumber);
+                if (!nurses.isEmpty()) {
+                    System.out.println(GREEN+"Results: ("+nurses.size()+")"+RESET);
+                    for (Nurse nurse: nurses) {
+                        System.out.println(nurse);
+                    }
+                }
+                else {
+                    System.out.println(RED+"No Results!"+RESET);
+                }
+                break;
+            }
+            case 4: {
+                System.out.println("Enter departmentName: ");
+                String departmentName = input.nextLine();
+
+                List<Nurse> nurses = Nurse.find("departmentName", departmentName);
                 if (!nurses.isEmpty()) {
                     System.out.println(GREEN+"Results: ("+nurses.size()+")"+RESET);
                     for (Nurse nurse: nurses) {
@@ -835,7 +853,7 @@ public class Main implements HospitalData, Color {
                 Doctor doctor = validateDoctor();
                 if (doctor==null) break;
                 //Nurse nurse = validateNurse();
-                Nurse nurse = getRandomNurse(Nurse.getAvailableNurses());
+                Nurse nurse = getRandomNurse(Nurse.getAvailableNurses(departmentName));
                 if (nurse==null) break;
                 List<MedicalRecord> medicalRecords = new ArrayList<>();
                 System.out.println("*Medical Record*");
@@ -1109,7 +1127,7 @@ public class Main implements HospitalData, Color {
                 if (!patients.isEmpty()) {
                     // consider replacing the nurse in this case.
                     System.out.println(RED+"Nurse is assigned to "+patients.size()+" Patient(s)."+RESET);
-                    List<Nurse> availableNurses = Nurse.getAvailableNurses();
+                    List<Nurse> availableNurses = Nurse.getAvailableNurses(nurse.getDepartmentName());
                     availableNurses.remove(nurse);
                     if (availableNurses.isEmpty()) {
                         System.out.println(RED + "No other Nurse(s) are available!" + RESET);
@@ -1199,9 +1217,7 @@ public class Main implements HospitalData, Color {
             }
             case 3: {
                 Patient patient = validatePatient();
-                if (patient==null)
-                    break;
-                System.out.println("Enter department: ");
+                if (patient==null) break;
                 Department department = validateDepartment();
                 if (department==null) break;
                 String departmentName = department.getName();
@@ -1210,8 +1226,15 @@ public class Main implements HospitalData, Color {
                     break;
                 }
 
+                List<Nurse> nurses = Nurse.getAvailableNurses(departmentName);
+                if (nurses.isEmpty()) {
+                    System.out.println(RED+"No Nurses are available at this department!"+RESET);
+                    break;
+                }
+                Nurse nurse = getRandomNurse(nurses);
+                patient.setNurse(nurse);
+                System.out.println(PURPLE+"Nurse. "+nurse.getName()+" was assigned to this patient."+RESET);
                 patient.setDepartmentName(departmentName);
-
                 hospital.updatePatients();
                 System.out.println(GREEN+"department updated successfully."+RESET);
                 break;
@@ -1230,11 +1253,14 @@ public class Main implements HospitalData, Color {
             }
             case 5: {
                 Patient patient = validatePatient();
-                if (patient==null)
-                    break;
+                if (patient==null) break;
                 Nurse nurse = validateNurse();
-                if (nurse==null)
+                if (nurse==null) break;
+
+                if (!nurse.getDepartmentName().equalsIgnoreCase(patient.getDepartmentName())) {
+                    System.out.println(RED+"Nurse isn't in Patient's department!"+RESET);
                     break;
+                }
                 patient.setNurse(nurse);
                 hospital.updatePatients();
                 System.out.println(GREEN+"Nurse updated successfully."+RESET);

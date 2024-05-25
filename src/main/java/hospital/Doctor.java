@@ -51,7 +51,7 @@ public class Doctor extends Person {
             if (s.equals(searchQuery)) {
                 doctors.add(doctor);
             }
-            else if (searchKey.equals("doctorName") && s.startsWith(searchQuery)) {
+            else if ((searchKey.equals("doctorName") || searchKey.equals("specialization")) && s.startsWith(searchQuery)) {
                 doctors.add(doctor);
             }
         }

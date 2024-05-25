@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Nurse extends Person {
-    final short MAX_PATIENTS = 5;
+    final short MAX_PATIENTS = 10;
     private String departmentName;
 
     public Nurse(String id, String name, String phoneNumber, String departmentName) {
@@ -22,6 +22,8 @@ public class Nurse extends Person {
                     yield nurse.getPhoneNumber();
                 case "nurseId":
                     yield nurse.getId();
+                case "departmentName":
+                    yield nurse.getDepartmentName();
                 default:
                     System.out.println("Invalid searchKey!");
                     yield nurse.getId();
@@ -35,6 +37,9 @@ public class Nurse extends Person {
                 nurses.add(nurse);
             }
             else if (searchKey.equals("nurseName") && s.startsWith(searchQuery)) {
+                nurses.add(nurse);
+            }
+            else if (searchKey.equals("departmentName") && s.startsWith(searchQuery)) {
                 nurses.add(nurse);
             }
         }
@@ -55,10 +60,10 @@ public class Nurse extends Person {
         List<Patient> patients = Patient.find("nurseId", getId());
         return patients.size()< MAX_PATIENTS;
     }
-    public static List<Nurse> getAvailableNurses() {
+    public static List<Nurse> getAvailableNurses(String departmentName) {
         List<Nurse> nurses = new ArrayList<>();
         for (Nurse nurse: nursesList) {
-            if (nurse.isAvailable())
+            if (nurse.getDepartmentName().equalsIgnoreCase(departmentName) && nurse.isAvailable())
                 nurses.add(nurse);
         }
 
