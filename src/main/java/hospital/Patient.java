@@ -72,7 +72,7 @@ public class Patient extends Person {
         return patients;
     }
 
-    public static String getNewPatientId() {
+    public static String getNewId() {
         String str;
         if (!patientsList.isEmpty()) {
             str = patientsList.get(patientsList.size() - 1).getId().split("P")[1]; // P5-> {"", "5"}
@@ -153,7 +153,7 @@ public class Patient extends Person {
         this.medicalRecords = medicalRecord;
     }
 
-    //@Override
+    @Override
     public String toString() {
         return "Patient{"+
                 super.toString() +

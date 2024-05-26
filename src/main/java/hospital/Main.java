@@ -829,7 +829,7 @@ public class Main implements HospitalData, Color {
                     patientManagementPage();
                 }
 
-                String id = Patient.getNewPatientId();
+                String id = Patient.getNewId();
                 System.out.println("Enter patientName: ");
                 String name = input.nextLine();
                 System.out.println("Enter phoneNumber: "); // validation?
@@ -864,7 +864,7 @@ public class Main implements HospitalData, Color {
                 System.out.println("Enter treatment: ");
                 String treatment = input.nextLine();
                 LocalDate date = validateDate();
-                medicalRecords.add(new MedicalRecord(MedicalRecord.getNewMedicalRecordId(), id, diagnose, treatment, date));
+                medicalRecords.add(new MedicalRecord(MedicalRecord.getNewId(), id, diagnose, treatment, date));
                 hospital.add(medicalRecords);
                 hospital.add(new Patient(id, name, phoneNumber, age, gender, address, departmentName, medicalRecords, doctor, nurse));
                 System.out.println(GREEN+"Patient added successfully."+RESET);
@@ -939,7 +939,7 @@ public class Main implements HospitalData, Color {
                 break;
             }
             case 3: {
-                String id = Department.getNewDepartmentId();
+                String id = Department.getNewId();
                 System.out.println("Enter name: ");
                 String name = input.nextLine();
                 System.out.println("Enter description: ");
@@ -977,7 +977,7 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                String id = Appointment.getNewAppointmentId();
+                String id = Appointment.getNewId();
                 Patient patient = validatePatient();
                 if (patient==null)
                     break;
@@ -1041,7 +1041,7 @@ public class Main implements HospitalData, Color {
 
         switch (c) {
             case 1: {
-                String id = Doctor.getNewDoctorId();
+                String id = Doctor.getNewId();
                 String name = validateDoctorName();
 
                 System.out.println("Enter phoneNumber: ");
@@ -1106,7 +1106,7 @@ public class Main implements HospitalData, Color {
 
         sw:switch (c) {
             case 1: {
-                String id = Nurse.getNewNurseId();
+                String id = Nurse.getNewId();
                 //System.out.println(id);
                 String name = validateNurseName();
                 System.out.println("Enter phoneNumber: ");
@@ -1357,7 +1357,7 @@ public class Main implements HospitalData, Color {
                 if (medicalRecords==null)
                     medicalRecords = new ArrayList<>();
 
-                String id = medicalRecords.isEmpty()?MedicalRecord.getNewMedicalRecordId():medicalRecords.get(0).getId();
+                String id = medicalRecords.isEmpty()?MedicalRecord.getNewId():medicalRecords.get(0).getId();
                 System.out.println("Enter diagnose: ");
                 String diagnose = input.nextLine();
                 System.out.println("Enter treatment: ");

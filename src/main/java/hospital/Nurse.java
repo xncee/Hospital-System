@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Nurse extends Person {
-    final short MAX_PATIENTS = 10;
+    private final int MAX_PATIENTS = 10;
     private String departmentName;
 
     public Nurse(String id, String name, String phoneNumber, String departmentName) {
@@ -46,7 +46,7 @@ public class Nurse extends Person {
         return nurses;
     }
 
-    public static String getNewNurseId() {
+    public static String getNewId() {
         String str;
         if (!nursesList.isEmpty()) {
             str = nursesList.get(nursesList.size() - 1).getId().split("NU")[1];

@@ -1,11 +1,13 @@
 package hospital;
 
-public class Person implements HospitalData {
+import design.Color;
+
+public class Person implements HospitalData, Color {
     private String id;
     private String name;
     private String phoneNumber;
 
-    protected Person(String id, String name, String phoneNumber) {
+    public Person(String id, String name, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;

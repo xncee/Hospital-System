@@ -42,7 +42,7 @@ public class MedicalRecord implements HospitalData {
         return null;
     }
 
-    public static String getNewMedicalRecordId() {
+    public static String getNewId() {
         String str;
         if (!medicalRecordsList.isEmpty()) {
             str = medicalRecordsList.get(medicalRecordsList.size() - 1).get(0).getId().split("MR")[1];

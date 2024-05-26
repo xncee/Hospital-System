@@ -6,11 +6,16 @@ import java.util.List;
 
 public class Doctor extends Person {
     private String specialization;
-    private HashMap<String, String> workingDays;
+    //private HashMap<String, String> workingDays;
 
     public Doctor(String id, String name, String phoneNumber, String specialization) {
         super(id, name, phoneNumber);
         this.specialization = specialization;
+    }
+
+    public boolean isAvailable() {
+        // will be implemented later
+        return true;
     }
 
     public static List<Doctor> find(String searchKey, String searchQuery) {
@@ -58,7 +63,7 @@ public class Doctor extends Person {
         return doctors;
     }
 
-    public static String getNewDoctorId() {
+    public static String getNewId() {
         String str;
         if (!doctorsList.isEmpty()) {
             str = doctorsList.get(doctorsList.size() - 1).getId().split("DR")[1];

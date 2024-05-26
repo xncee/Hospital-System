@@ -50,7 +50,7 @@ public class Department implements HospitalData, Color {
         return departments;
     }
 
-    public static String getNewDepartmentId() {
+    public static String getNewId() {
         String str;
         if (!departmentsList.isEmpty()) {
             str = departmentsList.get(departmentsList.size() - 1).getId().split("DP")[1];

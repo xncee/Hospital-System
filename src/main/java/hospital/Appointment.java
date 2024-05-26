@@ -19,15 +19,9 @@ public class Appointment implements HospitalData {
         this.description = description;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        if (id.startsWith("AP"))
-            this.id = id;
-        else
-            System.out.println("Appointment must start with 'AP'.");
+    public boolean isAvailable() {
+        LocalDate currentDate = LocalDate.now();
+        return date.isEqual(currentDate) || date.isBefore(currentDate);
     }
 
     public static List<Appointment> find(String searchKey, String searchQuery) {
@@ -57,7 +51,7 @@ public class Appointment implements HospitalData {
         return appointments;
     }
 
-    public static String getNewAppointmentId() {
+    public static String getNewId() {
         String str;
         if (!appointmentsList.isEmpty()) {
             str = appointmentsList.get(appointmentsList.size() - 1).getId().split("AP")[1];
@@ -66,6 +60,18 @@ public class Appointment implements HospitalData {
             str = "0";
         return "AP"+(Integer.parseInt(str)+1);
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        if (id.startsWith("AP"))
+            this.id = id;
+        else
+            System.out.println("Appointment must start with 'AP'.");
+    }
+
     public Patient getPatient() {
         return patient;
     }
