@@ -1,22 +1,117 @@
 {
-  "DR1" : {
-    "name" : "Moha Sh",
-    "phoneNumber" : "0778987766",
-    "specialization" : "phisical training"
+  "DR1": {
+    "name": "Mohammed Shah",
+    "phoneNumber": "0798765432",
+    "specialization": "Emergency Medicine"
   },
-  "DR2" : {
-    "name" : "Noor",
-    "phoneNumber" : "0796753445",
-    "specialization" : "Surgery"
+  "DR2": {
+    "name": "Ahmed Hassan",
+    "phoneNumber": "0789654321",
+    "specialization": "Intensive Care Medicine"
   },
-  "DR3" : {
-    "name" : "Ahmad Q",
-    "phoneNumber" : "0787898900",
-    "specialization" : "Neurology"
+  "DR3": {
+    "name": "Fatima Ali",
+    "phoneNumber": "0778543210",
+    "specialization": "Oncology"
   },
-  "DR4" : {
-    "name" : "moh kareem",
-    "phoneNumber" : "0776765899",
-    "specialization" : "Neurology"
+  "DR4": {
+    "name": "Yousef Khalid",
+    "phoneNumber": "0797456789",
+    "specialization": "Pediatric Medicine"
+  },
+  "DR5": {
+    "name": "Layla Ahmad",
+    "phoneNumber": "0789345678",
+    "specialization": "Surgery"
+  },
+  "DR6": {
+    "name": "Nour Ibrahim",
+    "phoneNumber": "0778234567",
+    "specialization": "Neurology"
+  },
+  "DR7": {
+    "name": "Omar Ali",
+    "phoneNumber": "0797123456",
+    "specialization": "Radiology"
+  },
+  "DR8": {
+    "name": "Sara Mohamed",
+    "phoneNumber": "0788765432",
+    "specialization": "Anesthesiology"
+  },
+  "DR9": {
+    "name": "Khaled Saleh",
+    "phoneNumber": "0779876543",
+    "specialization": "Orthopedics"
+  },
+  "DR10": {
+    "name": "Rana Ahmed",
+    "phoneNumber": "0798987654",
+    "specialization": "Gastroenterology"
+  },
+  "DR11": {
+    "name": "Ali Ibrahim",
+    "phoneNumber": "0789898765",
+    "specialization": "Nephrology"
+  },
+  "DR12": {
+    "name": "Lina Khalid",
+    "phoneNumber": "0778789876",
+    "specialization": "Urology"
+  },
+  "DR13": {
+    "name": "Yassin Hasan",
+    "phoneNumber": "0797987654",
+    "specialization": "Endocrinology"
+  },
+  "DR14": {
+    "name": "Hala Ahmed",
+    "phoneNumber": "0789876543",
+    "specialization": "Dermatology"
+  },
+  "DR15": {
+    "name": "Karim Samir",
+    "phoneNumber": "0778987654",
+    "specialization": "Psychiatry and Psychology"
+  },
+  "DR16": {
+    "name": "Nada Hussein",
+    "phoneNumber": "0798876543",
+    "specialization": "Pathology"
+  },
+  "DR17": {
+    "name": "Omar Farid",
+    "phoneNumber": "0788789876",
+    "specialization": "Ophthalmology"
+  },
+  "DR18": {
+    "name": "Hassan Ali",
+    "phoneNumber": "0778987654",
+    "specialization": "Otolaryngology (ENT)"
+  },
+  "DR19": {
+    "name": "Dina Kamal",
+    "phoneNumber": "0797987654",
+    "specialization": "Rehabilitation Services"
+  },
+  "DR20": {
+    "name": "Sami Rami",
+    "phoneNumber": "0789876543",
+    "specialization": "Pharmacy"
+  },
+  "DR21": {
+    "name": "Yara Hani",
+    "phoneNumber": "0778765432",
+    "specialization": "Laboratory Medicine"
+  },
+  "DR22": {
+    "name": "Ahmed Tarek",
+    "phoneNumber": "0798654321",
+    "specialization": "Infectious Disease"
+  },
+  "DR23": {
+    "name": "Laila Mahmoud",
+    "phoneNumber": "0789876543",
+    "specialization": "Palliative Medicine"
   }
 }

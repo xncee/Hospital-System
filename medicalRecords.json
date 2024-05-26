@@ -1,62 +1,142 @@
 {
-  "MR1" : [ {
-    "patient" : "P1",
-    "diagnose" : "Covid",
-    "treatment" : "something cool",
-    "date" : "2024-05-25"
-  } ],
-  "MR3" : [ {
-    "patient" : "P2",
-    "diagnose" : "covid",
-    "treatment" : "some drugs",
-    "date" : "2024-05-25"
-  } ],
-  "MR4" : [ {
-    "patient" : "P5",
-    "diagnose" : "covid-19",
-    "treatment" : "drug",
-    "date" : "2024-05-25"
-  } ],
-  "MR5" : [ {
-    "patient" : "P6",
-    "diagnose" : "covid",
-    "treatment" : "some medicine",
-    "date" : "2024-05-25"
-  } ],
-  "MR6" : [ {
-    "patient" : "P7",
-    "diagnose" : "jk",
-    "treatment" : "jk",
-    "date" : "2024-05-25"
-  } ],
-  "MR7" : [ {
-    "patient" : "P8",
-    "diagnose" : "jjjk",
-    "treatment" : "af",
-    "date" : "2024-05-25"
-  } ],
-  "MR8" : [ {
-    "patient" : "P9",
-    "diagnose" : "Covid 2",
-    "treatment" : "Drugs",
-    "date" : "2024-05-25"
-  } ],
-  "MR9" : [ {
-    "patient" : "P10",
-    "diagnose" : "Food poisining",
-    "treatment" : "stomach wash",
-    "date" : "2024-05-25"
-  } ],
-  "MR10" : [ {
-    "patient" : "P11",
-    "diagnose" : "broken leg",
-    "treatment" : "some medicine and rest",
-    "date" : "2024-03-17"
-  } ],
-  "MR11" : [ {
-    "patient" : "P12",
-    "diagnose" : "Covid",
-    "treatment" : "some drugs",
-    "date" : "2024-05-25"
-  } ]
+  "MR1": [
+    {
+      "patient": "P1",
+      "diagnose": "Sinusitis",
+      "treatment": "Nasal decongestants and saline irrigation",
+      "date": "2024-03-08"
+    },
+    {
+      "patient": "P1",
+      "diagnose": "Gastroenteritis",
+      "treatment": "Oral rehydration therapy and bland diet",
+      "date": "2023-10-15"
+    },
+    {
+      "patient": "P1",
+      "diagnose": "Anemia",
+      "treatment": "Iron supplementation and dietary changes",
+      "date": "2023-12-30"
+    }
+  ],
+  "MR2": [
+    {
+      "patient": "P2",
+      "diagnose": "Ankle sprain",
+      "treatment": "RICE therapy (Rest, Ice, Compression, Elevation)",
+      "date": "2023-09-05"
+    },
+    {
+      "patient": "P2",
+      "diagnose": "Ear infection",
+      "treatment": "Antibiotics and pain relievers",
+      "date": "2024-01-20"
+    },
+    {
+      "patient": "P2",
+      "diagnose": "Depression",
+      "treatment": "Therapy and antidepressant medication",
+      "date": "2024-04-10"
+    }
+  ],
+  "MR3": [
+    {
+      "patient": "P3",
+      "diagnose": "Gastritis",
+      "treatment": "Antacids and proton pump inhibitors",
+      "date": "2023-11-10"
+    },
+    {
+      "patient": "P3",
+      "diagnose": "Anxiety disorder",
+      "treatment": "Counseling and anxiolytic medication",
+      "date": "2024-02-18"
+    }
+  ],
+  "MR4": [
+    {
+      "patient": "P4",
+      "diagnose": "Chronic obstructive pulmonary disease (COPD)",
+      "treatment": "Bronchodilators and corticosteroids",
+      "date": "2023-08-20"
+    },
+    {
+      "patient": "P4",
+      "diagnose": "Hypothyroidism",
+      "treatment": "Levothyroxine replacement therapy",
+      "date": "2024-04-15"
+    }
+  ],
+  "MR5": [
+    {
+      "patient": "P5",
+      "diagnose": "Hypertension",
+      "treatment": "Antihypertensive medication and lifestyle modifications",
+      "date": "2023-10-10"
+    },
+    {
+      "patient": "P5",
+      "diagnose": "Osteoarthritis",
+      "treatment": "Pain relievers and physical therapy",
+      "date": "2024-02-25"
+    }
+  ],
+  "MR6": [
+    {
+      "patient": "P6",
+      "diagnose": "Migraine",
+      "treatment": "Triptans and lifestyle modifications",
+      "date": "2024-01-02"
+    },
+    {
+      "patient": "P6",
+      "diagnose": "GERD (Gastroesophageal reflux disease)",
+      "treatment": "Antacids and lifestyle changes",
+      "date": "2023-12-15"
+    }
+  ],
+  "MR7": [
+    {
+      "patient": "P7",
+      "diagnose": "Atrial fibrillation",
+      "treatment": "Medications and cardioversion",
+      "date": "2023-11-20"
+    },
+    {
+      "patient": "P7",
+      "diagnose": "Chronic kidney disease",
+      "treatment": "Medications and dietary changes",
+      "date": "2024-04-05"
+    }
+  ],
+  "MR8": [
+    {
+      "patient": "P8",
+      "diagnose": "Rheumatoid arthritis",
+      "treatment": "Disease-modifying antirheumatic drugs (DMARDs) and NSAIDs",
+      "date": "2024-03-20"
+    }
+  ],
+  "MR9": [
+    {
+      "patient": "P9",
+      "diagnose": "Mild cognitive impairment",
+      "treatment": "Cognitive training and lifestyle modifications",
+      "date": "2024-02-10"
+    },
+    {
+      "patient": "P9",
+      "diagnose": "Peripheral artery disease",
+      "treatment": "Medications and lifestyle changes",
+      "date": "2023-09-15"
+    }
+  ],
+  "MR10": [
+    {
+      "patient": "P10",
+      "diagnose": "Osteoarthritis",
+      "treatment": "Physical therapy and NSAIDs",
+      "date": "2024-05-18"
+    }
+  ]
 }

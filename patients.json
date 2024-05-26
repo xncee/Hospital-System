@@ -1,134 +1,112 @@
 {
-  "P1" : {
-    "name" : "Waseem Alkhalili",
-    "phoneNumber" : "0798754233",
-    "age" : 18,
-    "gender" : "M",
-    "address" : "Amman",
-    "department" : "ED",
-    "medicalRecords" : "MR1",
-    "doctor" : "DR1",
-    "nurse" : "NU5"
+  "P1": {
+    "name": "Yousef Khalil",
+    "phoneNumber": "0798123456",
+    "age": 25,
+    "gender": "M",
+    "address": "123 Main Street, Amman, Jordan",
+    "department": "ED",
+    "medicalRecords": "MR1",
+    "doctor": "DR1",
+    "nurse": "NU1"
   },
-  "P2" : {
-    "name" : "Ahmad Jabali",
-    "phoneNumber" : "0798047654",
-    "age" : 29,
-    "gender" : "M",
-    "address" : "Zarqa/Jordan",
-    "department" : "ED",
-    "medicalRecords" : "MR3",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
+  "P2": {
+    "name": "Layla Ahmed",
+    "phoneNumber": "0798234567",
+    "age": 35,
+    "gender": "F",
+    "address": "456 Elm Street, Irbid, Jordan",
+    "department": "ED",
+    "medicalRecords": "MR2",
+    "doctor": "DR1",
+    "nurse": "NU1"
   },
-  "P3" : {
-    "name" : "Sanad R",
-    "phoneNumber" : "0776068794",
-    "age" : 18,
-    "gender" : "M",
-    "address" : "Irbid/Jordan",
-    "department" : "ED",
-    "medicalRecords" : "MR3",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
+  "P3": {
+    "name": "Ahmed Hassan",
+    "phoneNumber": "0798345678",
+    "age": 40,
+    "gender": "M",
+    "address": "789 Oak Street, Zarqa, Jordan",
+    "department": "ICU",
+    "medicalRecords": "MR3",
+    "doctor": "DR2",
+    "nurse": "NU3"
   },
-  "P4" : {
-    "name" : "Mohammad Ahmad",
-    "phoneNumber" : "0787867788",
-    "age" : 24,
-    "gender" : "M",
-    "address" : "Madaba/Jordan",
-    "department" : "ED",
-    "medicalRecords" : "MR3",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
+  "P4": {
+    "name": "Fatima Ali",
+    "phoneNumber": "0798456789",
+    "age": 45,
+    "gender": "F",
+    "address": "101 Pine Street, Ajloun, Jordan",
+    "department": "Oncology",
+    "medicalRecords": "MR4",
+    "doctor": "DR3",
+    "nurse": "NU5"
   },
-  "P5" : {
-    "name" : "mohaa",
-    "phoneNumber" : "0776754566",
-    "age" : 78,
-    "gender" : "M",
-    "address" : "Amman",
-    "department" : "ED",
-    "medicalRecords" : "MR4",
-    "doctor" : "DR2",
-    "nurse" : "NU3"
+  "P5": {
+    "name": "Yara Hani",
+    "phoneNumber": "0798567890",
+    "age": 5,
+    "gender": "F",
+    "address": "111 Cedar Street, Karak, Jordan",
+    "department": "Pediatrics",
+    "medicalRecords": "MR5",
+    "doctor": "DR4",
+    "nurse": "NU7"
   },
-  "P6" : {
-    "name" : "said ahmad",
-    "phoneNumber" : "0787654433",
-    "age" : 23,
-    "gender" : "M",
-    "address" : "Amman",
-    "department" : "ED",
-    "medicalRecords" : "MR5",
-    "doctor" : "DR3",
-    "nurse" : "NU3"
+  "P6": {
+    "name": "Ali Ibrahim",
+    "phoneNumber": "0798678901",
+    "age": 32,
+    "gender": "M",
+    "address": "222 Maple Street, Madaba, Jordan",
+    "department": "Surgery",
+    "medicalRecords": "MR6",
+    "doctor": "DR5",
+    "nurse": "NU9"
   },
-  "P7" : {
-    "name" : "HHH",
-    "phoneNumber" : "787",
-    "age" : 7,
-    "gender" : "F",
-    "address" : "Amman/Jordan",
-    "department" : "ED",
-    "medicalRecords" : "MR6",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
+  "P7": {
+    "name": "Nour Ibrahim",
+    "phoneNumber": "0798789012",
+    "age": 35,
+    "gender": "F",
+    "address": "333 Walnut Street, Aqaba, Jordan",
+    "department": "Neurology",
+    "medicalRecords": "MR7",
+    "doctor": "DR6",
+    "nurse": "NU11"
   },
-  "P8" : {
-    "name" : "Saif Khalili",
-    "phoneNumber" : "0798076567",
-    "age" : 18,
-    "gender" : "M",
-    "address" : "amman",
-    "department" : "ED",
-    "medicalRecords" : "MR7",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
+  "P8": {
+    "name": "Omar Ali",
+    "phoneNumber": "0798890123",
+    "age": 50,
+    "gender": "M",
+    "address": "444 Birch Street, Ma'an, Jordan",
+    "department": "Radiology",
+    "medicalRecords": "MR8",
+    "doctor": "DR7",
+    "nurse": "NU13"
   },
-  "P9" : {
-    "name" : "Khalili Alkhalili",
-    "phoneNumber" : "0798756788",
-    "age" : 14,
-    "gender" : "M",
-    "address" : "Amman",
-    "department" : "ED",
-    "medicalRecords" : "MR8",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
+  "P9": {
+    "name": "Sara Mohamed",
+    "phoneNumber": "0798901234",
+    "age": 55,
+    "gender": "F",
+    "address": "555 Sycamore Street, Tafilah, Jordan",
+    "department": "Anesthesiology",
+    "medicalRecords": "MR9",
+    "doctor": "DR8",
+    "nurse": "NU15"
   },
-  "P10" : {
-    "name" : "Amal",
-    "phoneNumber" : "0797645322",
-    "age" : 18,
-    "gender" : "F",
-    "address" : "Amman Jordan",
-    "department" : "ED",
-    "medicalRecords" : "MR9",
-    "doctor" : "DR1",
-    "nurse" : "NU3"
-  },
-  "P11" : {
-    "name" : "Saif Alkhalili",
-    "phoneNumber" : "0796089899",
-    "age" : 19,
-    "gender" : "M",
-    "address" : "Amman/Jordan",
-    "department" : "Surgery",
-    "medicalRecords" : "MR10",
-    "doctor" : "DR1",
-    "nurse" : "NU4"
-  },
-  "P12" : {
-    "name" : "Wesam",
-    "phoneNumber" : "0786654566",
-    "age" : 17,
-    "gender" : "M",
-    "address" : "Amman. Jordan",
-    "department" : "Oncology",
-    "medicalRecords" : "MR11",
-    "doctor" : "DR2",
-    "nurse" : "NU6"
+  "P10": {
+    "name": "Khaled Saleh",
+    "phoneNumber": "0799012345",
+    "age": 38,
+    "gender": "M",
+    "address": "666 Chestnut Street, Jerash, Jordan",
+    "department": "Orthopedics",
+    "medicalRecords": "MR10",
+    "doctor": "DR9",
+    "nurse": "NU17"
   }
 }
