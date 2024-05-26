@@ -733,7 +733,7 @@ public class Main implements HospitalData, Color {
 
             nurse = nurses.get(0);
             return nurse;
-         }
+        }
     }
     public static Patient validatePatient() {
         Patient patient;
@@ -853,7 +853,10 @@ public class Main implements HospitalData, Color {
                 if (doctor==null) break;
                 //Nurse nurse = validateNurse();
                 Nurse nurse = getRandomNurse(Nurse.getAvailableNurses(departmentName));
-                if (nurse==null) break;
+                if (nurse==null) {
+                    System.out.println(RED+"No Available Nurses!"+RESET);
+                    break;
+                }
                 List<MedicalRecord> medicalRecords = new ArrayList<>();
                 System.out.println("*Medical Record*");
                 System.out.println("Enter diagnose: ");
