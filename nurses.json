@@ -1,232 +1,232 @@
 {
-  "NU1": {
-    "name": "Emily",
-    "phoneNumber": "0779345678",
-    "department": "ED"
+  "NU1" : {
+    "name" : "Emily",
+    "phoneNumber" : "0779345678",
+    "department" : "ED"
   },
-  "NU2": {
-    "name": "Michael",
-    "phoneNumber": "0789012345",
-    "department": "ED"
+  "NU2" : {
+    "name" : "Michael",
+    "phoneNumber" : "0789012345",
+    "department" : "ED"
   },
-  "NU3": {
-    "name": "John",
-    "phoneNumber": "0798765432",
-    "department": "ICU"
+  "NU3" : {
+    "name" : "John",
+    "phoneNumber" : "0798765432",
+    "department" : "ICU"
   },
-  "NU4": {
-    "name": "Jessica",
-    "phoneNumber": "0778123456",
-    "department": "ICU"
+  "NU4" : {
+    "name" : "Jessica",
+    "phoneNumber" : "0778123456",
+    "department" : "ICU"
   },
-  "NU5": {
-    "name": "Lisa",
-    "phoneNumber": "0789234567",
-    "department": "Oncology"
+  "NU5" : {
+    "name" : "Lisa",
+    "phoneNumber" : "0789234567",
+    "department" : "Oncology"
   },
-  "NU6": {
-    "name": "Brian",
-    "phoneNumber": "0798123456",
-    "department": "Oncology"
+  "NU6" : {
+    "name" : "Brian",
+    "phoneNumber" : "0798123456",
+    "department" : "Oncology"
   },
-  "NU7": {
-    "name": "Mark",
-    "phoneNumber": "0778432190",
-    "department": "Pediatrics"
+  "NU7" : {
+    "name" : "Mark",
+    "phoneNumber" : "0778432190",
+    "department" : "Pediatrics"
   },
-  "NU8": {
-    "name": "Amanda",
-    "phoneNumber": "0789321456",
-    "department": "Pediatrics"
+  "NU8" : {
+    "name" : "Amanda",
+    "phoneNumber" : "0789321456",
+    "department" : "Pediatrics"
   },
-  "NU9": {
-    "name": "Nina",
-    "phoneNumber": "0798543210",
-    "department": "Surgery"
+  "NU9" : {
+    "name" : "Nina",
+    "phoneNumber" : "0798543210",
+    "department" : "Surgery"
   },
-  "NU10": {
-    "name": "Tom",
-    "phoneNumber": "0779123456",
-    "department": "Surgery"
+  "NU10" : {
+    "name" : "Tom",
+    "phoneNumber" : "0779123456",
+    "department" : "Surgery"
   },
-  "NU11": {
-    "name": "Paul",
-    "phoneNumber": "0789765432",
-    "department": "Neurology"
+  "NU11" : {
+    "name" : "Paul",
+    "phoneNumber" : "0789765432",
+    "department" : "Neurology"
   },
-  "NU12": {
-    "name": "Linda",
-    "phoneNumber": "0798345678",
-    "department": "Neurology"
+  "NU12" : {
+    "name" : "Linda",
+    "phoneNumber" : "0798345678",
+    "department" : "Neurology"
   },
-  "NU13": {
-    "name": "Sara",
-    "phoneNumber": "0779234567",
-    "department": "Radiology"
+  "NU13" : {
+    "name" : "Sara",
+    "phoneNumber" : "0779234567",
+    "department" : "Radiology"
   },
-  "NU14": {
-    "name": "James",
-    "phoneNumber": "0789123456",
-    "department": "Radiology"
+  "NU14" : {
+    "name" : "James",
+    "phoneNumber" : "0789123456",
+    "department" : "Radiology"
   },
-  "NU15": {
-    "name": "Anna",
-    "phoneNumber": "0798456123",
-    "department": "Anesthesiology"
+  "NU15" : {
+    "name" : "Anna",
+    "phoneNumber" : "0798456123",
+    "department" : "Anesthesiology"
   },
-  "NU16": {
-    "name": "Kevin",
-    "phoneNumber": "0779345612",
-    "department": "Anesthesiology"
+  "NU16" : {
+    "name" : "Kevin",
+    "phoneNumber" : "0779345612",
+    "department" : "Anesthesiology"
   },
-  "NU17": {
-    "name": "David",
-    "phoneNumber": "0789567890",
-    "department": "Orthopedics"
+  "NU17" : {
+    "name" : "David",
+    "phoneNumber" : "0789567890",
+    "department" : "Orthopedics"
   },
-  "NU18": {
-    "name": "Sophia",
-    "phoneNumber": "0798123456",
-    "department": "Orthopedics"
+  "NU18" : {
+    "name" : "Sophia",
+    "phoneNumber" : "0798123456",
+    "department" : "Orthopedics"
   },
-  "NU19": {
-    "name": "Laura",
-    "phoneNumber": "0779456123",
-    "department": "Gastroenterology"
+  "NU19" : {
+    "name" : "Laura",
+    "phoneNumber" : "0779456123",
+    "department" : "Gastroenterology"
   },
-  "NU20": {
-    "name": "Chris",
-    "phoneNumber": "0789561234",
-    "department": "Gastroenterology"
+  "NU20" : {
+    "name" : "Chris",
+    "phoneNumber" : "0789561234",
+    "department" : "Gastroenterology"
   },
-  "NU21": {
-    "name": "Tom",
-    "phoneNumber": "0798345123",
-    "department": "Nephrology"
+  "NU21" : {
+    "name" : "Tom",
+    "phoneNumber" : "0798345123",
+    "department" : "Nephrology"
   },
-  "NU22": {
-    "name": "Emily",
-    "phoneNumber": "0778123465",
-    "department": "Nephrology"
+  "NU22" : {
+    "name" : "Emily",
+    "phoneNumber" : "0778123465",
+    "department" : "Nephrology"
   },
-  "NU23": {
-    "name": "Rachel",
-    "phoneNumber": "0789456123",
-    "department": "Urology"
+  "NU23" : {
+    "name" : "Rachel",
+    "phoneNumber" : "0789456123",
+    "department" : "Urology"
   },
-  "NU24": {
-    "name": "George",
-    "phoneNumber": "0798345612",
-    "department": "Urology"
+  "NU24" : {
+    "name" : "George",
+    "phoneNumber" : "0798345612",
+    "department" : "Urology"
   },
-  "NU25": {
-    "name": "Helen",
-    "phoneNumber": "0778456123",
-    "department": "Endocrinology"
+  "NU25" : {
+    "name" : "Helen",
+    "phoneNumber" : "0778456123",
+    "department" : "Endocrinology"
   },
-  "NU26": {
-    "name": "Jason",
-    "phoneNumber": "0789345612",
-    "department": "Endocrinology"
+  "NU26" : {
+    "name" : "Jason",
+    "phoneNumber" : "0789345612",
+    "department" : "Endocrinology"
   },
-  "NU27": {
-    "name": "Olivia",
-    "phoneNumber": "0798234567",
-    "department": "Dermatology"
+  "NU27" : {
+    "name" : "Olivia",
+    "phoneNumber" : "0798234567",
+    "department" : "Dermatology"
   },
-  "NU28": {
-    "name": "Peter",
-    "phoneNumber": "0779345678",
-    "department": "Dermatology"
+  "NU28" : {
+    "name" : "Peter",
+    "phoneNumber" : "0779345678",
+    "department" : "Dermatology"
   },
-  "NU29": {
-    "name": "Karen",
-    "phoneNumber": "0789456789",
-    "department": "Psychiatry and Psychology"
+  "NU29" : {
+    "name" : "Karen",
+    "phoneNumber" : "0789456789",
+    "department" : "Psychiatry and Psychology"
   },
-  "NU30": {
-    "name": "Jason",
-    "phoneNumber": "0798123456",
-    "department": "Psychiatry and Psychology"
+  "NU30" : {
+    "name" : "Jason",
+    "phoneNumber" : "0798123456",
+    "department" : "Psychiatry and Psychology"
   },
-  "NU31": {
-    "name": "Megan",
-    "phoneNumber": "0779456789",
-    "department": "Pathology"
+  "NU31" : {
+    "name" : "Megan",
+    "phoneNumber" : "0779456789",
+    "department" : "Pathology"
   },
-  "NU32": {
-    "name": "Chris",
-    "phoneNumber": "0789123456",
-    "department": "Pathology"
+  "NU32" : {
+    "name" : "Chris",
+    "phoneNumber" : "0789123456",
+    "department" : "Pathology"
   },
-  "NU33": {
-    "name": "Rachel",
-    "phoneNumber": "0798456123",
-    "department": "Ophthalmology"
+  "NU33" : {
+    "name" : "Rachel",
+    "phoneNumber" : "0798456123",
+    "department" : "Ophthalmology"
   },
-  "NU34": {
-    "name": "George",
-    "phoneNumber": "0779345123",
-    "department": "Ophthalmology"
+  "NU34" : {
+    "name" : "George",
+    "phoneNumber" : "0779345123",
+    "department" : "Ophthalmology"
   },
-  "NU35": {
-    "name": "Helen",
-    "phoneNumber": "0789123456",
-    "department": "Otolaryngology (ENT)"
+  "NU35" : {
+    "name" : "Helen",
+    "phoneNumber" : "0789123456",
+    "department" : "Otolaryngology (ENT)"
   },
-  "NU36": {
-    "name": "Michael",
-    "phoneNumber": "0798234567",
-    "department": "Otolaryngology (ENT)"
+  "NU36" : {
+    "name" : "Michael",
+    "phoneNumber" : "0798234567",
+    "department" : "Otolaryngology (ENT)"
   },
-  "NU37": {
-    "name": "James",
-    "phoneNumber": "0778345612",
-    "department": "Rehabilitation Services"
+  "NU37" : {
+    "name" : "James",
+    "phoneNumber" : "0778345612",
+    "department" : "Rehabilitation Services"
   },
-  "NU38": {
-    "name": "Jessica",
-    "phoneNumber": "0789561234",
-    "department": "Rehabilitation Services"
+  "NU38" : {
+    "name" : "Jessica",
+    "phoneNumber" : "0789561234",
+    "department" : "Rehabilitation Services"
   },
-  "NU39": {
-    "name": "Sophia",
-    "phoneNumber": "0798123465",
-    "department": "Pharmacy"
+  "NU39" : {
+    "name" : "Sophia",
+    "phoneNumber" : "0798123465",
+    "department" : "Pharmacy"
   },
-  "NU40": {
-    "name": "Linda",
-    "phoneNumber": "0778345123",
-    "department": "Pharmacy"
+  "NU40" : {
+    "name" : "Linda",
+    "phoneNumber" : "0778345123",
+    "department" : "Pharmacy"
   },
-  "NU41": {
-    "name": "David",
-    "phoneNumber": "0789456123",
-    "department": "Laboratory Services"
+  "NU41" : {
+    "name" : "David",
+    "phoneNumber" : "0789456123",
+    "department" : "Laboratory Services"
   },
-  "NU42": {
-    "name": "Megan",
-    "phoneNumber": "0798345678",
-    "department": "Laboratory Services"
+  "NU42" : {
+    "name" : "Megan",
+    "phoneNumber" : "0798345678",
+    "department" : "Laboratory Services"
   },
-  "NU43": {
-    "name": "Olivia",
-    "phoneNumber": "0778456123",
-    "department": "Infectious Disease"
+  "NU43" : {
+    "name" : "Olivia",
+    "phoneNumber" : "0778456123",
+    "department" : "Infectious Disease"
   },
-  "NU44": {
-    "name": "Peter",
-    "phoneNumber": "0789345612",
-    "department": "Infectious Disease"
+  "NU44" : {
+    "name" : "Peter",
+    "phoneNumber" : "0789345612",
+    "department" : "Infectious Disease"
   },
-  "NU45": {
-    "name": "Kevin",
-    "phoneNumber": "0798345678",
-    "department": "Palliative Care"
+  "NU45" : {
+    "name" : "Kevin",
+    "phoneNumber" : "0798345678",
+    "department" : "Palliative Care"
   },
-  "NU46": {
-    "name": "Amanda",
-    "phoneNumber": "0778234567",
-    "department": "Palliative Care"
+  "NU46" : {
+    "name" : "Amanda",
+    "phoneNumber" : "0778234567",
+    "department" : "Palliative Care"
   }
 }

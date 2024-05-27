@@ -1128,6 +1128,10 @@ public class Main implements HospitalData, Color {
                 if (!patients.isEmpty()) {
                     // consider replacing the nurse in this case.
                     System.out.println(RED+"Nurse is assigned to "+patients.size()+" Patient(s)."+RESET);
+                    System.out.println("Are you sure you want to continue? (enter '=' to cancel)");
+                    String i = input.nextLine();
+                    if (i.equals("#")) break;
+
                     List<Nurse> availableNurses = Nurse.getAvailableNurses(nurse.getDepartmentName());
                     availableNurses.remove(nurse);
                     if (availableNurses.isEmpty()) {
